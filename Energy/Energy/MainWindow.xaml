@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Energy"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Абонименты" Height="1080" Width="1920">
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="260"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="360"/>
+        </Grid.RowDefinitions>
     </Grid>
 </Window>
