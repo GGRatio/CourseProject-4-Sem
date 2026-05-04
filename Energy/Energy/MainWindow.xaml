@@ -17,5 +17,36 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="360"/>
         </Grid.RowDefinitions>
+
+        <Grid x:Name="Header" Grid.Row="0" Grid.Column="1" >
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Padding" Value="40,10 "></Setter>
+                    <Setter Property="Margin" Value="5,0"></Setter> 
+                    <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                    <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                    <Setter Property="Background" Value="Transparent"></Setter>
+                    <Setter Property="BorderThickness" Value="0"></Setter>
+                </Style> 
+            </Grid.Resources>
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Button x:Name="btn_Home" Content="Главная"></Button>
+                <Button x:Name="btn_Trainers" Content="Тренеры"></Button>
+                <Button x:Name="btn_Subscriptions" Content="Абонименты"></Button>
+                <Button x:Name="btn_Profile" Content="Профиль"></Button>
+            </StackPanel>
+        </Grid>
+
+        
+        <Grid x:Name="Center" Grid.Row="1" Grid.Column="1">
+            
+        </Grid>
+
+
+        <Grid x:Name="Footer" Grid.Row="2" Grid.Column="1">
+            
+        </Grid>
+        
     </Grid>
 </Window>
