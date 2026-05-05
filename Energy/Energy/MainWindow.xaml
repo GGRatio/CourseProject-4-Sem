@@ -27,6 +27,13 @@
                     <Setter Property="BorderBrush" Value="Transparent"></Setter>
                     <Setter Property="Background" Value="Transparent"></Setter>
                     <Setter Property="BorderThickness" Value="0"></Setter>
+                    <Setter Property="FontSize" Value="18"></Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="FontWeight" Value="SemiBold"></Setter>
+                        </Trigger>
+                    </Style.Triggers>
                 </Style> 
             </Grid.Resources>
 
