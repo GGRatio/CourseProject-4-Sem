@@ -24,3 +24,5 @@ D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\GeneratedInte
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Controls\HeaderControl.baml
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Controls\FooterControl.g.cs
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Controls\FooterControl.baml
+D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Registration.g.cs
+D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Registration.baml
