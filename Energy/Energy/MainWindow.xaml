@@ -4,6 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Energy"
+        
+        xmlns:controls="clr-namespace:Energy.Controls"
+        
         mc:Ignorable="d"
         Title="Абонименты" Height="1080" Width="1920">
     <Grid>
@@ -18,42 +21,13 @@
             <RowDefinition Height="360"/>
         </Grid.RowDefinitions>
 
-        <Grid x:Name="Header" Grid.Row="0" Grid.Column="1" >
-            <Grid.Resources>
-                <Style TargetType="Button">
-                    <Setter Property="Padding" Value="40,10 "></Setter>
-                    <Setter Property="Margin" Value="5,0"></Setter> 
-                    <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                    <Setter Property="BorderBrush" Value="Transparent"></Setter>
-                    <Setter Property="Background" Value="Transparent"></Setter>
-                    <Setter Property="BorderThickness" Value="0"></Setter>
-                    <Setter Property="FontSize" Value="18"></Setter>
+        <controls:HeaderControl x:Name="Header" Grid.Row="0" Grid.ColumnSpan="3"/>
 
-                    <Style.Triggers>
-                        <Trigger Property="IsFocused" Value="True">
-                            <Setter Property="FontWeight" Value="SemiBold"></Setter>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style> 
-            </Grid.Resources>
-
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
-                <Button x:Name="btn_Home" Content="Главная"></Button>
-                <Button x:Name="btn_Trainers" Content="Тренеры"></Button>
-                <Button x:Name="btn_Subscriptions" Content="Абонименты"></Button>
-                <Button x:Name="btn_Profile" Content="Профиль"></Button>
-            </StackPanel>
-        </Grid>
-
-        
         <Grid x:Name="Center" Grid.Row="1" Grid.Column="1">
             
         </Grid>
 
+        <controls:FooterControl x:Name="Footer" Grid.Row="2" Grid.Column="1"/>
 
-        <Grid x:Name="Footer" Grid.Row="2" Grid.Column="1">
-            
-        </Grid>
-        
     </Grid>
 </Window>

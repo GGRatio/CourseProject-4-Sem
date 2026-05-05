@@ -7,6 +7,29 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Padding" Value="40,10 "></Setter>
+                <Setter Property="Margin" Value="5,0"></Setter>
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                <Setter Property="Background" Value="Transparent"></Setter>
+                <Setter Property="BorderThickness" Value="0"></Setter>
+                <Setter Property="FontSize" Value="18"></Setter>
+
+                <Style.Triggers>
+                    <Trigger Property="IsFocused" Value="True">
+                        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <Button x:Name="btn_Home" Content="Главная"></Button>
+            <Button x:Name="btn_Trainers" Content="Тренеры"></Button>
+            <Button x:Name="btn_Subscriptions" Content="Абонименты"></Button>
+            <Button x:Name="btn_Profile" Content="Профиль"></Button>
+        </StackPanel>
     </Grid>
 </UserControl>
