@@ -53,7 +53,7 @@ namespace Energy.Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Energy;component/controls/footercontrol.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Energy;V1.0.0.0;component/controls/footercontrol.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Controls\FooterControl.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
