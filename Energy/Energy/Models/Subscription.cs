@@ -14,7 +14,7 @@ namespace Energy.Models
         [Required]
         public string Name { get; set; }
         [Required]
-        public decimal Price { get; set; }
+        public int Price { get; set; }
         [Required]
         public int DurationDays {  get; set; }
         public string Description { get; set; }
