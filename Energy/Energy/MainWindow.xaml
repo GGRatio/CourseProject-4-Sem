@@ -8,7 +8,7 @@
         xmlns:controls="clr-namespace:Energy.Controls"
         
         mc:Ignorable="d"
-        Title="Абонименты" Height="1080" Width="1920">
+        Title="Главная" Height="1080" Width="1920">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="260"/>

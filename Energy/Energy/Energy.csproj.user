@@ -11,7 +11,16 @@
     <Compile Update="Login.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="ProfileWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Registration.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SubscriptionsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="TrainersWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

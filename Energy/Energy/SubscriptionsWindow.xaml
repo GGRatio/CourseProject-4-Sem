@@ -1,0 +1,35 @@
+﻿<Window x:Class="Energy.SubscriptionsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Energy"
+        mc:Ignorable="d"
+        
+        xmlns:controls="clr-namespace:Energy.Controls"
+
+         Title="Абонименты" Height="1080" Width="1920">
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="260"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="260"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="360"/>
+            </Grid.RowDefinitions>
+
+            <controls:HeaderControl x:Name="Header" Grid.Row="0" Grid.ColumnSpan="3"/>
+
+            <Grid x:Name="Center" Grid.Row="1" Grid.Column="1">
+
+            </Grid>
+
+            <controls:FooterControl x:Name="Footer" Grid.Row="2" Grid.Column="1"/>
+
+        </Grid>
+    </Grid>
+</Window>

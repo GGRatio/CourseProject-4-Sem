@@ -24,5 +24,40 @@ namespace Energy.Controls
         {
             InitializeComponent();
         }
+
+        private void btn_Home_Click(object sender, RoutedEventArgs e)
+        {
+            var homeWindow = new MainWindow();
+            homeWindow.Show();
+            CloseCurrentWindow();
+        }
+
+        private void btn_Trainers_Click(object sender, RoutedEventArgs e)
+        {
+            var trainersWindow = new TrainersWindow();
+            trainersWindow.Show();
+            CloseCurrentWindow();
+        }
+
+        private void btn_Subscriptions_Click(object sender, RoutedEventArgs e)
+        {
+            var subscriptionsWindow = new SubscriptionsWindow();
+            subscriptionsWindow.Show();
+            CloseCurrentWindow();
+        }
+
+        private void btn_Profile_Click(object sender, RoutedEventArgs e)
+        {
+            var profileWindow = new ProfileWindow();
+            profileWindow.Show();
+            CloseCurrentWindow();
+        }
+
+        private void CloseCurrentWindow()
+        {
+            var window = Window.GetWindow(this);
+            window?.Close();
+        }
+
     }
 }

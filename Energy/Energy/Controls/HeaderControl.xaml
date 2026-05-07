@@ -26,10 +26,10 @@
         </Grid.Resources>
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
-            <Button x:Name="btn_Home" Content="Главная"></Button>
-            <Button x:Name="btn_Trainers" Content="Тренеры"></Button>
-            <Button x:Name="btn_Subscriptions" Content="Абонименты"></Button>
-            <Button x:Name="btn_Profile" Content="Профиль"></Button>
+            <Button x:Name="btn_Home" Content="Главная" Click="btn_Home_Click"/>
+            <Button x:Name="btn_Trainers" Content="Тренеры" Click="btn_Trainers_Click"/>
+            <Button x:Name="btn_Subscriptions" Content="Абонементы" Click="btn_Subscriptions_Click"/>
+            <Button x:Name="btn_Profile" Content="Профиль" Click="btn_Profile_Click"/>
         </StackPanel>
     </Grid>
 </UserControl>
