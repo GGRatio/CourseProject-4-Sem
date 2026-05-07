@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Energy.Models
-{
+{       
     public class User
     {
         public int Id { get; set; }

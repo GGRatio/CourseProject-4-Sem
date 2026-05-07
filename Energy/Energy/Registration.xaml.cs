@@ -158,6 +158,11 @@ namespace Energy
             txtBoxEmail.Background = Brushes.White;
         }
 
-
+        private void SwitchToLogin_Click(object sender, RoutedEventArgs e)
+        {
+            var loginWindow = new Login();
+            loginWindow.Show();
+            this.Close();
+        }
     }
 }

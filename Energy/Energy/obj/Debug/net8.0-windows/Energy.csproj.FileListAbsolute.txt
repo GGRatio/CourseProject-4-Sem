@@ -130,3 +130,5 @@ D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\refint\Energy
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Energy.pdb
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Energy.genruntimeconfig.cache
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\ref\Energy.dll
+D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Login.g.cs
+D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Login.baml

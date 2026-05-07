@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 D:\University\CourseProject\Energy\Energy\App.xaml
-4-1223004471
+5288140166
 
-131722412016
+14-1274130922
 226504360185
-Controls\FooterControl.xaml;Controls\HeaderControl.xaml;MainWindow.xaml;Registration.xaml;
+Controls\FooterControl.xaml;Controls\HeaderControl.xaml;Login.xaml;MainWindow.xaml;Registration.xaml;
 
 False
 
