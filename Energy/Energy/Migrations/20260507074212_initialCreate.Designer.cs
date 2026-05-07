@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Energy.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260507073104_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20260507074212_initialCreate")]
+    partial class initialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
