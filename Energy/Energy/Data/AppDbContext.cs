@@ -14,8 +14,8 @@ namespace Energy.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) //EF сам вызовет для подклюени к бд
         {
-            optionsBuilder.UseMySql("Server=localhost;Database=fitness_db;Uid=root;Pwd=;", 
-                new MySqlServerVersion(new Version(8, 0, 28))
+            optionsBuilder.UseSqlServer(
+                "Server=(localdb)\\MSSQLLocalDB;Database=fitness_db;Trusted_Connection=True;"
             );
         }
     }
