@@ -17,15 +17,15 @@
                 <ColumnDefinition Width="260"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="360"/>
+                <RowDefinition Height="300"/>
             </Grid.RowDefinitions>
 
             <controls:HeaderControl x:Name="Header" Grid.Row="0" Grid.ColumnSpan="3"/>
 
-            <Grid x:Name="Center" Grid.Row="1" Grid.Column="1">
-
+            <Grid Grid.Row="1" Grid.Column="1" Margin="20 0 0 0 " >
+                <ListBox x:Name="SubscriptionList"></ListBox>
             </Grid>
 
             <controls:FooterControl x:Name="Footer" Grid.Row="2" Grid.Column="1"/>

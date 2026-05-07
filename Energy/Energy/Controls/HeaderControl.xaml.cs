@@ -59,5 +59,9 @@ namespace Energy.Controls
             window?.Close();
         }
 
+        private void btn_Groupe_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

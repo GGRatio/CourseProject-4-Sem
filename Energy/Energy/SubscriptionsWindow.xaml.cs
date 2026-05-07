@@ -12,6 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using Energy.Data;
+using Energy.Models;
+using Energy.Helpers;
+using System.Windows.Media.Animation;
+
 namespace Energy
 {
     /// <summary>
@@ -22,6 +27,13 @@ namespace Energy
         public SubscriptionsWindow()
         {
             InitializeComponent();
+            using (var db = new AppDbContext())
+            {
+                var subscriptions = db.Subscriptions.ToList();
+                SubscriptionList.ItemsSource = subscriptions;
+            }
         }
+        
+
     }
 }
