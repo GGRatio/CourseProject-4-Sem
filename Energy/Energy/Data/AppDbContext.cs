@@ -12,10 +12,10 @@ namespace Energy.Data
     {
         public DbSet<User> Users { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) //EF сам вызовет для подклюени к бд
         {
-            optionsBuilder.UseMySql("Server=localhost;Database=fitness_db;Uid=root;Pwd=;",
-                new MySqlServerVersion(new Version(8, 0, 23))
+            optionsBuilder.UseMySql("Server=localhost;Database=fitness_db;Uid=root;Pwd=;", 
+                new MySqlServerVersion(new Version(8, 0, 28))
             );
         }
     }
