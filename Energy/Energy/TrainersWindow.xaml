@@ -8,7 +8,7 @@
         
         xmlns:controls="clr-namespace:Energy.Controls"
 
-        Title="Абонименты" MinHeight="1080" Width="1920">
+        Title="Тренерский состав" MinHeight="1080" Width="1920">
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
