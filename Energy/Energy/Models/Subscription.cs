@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Energy.Models
 {
-    class Subscription
+    public class Subscription
     {
         [Key]
         public int Id { get; set; }
