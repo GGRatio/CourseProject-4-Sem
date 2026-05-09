@@ -27,12 +27,51 @@ namespace Energy
         public SubscriptionsWindow()
         {
             InitializeComponent();
+            LoadSubscription();
+        }
+        private void LoadSubscription()
+        {
             using (var db = new AppDbContext())
-            {
+            { 
                 var subscriptions = db.Subscriptions.ToList();
-                SubscriptionList.ItemsSource = subscriptions;
+
+                foreach (var subscription in subscriptions) 
+                {
+                    string name = subscription.Name;
+                    string description = subscription.Description;
+                    int price = subscription.Price;
+
+                    var card = CreateCard(name, description, price);
+                    SubscriptionsPanel.Children.Add(card);
+                }
             }
         }
+
+        private Border CreateCard(string name, string description, int price)
+        {
+            var border = new Border
+            {
+                Width = 400,
+                Height = 280,
+                Background = new SolidColorBrush(Colors.White),
+                BorderBrush = new SolidColorBrush(Colors.LightGray),
+                BorderThickness = new Thickness(1),
+            };
+
+            var stack = new StackPanel();
+            stack.Margin = new Thickness(20);
+
+            stack.Children.Add(new TextBlock
+            {
+                Text = name.ToUpper(),
+                FontSize = 32,
+                FontWeight = FontWeights.SemiBold
+            });
+
+            border.Child = stack;
+            return border;
+        }
+        
         
 
     }
