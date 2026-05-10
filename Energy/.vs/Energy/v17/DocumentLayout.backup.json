@@ -57,7 +57,7 @@
               "RelativeDocumentMoniker": "Energy\\SubscriptionsWindow.xaml.cs",
               "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\SubscriptionsWindow.xaml.cs",
               "RelativeToolTip": "Energy\\SubscriptionsWindow.xaml.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAwwEAAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAADUAAAAAAAAAAAAiwE4AAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-07T15:40:19.223Z",
               "EditorCaption": ""
@@ -68,11 +68,10 @@
               "Title": "SubscriptionsWindow.xaml",
               "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\SubscriptionsWindow.xaml",
               "RelativeDocumentMoniker": "Energy\\SubscriptionsWindow.xaml",
-              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\SubscriptionsWindow.xaml*",
-              "RelativeToolTip": "Energy\\SubscriptionsWindow.xaml*",
+              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\SubscriptionsWindow.xaml",
+              "RelativeToolTip": "Energy\\SubscriptionsWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-07T15:40:16.95Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-07T15:40:16.95Z"
             },
             {
               "$type": "Document",

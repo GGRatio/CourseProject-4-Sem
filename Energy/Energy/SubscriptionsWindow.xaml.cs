@@ -68,6 +68,18 @@ namespace Energy
                 FontWeight = FontWeights.SemiBold
             });
 
+            stack.Children.Add(new TextBlock
+            {
+                Text = description.ToUpper(),
+                FontSize = 24,
+            });
+
+            stack.Children.Add(new TextBlock
+            {
+                Text = price.ToString(),
+                FontSize = 24,
+            });
+
             border.Child = stack;
             return border;
         }
