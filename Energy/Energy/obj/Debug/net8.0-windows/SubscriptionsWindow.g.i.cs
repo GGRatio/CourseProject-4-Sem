@@ -78,7 +78,7 @@ namespace Energy {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Energy;V1.0.0.0;component/subscriptionswindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Energy;component/subscriptionswindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\SubscriptionsWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

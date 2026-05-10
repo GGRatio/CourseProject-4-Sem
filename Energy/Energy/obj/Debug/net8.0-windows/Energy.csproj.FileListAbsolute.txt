@@ -138,3 +138,4 @@ D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\TrainersWindo
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\ProfileWindow.baml
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\SubscriptionsWindow.baml
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\TrainersWindow.baml
+D:\University\CourseProject\Energy\Energy\bin\Debug\net8.0-windows\Newtonsoft.Json.dll

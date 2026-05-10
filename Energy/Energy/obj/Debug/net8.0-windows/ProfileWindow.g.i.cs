@@ -78,7 +78,7 @@ namespace Energy {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Energy;V1.0.0.0;component/profilewindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Energy;component/profilewindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\ProfileWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

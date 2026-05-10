@@ -75,12 +75,21 @@ namespace Energy
 
                     if (user == null)
                     {
-                        ShowError(txtBoxLogin, "Неверный логин");
+                        ShowError(txtBoxLogin, "Неверный логин");   
                         return;
                     }
 
                     if (PasswordHelper.HashPassword(pass) == user.PasswordHash)
                     {
+                        if(RememberMeCheckBox.IsChecked == true)
+                        {
+                            SessionManager.SaveUser(user.Id, user.Login);
+                        }
+
+                        Session.CurrentUserLogin = user.Login;
+                        Session.CurrentUserId = user.Id;
+
+
                         var mainWindow = new MainWindow();
                         mainWindow.Show();
                         this.Close();
