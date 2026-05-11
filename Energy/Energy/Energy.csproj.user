@@ -11,16 +11,19 @@
     <Compile Update="Login.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="ProfileWindow.xaml.cs">
+    <Compile Update="MainWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\ProfilePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\SubscriptionsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\TrainersPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Registration.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="SubscriptionsWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="TrainersWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

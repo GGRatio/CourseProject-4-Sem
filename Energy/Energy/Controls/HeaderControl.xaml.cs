@@ -40,23 +40,30 @@ namespace Energy.Controls
 
         private void btn_Trainers_Click(object sender, RoutedEventArgs e)
         {
-            var trainersWindow = new TrainersWindow();
-            trainersWindow.Show();
-            CloseCurrentWindow();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow?.NavigateTo(new Pages.TrainersPage());
         }
 
         private void btn_Subscriptions_Click(object sender, RoutedEventArgs e)
         {
-            var subscriptionsWindow = new SubscriptionsWindow();
-            subscriptionsWindow.Show();
-            CloseCurrentWindow();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow?.NavigateTo(new Pages.SubscriptionsPage());
+
         }
 
         private void btn_Profile_Click(object sender, RoutedEventArgs e)
         {
-            var profileWindow = new ProfileWindow();
-            profileWindow.Show();
-            CloseCurrentWindow();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.NavigateTo(new Pages.ProfilePage());
+            }
+            else
+            {
+                MessageBox.Show("MainWindow не найден!");
+            }
+
+
         }
 
         private void CloseCurrentWindow()

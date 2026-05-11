@@ -25,8 +25,9 @@ namespace Energy
                 Session.CurrentUserId = savedUser.UserId;
                 Session.CurrentUserLogin = savedUser.Login;
 
-                var profileWindow = new ProfileWindow();
-                profileWindow.Show();
+
+                var mainWindow = new MainWindow();
+                mainWindow.Show();
 
             }
             else

@@ -3,8 +3,9 @@
 FD:\University\CourseProject\Energy\Energy\Controls\FooterControl.xaml;;
 FD:\University\CourseProject\Energy\Energy\Controls\HeaderControl.xaml;;
 FD:\University\CourseProject\Energy\Energy\Login.xaml;;
-FD:\University\CourseProject\Energy\Energy\ProfileWindow.xaml;;
+FD:\University\CourseProject\Energy\Energy\MainWindow.xaml;;
+FD:\University\CourseProject\Energy\Energy\Pages\SubscriptionsPage.xaml;;
 FD:\University\CourseProject\Energy\Energy\Registration.xaml;;
-FD:\University\CourseProject\Energy\Energy\SubscriptionsWindow.xaml;;
-FD:\University\CourseProject\Energy\Energy\TrainersWindow.xaml;;
+FD:\University\CourseProject\Energy\Energy\Pages\ProfilePage.xaml;;
+FD:\University\CourseProject\Energy\Energy\Pages\TrainersPage.xaml;;
 
