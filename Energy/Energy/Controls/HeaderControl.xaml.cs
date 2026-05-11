@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Energy.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,18 @@ namespace Energy.Controls
         public HeaderControl()
         {
             InitializeComponent();
+            this.Loaded += HeaderControl_Loaded;
+        }
+
+        private void HeaderControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Загружаем имя из session.json
+            var savedUser = SessionManager.LoadUser();
+
+            if (savedUser != null)
+            {
+                btn_Profile.Content = $"👤 {savedUser.Login}";
+            }
         }
 
         private void btn_Trainers_Click(object sender, RoutedEventArgs e)
