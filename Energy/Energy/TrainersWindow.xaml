@@ -8,27 +8,27 @@
         
         xmlns:controls="clr-namespace:Energy.Controls"
 
-        Title="Тренерский состав" MinHeight="1080" Width="1920">
+        Title="Тренерский состав" MinHeight="1080" Width="1920"
+         WindowState="Maximized">
+    
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="260"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="260"/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="360"/>
-            </Grid.RowDefinitions>
 
-            <controls:HeaderControl x:Name="Header" Grid.Row="0" Grid.ColumnSpan="3"/>
+            <controls:HeaderControl x:Name="Header" Grid.Column="0"/>
 
-            <Grid x:Name="Center" Grid.Row="1" Grid.Column="1">
+            <Grid Grid.Column="1" Margin="0 10 0 0">
+                <UniformGrid x:Name="SubscriptionsPanel"
+             VerticalAlignment="Top"
+             HorizontalAlignment="Center"
+             Grid.ColumnSpan="10" Columns="3">
 
+
+                </UniformGrid>
             </Grid>
-
-            <controls:FooterControl x:Name="Footer" Grid.Row="2" Grid.Column="1"/>
 
         </Grid>
     </Grid>

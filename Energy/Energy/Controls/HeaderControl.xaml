@@ -5,8 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Energy.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="1920" d:DesignWidth="260">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="400"/>
+        </Grid.RowDefinitions>
         <Grid.Resources>
             <Style TargetType="Button">
                 <Setter Property="Padding" Value="40,10 "></Setter>
@@ -16,6 +20,7 @@
                 <Setter Property="Background" Value="Transparent"></Setter>
                 <Setter Property="BorderThickness" Value="0"></Setter>
                 <Setter Property="FontSize" Value="18"></Setter>
+                <Setter Property="HorizontalAlignment" Value="Left"></Setter>
 
                 <Style.Triggers>
                     <Trigger Property="IsFocused" Value="True">
@@ -24,11 +29,17 @@
                 </Style.Triggers>
             </Style>
         </Grid.Resources>
-
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+        
+        <StackPanel Orientation="Vertical" VerticalAlignment="Top"  
+                    HorizontalAlignment="Center" Grid.Row="0">
             <Button x:Name="btn_Groupe" Content="Групповые занятия" Click="btn_Groupe_Click"/>
             <Button x:Name="btn_Trainers" Content="Тренеры" Click="btn_Trainers_Click"/>
             <Button x:Name="btn_Subscriptions" Content="Абонементы" Click="btn_Subscriptions_Click"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top"  
+                    HorizontalAlignment="Center" Grid.Row="1">
+          <!--Сюда аватарку добавтить-->
             <Button x:Name="btn_Profile" Content="Профиль" Click="btn_Profile_Click"/>
         </StackPanel>
     </Grid>

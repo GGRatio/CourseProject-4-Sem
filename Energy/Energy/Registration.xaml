@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Energy"
         mc:Ignorable="d"
-        Title="Registration" Height="600" Width="1000" Background="#ffdadada">
+        Title="Registration" Height="600" Width="1000" Background="#ffdadada"
+         WindowState="Maximized">
+    
     <Grid>
         <Border MinWidth="400" Margin="30" Background="White"
                 VerticalAlignment="Center" Padding="30" MaxWidth="600">

@@ -8,21 +8,19 @@
         
         xmlns:controls="clr-namespace:Energy.Controls"
 
-         Title="Абонименты" Height="1080" Width="1920">
+         Title="Абонименты" Height="1080" Width="1920"
+         WindowState="Maximized">
+    
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="260"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
 
-            <controls:HeaderControl x:Name="Header" Grid.Row="0" Grid.ColumnSpan="3"/>
+            <controls:HeaderControl x:Name="Header" Grid.Column="0"/>
 
-            <Grid Grid.Row="1" Grid.Column="1" Margin="0 10 0 0">
+            <Grid Grid.Column="1" Margin="0 10 0 0">
                 <UniformGrid x:Name="SubscriptionsPanel"
                  VerticalAlignment="Top"
                  HorizontalAlignment="Center"

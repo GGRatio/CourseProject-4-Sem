@@ -36,6 +36,7 @@ namespace Energy
                 loginWindow.Show();
             }
         }
+
     }
 
 }

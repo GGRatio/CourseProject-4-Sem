@@ -53,7 +53,7 @@ namespace Energy
         {
             var border = new Border
             {
-                Width = 380,
+                Width = 400,
                 Height = Double.NaN,
                 MinHeight = 100,
                 Margin = new Thickness(10),
@@ -77,7 +77,7 @@ namespace Energy
             var nameBlock = new TextBlock
             {
                 Text = name,
-                FontSize = 32,
+                FontSize = 30,
                 FontWeight = FontWeights.SemiBold
             };
             headerPanel.Children.Add(nameBlock);
@@ -119,7 +119,7 @@ namespace Energy
             var priceBlock = new TextBlock
             {
                 Text = $"{price} BYN",
-                FontSize = 28,
+                FontSize = 30,
                 FontWeight = FontWeights.Bold,
                 Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#4CAF50"),
                 VerticalAlignment = VerticalAlignment.Center
@@ -131,7 +131,7 @@ namespace Energy
             var buyButton = new Button
             {
                 Content = "Купить",
-                FontSize = 18,
+                FontSize = 24,
                 Padding = new Thickness(25, 8, 25, 8),
                 Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#BDBDBD"),
                 Foreground = new SolidColorBrush(Colors.Black),
