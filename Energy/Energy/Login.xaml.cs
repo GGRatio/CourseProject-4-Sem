@@ -90,8 +90,8 @@ namespace Energy
                         Session.CurrentUserId = user.Id;
 
 
-                        var mainWindow = new MainWindow();
-                        mainWindow.Show();
+                        var profileWindow = new ProfileWindow();
+                        profileWindow.Show();
                         this.Close();
                     }
                     else

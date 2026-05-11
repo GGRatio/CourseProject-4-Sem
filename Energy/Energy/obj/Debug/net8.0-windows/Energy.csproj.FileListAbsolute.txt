@@ -108,7 +108,6 @@ D:\University\CourseProject\Energy\Energy\bin\Debug\net8.0-windows\runtimes\win\
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Energy.csproj.AssemblyReference.cache
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Controls\FooterControl.g.cs
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Controls\HeaderControl.g.cs
-D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\MainWindow.g.cs
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Registration.g.cs
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\App.g.cs
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
@@ -116,7 +115,6 @@ D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Energy_Markup
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Energy_MarkupCompile.lref
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Controls\FooterControl.baml
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Controls\HeaderControl.baml
-D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\MainWindow.baml
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Registration.baml
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Energy.g.resources
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Energy.GeneratedMSBuildEditorConfig.editorconfig

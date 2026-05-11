@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Energy.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260507134747_AddPurchase")]
-    partial class AddPurchase
+    [Migration("20260511101627_AllowNullConditionAndDescription")]
+    partial class AllowNullConditionAndDescription
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,8 +65,10 @@ namespace Energy.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Condition")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("DurationDays")

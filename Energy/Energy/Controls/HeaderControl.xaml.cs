@@ -25,13 +25,6 @@ namespace Energy.Controls
             InitializeComponent();
         }
 
-        private void btn_Home_Click(object sender, RoutedEventArgs e)
-        {
-            var homeWindow = new MainWindow();
-            homeWindow.Show();
-            CloseCurrentWindow();
-        }
-
         private void btn_Trainers_Click(object sender, RoutedEventArgs e)
         {
             var trainersWindow = new TrainersWindow();
