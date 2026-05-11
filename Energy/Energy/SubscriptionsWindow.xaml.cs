@@ -29,62 +29,122 @@ namespace Energy
             InitializeComponent();
             LoadSubscription();
         }
+
         private void LoadSubscription()
         {
             using (var db = new AppDbContext())
-            { 
+            {
                 var subscriptions = db.Subscriptions.ToList();
 
-                foreach (var subscription in subscriptions) 
+                foreach (var subscription in subscriptions)
                 {
-                    string name = subscription.Name;
-                    string description = subscription.Description;
-                    int price = subscription.Price;
-
-                    var card = CreateCard(name, description, price);
+                    var card = CreateCard(
+                        subscription.Name,
+                        subscription.Condition,
+                        subscription.DurationDays,
+                        subscription.Price
+                    );
                     SubscriptionsPanel.Children.Add(card);
                 }
             }
         }
 
-        private Border CreateCard(string name, string description, int price)
+        private Border CreateCard(string name, string condition, int durationDays, int price)
         {
             var border = new Border
             {
-                Width = 400,
-                Height = 280,
-                Background = new SolidColorBrush(Colors.White),
-                BorderBrush = new SolidColorBrush(Colors.LightGray),
+                Width = 380,
+                Height = Double.NaN,
+                MinHeight = 100,
+                Margin = new Thickness(10),
+                Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#D9D9D9"),
+                BorderBrush = new SolidColorBrush(Colors.White),
                 BorderThickness = new Thickness(1),
             };
 
-            var stack = new StackPanel();
-            stack.Margin = new Thickness(20);
+            // Главный контейнер
+            var mainStack = new StackPanel();
+            mainStack.Margin = new Thickness(15, 25, 15, 20);
+            mainStack.HorizontalAlignment = HorizontalAlignment.Stretch;  // растянуть на всю ширину
 
-            stack.Children.Add(new TextBlock
+            // Верхняя строка: название + условие (справа)
+            var headerPanel = new StackPanel();
+            headerPanel.Orientation = Orientation.Horizontal;
+            headerPanel.Margin = new Thickness(0, 0, 0, 0);
+            headerPanel.HorizontalAlignment = HorizontalAlignment.Stretch;  // растянуть на всю ширину
+
+            // Название
+            var nameBlock = new TextBlock
             {
-                Text = name.ToUpper(),
+                Text = name,
                 FontSize = 32,
                 FontWeight = FontWeights.SemiBold
-            });
+            };
+            headerPanel.Children.Add(nameBlock);
 
-            stack.Children.Add(new TextBlock
+            // Условие (если есть) — справа
+            if (!string.IsNullOrEmpty(condition))
             {
-                Text = description.ToUpper(),
-                FontSize = 24,
-            });
+                var conditionBlock = new TextBlock
+                {
+                    Background = new SolidColorBrush(Colors.White),
+                    Text = condition,
+                    FontSize = 16,
+                    Margin = new Thickness(20, 0, 0, 0),
+                    VerticalAlignment = VerticalAlignment.Center
+                };
+                headerPanel.Children.Add(conditionBlock);
+            }
 
-            stack.Children.Add(new TextBlock
+            mainStack.Children.Add(headerPanel);
+
+            // Срок действия
+            mainStack.Children.Add(new TextBlock
             {
-                Text = price.ToString(),
+                Text = $"Срок действия - {durationDays} дней",
                 FontSize = 24,
+                Foreground = new SolidColorBrush(Colors.Black),
+                Margin = new Thickness(0, 0, 0, 10)
             });
 
-            border.Child = stack;
+            // Нижняя строка: цена слева, кнопка справа
+            var bottomGrid = new Grid();
+            bottomGrid.Margin = new Thickness(0, 10, 0, 0);
+
+            // Создаём колонки
+            bottomGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(140) }); // цена 
+            bottomGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) }); // кнопка * 
+
+            // Цена
+            var priceBlock = new TextBlock
+            {
+                Text = $"{price} BYN",
+                FontSize = 28,
+                FontWeight = FontWeights.Bold,
+                Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#4CAF50"),
+                VerticalAlignment = VerticalAlignment.Center
+            };
+            Grid.SetColumn(priceBlock, 0);
+            bottomGrid.Children.Add(priceBlock);
+
+            // Кнопка "Купить"
+            var buyButton = new Button
+            {
+                Content = "Купить",
+                FontSize = 18,
+                Padding = new Thickness(25, 8, 25, 8),
+                Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#BDBDBD"),
+                Foreground = new SolidColorBrush(Colors.Black),
+                BorderThickness = new Thickness(0),
+                Cursor = System.Windows.Input.Cursors.Hand
+            };
+            Grid.SetColumn(buyButton, 1);
+            bottomGrid.Children.Add(buyButton);
+
+            mainStack.Children.Add(bottomGrid);
+
+            border.Child = mainStack;
             return border;
         }
-        
-        
-
     }
 }

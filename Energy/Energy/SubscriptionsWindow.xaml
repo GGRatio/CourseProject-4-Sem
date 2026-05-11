@@ -14,19 +14,16 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="260"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="260"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="300"/>
             </Grid.RowDefinitions>
 
             <controls:HeaderControl x:Name="Header" Grid.Row="0" Grid.ColumnSpan="3"/>
 
             <Grid Grid.Row="1" Grid.Column="1" Margin="0 10 0 0">
                 <UniformGrid x:Name="SubscriptionsPanel"
-                 Background="BlueViolet" 
                  VerticalAlignment="Top"
                  HorizontalAlignment="Center"
                  Grid.ColumnSpan="10" Columns="3">
@@ -34,8 +31,6 @@
 
                 </UniformGrid>
             </Grid>
-
-            <controls:FooterControl x:Name="Footer" Grid.Row="2" Grid.Column="1"/>
 
         </Grid>
     </Grid>
