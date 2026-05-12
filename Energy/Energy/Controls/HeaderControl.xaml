@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Energy.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="1920" d:DesignWidth="260">
-    <Grid Background="LightGray">
+    <Grid Background="#F0F0F0">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>  <!-- Разделитель -->

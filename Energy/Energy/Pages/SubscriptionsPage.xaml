@@ -13,21 +13,130 @@
        Title="Абонименты" Height="Auto" Width="Auto">
 
 
-    <Grid>
-        <Grid>
+    <Page.Resources>
+        <!-- Стиль для фильтров -->
+        <Style x:Key="FilterButton" TargetType="Button">
+            <Setter Property="Width" Value="110"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="Margin" Value="5,0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Background" Value="#E0E0E0"/>
+            <Setter Property="Foreground" Value="#333333"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#CCCCCC"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
 
+        <!-- Активная кнопка фильтра -->
+        <Style x:Key="FilterButtonActive" TargetType="Button" BasedOn="{StaticResource FilterButton}">
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#45A049"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
 
-           
-            <Grid Margin="0 10 0 0">
-                <UniformGrid x:Name="SubscriptionsPanel"
-                 VerticalAlignment="Top"
-                 HorizontalAlignment="Center"
-                 Grid.ColumnSpan="10" Columns="3">
+        <!-- Стиль для карточки -->
+        <Style x:Key="SubscriptionCard" TargetType="Border">
+            <Setter Property="Width" Value="320"/>
+            <Setter Property="MinHeight" Value="180"/>
+            <Setter Property="Margin" Value="15"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="8" ShadowDepth="2" Opacity="0.08"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
+        <!-- Стиль для названия -->
+        <Style x:Key="CardTitle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#333333"/>
+        </Style>
 
-                </UniformGrid>
-            </Grid>
+        <!-- Стиль для условия -->
+        <Style x:Key="CardCondition" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Foreground" Value="#888888"/>
+            <Setter Property="Margin" Value="15,0,0,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
 
-        </Grid>
+        <!-- Стиль для срока действия -->
+        <Style x:Key="CardDuration" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Foreground" Value="#666666"/>
+            <Setter Property="Margin" Value="0,5,0,0"/>
+        </Style>
+
+        <!-- Стиль для цены -->
+        <Style x:Key="CardPrice" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="#4CAF50"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <!-- Стиль для кнопки "Купить" -->
+        <Style x:Key="BuyButton" TargetType="Button">
+            <Setter Property="Content" Value="Купить"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="20,8"/>
+            <Setter Property="Background" Value="#2196F3"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#1976D2"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Панель фильтров -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" 
+                    HorizontalAlignment="Center" Margin="0,0,0,20">
+            <Button x:Name="btnAll" Content="Все" 
+                    Style="{StaticResource FilterButtonActive}" 
+                    Click="Filter_Click" Tag="all"/>
+            <Button x:Name="btnStudent" Content="Студентам" 
+                    Style="{StaticResource FilterButton}" 
+                    Click="Filter_Click" Tag="student"/>
+            <Button x:Name="btnDayTime" Content="До 16:00" 
+                    Style="{StaticResource FilterButton}" 
+                    Click="Filter_Click" Tag="daytime"/>
+            <Button x:Name="btnUnlimited" Content="Безлимит" 
+                    Style="{StaticResource FilterButton}" 
+                    Click="Filter_Click" Tag="unlimited"/>
+            <Button x:Name="btnMonthly" Content="На месяц" 
+                    Style="{StaticResource FilterButton}" 
+                    Click="Filter_Click" Tag="monthly"/>
+        </StackPanel>
+
+        <!-- Список абонементов -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <UniformGrid x:Name="SubscriptionsPanel"
+                         Columns="3"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Top"/>
+        </ScrollViewer>
     </Grid>
 </Page>
