@@ -5,6 +5,7 @@
       Background="White">
 
     <Page.Resources>
+        <!-- Стили только для профиля (которых нет в словаре) -->
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -33,14 +34,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-
-    
-
-        <ScrollViewer Grid.Row="0" Grid.Column="0" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
             <StackPanel HorizontalAlignment="Center" Width="550" Margin="0,0,0,30">
 
                 <!-- Карточка профиля -->
@@ -105,8 +99,7 @@
                 <!-- Блок текущего абонемента -->
                 <Border Background="White" CornerRadius="15" 
                         BorderBrush="#E0E0E0" BorderThickness="1"
-                        Padding="25" Margin="0,25,0,0"
-                        Grid.Row="0" Grid.Column="1">
+                        Padding="25" Margin="0,25,0,0">
 
                     <Border.Effect>
                         <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.08"/>

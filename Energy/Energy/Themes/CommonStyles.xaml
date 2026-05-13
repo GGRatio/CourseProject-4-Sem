@@ -12,9 +12,28 @@
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Style.Triggers>
+            <!-- Обычный триггер -->
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#CCCCCC"/>
             </Trigger>
+
+            <!-- EventTrigger: анимация при наведении -->
+            <EventTrigger RoutedEvent="Button.MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Width"
+                                     To="115" Duration="0:0:0.1"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Button.MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Width"
+                                     To="110" Duration="0:0:0.1"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
         </Style.Triggers>
     </Style>
 
@@ -23,11 +42,23 @@
         <Setter Property="Background" Value="#4CAF50"/>
         <Setter Property="Foreground" Value="White"/>
         <Style.Triggers>
+            <!-- Обычный триггер -->
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#45A049"/>
             </Trigger>
+
+            <!-- MultiTrigger: мышь нажата + в фокусе -->
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="True"/>
+                    <Condition Property="IsPressed" Value="True"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="#2E7D32"/>
+                <Setter Property="FontSize" Value="15"/>
+            </MultiTrigger>
         </Style.Triggers>
     </Style>
+
 
     <!-- Стиль для карточки -->
     <Style x:Key="SubscriptionCard" TargetType="Border">
@@ -43,6 +74,42 @@
                 <DropShadowEffect BlurRadius="8" ShadowDepth="2" Opacity="0.08"/>
             </Setter.Value>
         </Setter>
+
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Border.MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <!-- Плавное увеличение размера -->
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                     To="1.05" Duration="0:0:0.15"/>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                     To="1.05" Duration="0:0:0.15"/>
+                        <!-- Увеличение тени -->
+                        <DoubleAnimation Storyboard.TargetProperty="Effect.(DropShadowEffect.Opacity)"
+                                     To="0.15" Duration="0:0:0.15"/>
+                        <DoubleAnimation Storyboard.TargetProperty="Effect.(DropShadowEffect.ShadowDepth)"
+                                     To="5" Duration="0:0:0.15"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Border.MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <!-- Возвращение к исходному размеру -->
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                     To="1" Duration="0:0:0.15"/>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                     To="1" Duration="0:0:0.15"/>
+                        <!-- Возвращение тени -->
+                        <DoubleAnimation Storyboard.TargetProperty="Effect.(DropShadowEffect.Opacity)"
+                                     To="0.08" Duration="0:0:0.15"/>
+                        <DoubleAnimation Storyboard.TargetProperty="Effect.(DropShadowEffect.ShadowDepth)"
+                                     To="2" Duration="0:0:0.15"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+
     </Style>
 
     <!-- Стиль для названия -->
@@ -90,5 +157,10 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    
+    
+    
+    
+    
 
 </ResourceDictionary>

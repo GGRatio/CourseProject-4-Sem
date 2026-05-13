@@ -139,3 +139,5 @@ D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\Profile
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\ProfilePage.baml
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\TrainersPage.g.cs
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\TrainersPage.baml
+D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Themes\CommonStyles.baml
+D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\App.baml
