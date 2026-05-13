@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Energy")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2360ef187d9b1d9dacc1e6e4b266c88c7a4b6259")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+13bb51627c8c857aef28510c76bab77d3fb4f981")]
 [assembly: System.Reflection.AssemblyProductAttribute("Energy")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Energy")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
