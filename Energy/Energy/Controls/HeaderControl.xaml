@@ -3,36 +3,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Energy.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="1920" d:DesignWidth="260">
-    <Grid Background="#F0F0F0">
+
+    <Grid Background="{DynamicResource MenuBackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>  <!-- Разделитель -->
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+
         <Grid.Resources>
             <Style TargetType="Button">
-                <Setter Property="Padding" Value="40,10 "></Setter>
-                <Setter Property="Margin" Value="5,0"></Setter>
-                <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                <Setter Property="BorderBrush" Value="Transparent"></Setter>
-                <Setter Property="Background" Value="Transparent"></Setter>
-                <Setter Property="BorderThickness" Value="0"></Setter>
-                <Setter Property="FontSize" Value="18"></Setter>
-                <Setter Property="HorizontalAlignment" Value="Left"></Setter>
-
+                <Setter Property="Padding" Value="20,12"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="Background" Value="{DynamicResource MenuButtonBackgroundBrush}"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Foreground" Value="{DynamicResource MenuButtonForegroundBrush}"/>
+                <Setter Property="Cursor" Value="Hand"/>
                 <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{DynamicResource MenuButtonHoverBrush}"/>
+                    </Trigger>
                     <Trigger Property="IsFocused" Value="True">
-                        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+                        <Setter Property="FontWeight" Value="SemiBold"/>
                     </Trigger>
                 </Style.Triggers>
             </Style>
         </Grid.Resources>
-        
+
+        <!-- Верхнее меню -->
         <StackPanel Orientation="Vertical" VerticalAlignment="Top"  
-                    HorizontalAlignment="Center" Grid.Row="0">
+                    Grid.Row="0" Margin="0,40,0,0">
             <Button x:Name="btn_Groupe" Content="Групповые занятия" Click="btn_Groupe_Click"/>
             <Button x:Name="btn_Trainers" Content="Тренеры" Click="btn_Trainers_Click"/>
             <Button x:Name="btn_Subscriptions" Content="Абонементы" Click="btn_Subscriptions_Click"/>
@@ -41,15 +47,22 @@
         <!-- Разделительная черта -->
         <Border Grid.Row="1" 
                 Height="1" 
-                Background="Gray" 
+                Background="{DynamicResource BorderBrush}" 
                 Margin="20,10,20,10"/>
 
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top"  
+        <!-- Профиль внизу -->
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom"  
                     HorizontalAlignment="Center" Grid.Row="2"
-                    Margin="0,0,0,60">
-          <!--Сюда аватарку добавтить-->
+                    Margin="0,0,0,30">
+            <!-- Аватарка -->
+            <Border Width="40" Height="40" CornerRadius="20" 
+                    Background="{DynamicResource ButtonSuccessBrush}" 
+                    Margin="0,0,10,0">
+                <TextBlock Text="👤" FontSize="20" 
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Center"/>
+            </Border>
             <Button x:Name="btn_Profile" Content="Профиль" Click="btn_Profile_Click"/>
         </StackPanel>
     </Grid>
 </UserControl>
- 

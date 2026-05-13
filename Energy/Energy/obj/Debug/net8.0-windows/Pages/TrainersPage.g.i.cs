@@ -53,7 +53,7 @@ namespace Energy.Pages {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Energy;V1.0.0.0;component/pages/trainerspage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Energy;component/pages/trainerspage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Pages\TrainersPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

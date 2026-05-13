@@ -115,5 +115,15 @@ namespace Energy.Pages
             btnSave.Visibility = isEditing ? Visibility.Visible : Visibility.Collapsed;
             btnEdit.Visibility = isEditing ? Visibility.Collapsed : Visibility.Visible;
         }
+
+        private void LightTheme_Click(object sender, RoutedEventArgs e)
+        {
+            ThemeManager.ChangeTheme(ThemeManager.ThemeType.Light);
+        }
+
+        private void DarkTheme_Click(object sender, RoutedEventArgs e)
+        {
+            ThemeManager.ChangeTheme(ThemeManager.ThemeType.Dark);
+        }
     }
 }

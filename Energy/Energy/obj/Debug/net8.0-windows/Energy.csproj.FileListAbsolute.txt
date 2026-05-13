@@ -141,3 +141,5 @@ D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\Trainer
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\TrainersPage.baml
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Themes\CommonStyles.baml
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\App.baml
+D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Themes\DarkTheme.baml
+D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Themes\LightTheme.baml

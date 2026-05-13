@@ -10,12 +10,12 @@
       
         xmlns:controls="clr-namespace:Energy.Controls"
 
-       Title="Абонименты" Height="Auto" Width="Auto">
+       Title="Абонименты" Height="Auto" Width="Auto"
+      Background="{DynamicResource BackgroundBrush}">
 
 
-    
 
-    <Grid Margin="20">
+    <Grid Margin="20" Background="{DynamicResource BackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>

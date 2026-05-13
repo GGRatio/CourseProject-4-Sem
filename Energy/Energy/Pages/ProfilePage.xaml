@@ -1,45 +1,31 @@
 ﻿<Page x:Class="Energy.Pages.ProfilePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      Title="Профиль" 
-      Background="White">
+      Title="Профиль">
 
-    <Page.Resources>
-        <!-- Стили только для профиля (которых нет в словаре) -->
-        <Style TargetType="TextBlock">
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
-
-        <Style TargetType="TextBox">
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Padding" Value="10,8"/>
-            <Setter Property="BorderBrush" Value="#DDD"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Margin" Value="10,15,0,0"/>
-        </Style>
-
-        <Style x:Key="ProfileButton" TargetType="Button">
-            <Setter Property="Width" Value="120"/>
-            <Setter Property="Height" Value="35"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Cursor" Value="Hand"/>
-        </Style>
-    </Page.Resources>
-
-    <Grid Margin="30">
+    <Grid Background="{DynamicResource BackgroundBrush}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+        <!-- Кнопки смены тем -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,0">
+            <Button Content="🌞 Светлая" Click="LightTheme_Click" Width="100" Margin="5"
+                    Background="{DynamicResource ButtonPrimaryBrush}" Foreground="White"/>
+            <Button Content="🌙 Тёмная" Click="DarkTheme_Click" Width="100" Margin="5"
+                    Background="{DynamicResource ButtonPrimaryBrush}" Foreground="White"/>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <StackPanel HorizontalAlignment="Center" Width="550" Margin="0,0,0,30">
 
                 <!-- Карточка профиля -->
-                <Border Background="White" CornerRadius="15" 
-                        BorderBrush="#E0E0E0" BorderThickness="1"
+                <Border Background="{DynamicResource CardBackgroundBrush}" 
+                        CornerRadius="15" 
+                        BorderBrush="{DynamicResource BorderBrush}" 
+                        BorderThickness="1"
                         Padding="25">
 
                     <Border.Effect>
@@ -61,44 +47,63 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <!-- Логин (только чтение) -->
-                        <TextBlock Text="Логин:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+                        <TextBlock Text="Логин:" Grid.Row="0" Grid.Column="0" 
+                                   Foreground="{DynamicResource TextPrimaryBrush}"/>
                         <TextBlock x:Name="txtLogin" FontWeight="SemiBold" 
-                                   Grid.Row="0" Grid.Column="1" Margin="10,0,0,0"/>
+                                   Grid.Row="0" Grid.Column="1" Margin="10,0,0,0"
+                                   Foreground="{DynamicResource TextPrimaryBrush}"/>
 
-                        <!-- Имя -->
-                        <TextBlock Text="Имя:" Grid.Row="1" Grid.Column="0" Margin="0,15,0,0" VerticalAlignment="Center"/>
-                        <TextBox x:Name="txtFirstName" Grid.Row="1" Grid.Column="1"/>
+                        <TextBlock Text="Имя:" Grid.Row="1" Grid.Column="0" Margin="0,15,0,0" 
+                                   Foreground="{DynamicResource TextPrimaryBrush}"/>
+                        <TextBox x:Name="txtFirstName" Grid.Row="1" Grid.Column="1"
+                                 Background="{DynamicResource CardBackgroundBrush}"
+                                 Foreground="{DynamicResource TextPrimaryBrush}"
+                                 BorderBrush="{DynamicResource BorderBrush}"/>
 
-                        <!-- Фамилия -->
-                        <TextBlock Text="Фамилия:" Grid.Row="2" Grid.Column="0" Margin="0,15,0,0" VerticalAlignment="Center"/>
-                        <TextBox x:Name="txtLastName" Grid.Row="2" Grid.Column="1"/>
+                        <TextBlock Text="Фамилия:" Grid.Row="2" Grid.Column="0" Margin="0,15,0,0"
+                                   Foreground="{DynamicResource TextPrimaryBrush}"/>
+                        <TextBox x:Name="txtLastName" Grid.Row="2" Grid.Column="1"
+                                 Background="{DynamicResource CardBackgroundBrush}"
+                                 Foreground="{DynamicResource TextPrimaryBrush}"
+                                 BorderBrush="{DynamicResource BorderBrush}"/>
 
-                        <!-- Телефон -->
-                        <TextBlock Text="Телефон:" Grid.Row="3" Grid.Column="0" Margin="0,15,0,0" VerticalAlignment="Center"/>
-                        <TextBox x:Name="txtPhone" Grid.Row="3" Grid.Column="1"/>
+                        <TextBlock Text="Телефон:" Grid.Row="3" Grid.Column="0" Margin="0,15,0,0"
+                                   Foreground="{DynamicResource TextPrimaryBrush}"/>
+                        <TextBox x:Name="txtPhone" Grid.Row="3" Grid.Column="1"
+                                 Background="{DynamicResource CardBackgroundBrush}"
+                                 Foreground="{DynamicResource TextPrimaryBrush}"
+                                 BorderBrush="{DynamicResource BorderBrush}"/>
 
-                        <!-- Email -->
-                        <TextBlock Text="Email:" Grid.Row="4" Grid.Column="0" Margin="0,15,0,0" VerticalAlignment="Center"/>
-                        <TextBox x:Name="txtEmail" Grid.Row="4" Grid.Column="1"/>
+                        <TextBlock Text="Email:" Grid.Row="4" Grid.Column="0" Margin="0,15,0,0"
+                                   Foreground="{DynamicResource TextPrimaryBrush}"/>
+                        <TextBox x:Name="txtEmail" Grid.Row="4" Grid.Column="1"
+                                 Background="{DynamicResource CardBackgroundBrush}"
+                                 Foreground="{DynamicResource TextPrimaryBrush}"
+                                 BorderBrush="{DynamicResource BorderBrush}"/>
 
                         <!-- Кнопки -->
                         <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.ColumnSpan="2" 
                                     HorizontalAlignment="Center" Margin="0,25,0,0">
                             <Button x:Name="btnSave" Content="Сохранить" 
-                                    Style="{StaticResource ProfileButton}"
-                                    Background="#4CAF50" Click="btnSave_Click" 
+                                    Width="120" Height="35"
+                                    Background="{DynamicResource ButtonSuccessBrush}" 
+                                    Foreground="White"
+                                    Click="btnSave_Click" 
                                     Margin="0,0,10,0"/>
                             <Button x:Name="btnEdit" Content="Редактировать" 
-                                    Style="{StaticResource ProfileButton}"
-                                    Background="#2196F3" Click="btnEdit_Click"/>
+                                    Width="120" Height="35"
+                                    Background="{DynamicResource ButtonPrimaryBrush}" 
+                                    Foreground="White"
+                                    Click="btnEdit_Click"/>
                         </StackPanel>
                     </Grid>
                 </Border>
 
                 <!-- Блок текущего абонемента -->
-                <Border Background="White" CornerRadius="15" 
-                        BorderBrush="#E0E0E0" BorderThickness="1"
+                <Border Background="{DynamicResource CardBackgroundBrush}" 
+                        CornerRadius="15" 
+                        BorderBrush="{DynamicResource BorderBrush}" 
+                        BorderThickness="1"
                         Padding="25" Margin="0,25,0,0">
 
                     <Border.Effect>
@@ -114,16 +119,19 @@
                         </Grid.RowDefinitions>
 
                         <TextBlock Text="Мой абонемент" FontSize="20" FontWeight="Bold" 
-                                   Margin="0,0,0,15"/>
+                                   Margin="0,0,0,15"
+                                   Foreground="{DynamicResource TextPrimaryBrush}"/>
 
                         <TextBlock x:Name="txtSubscriptionName" FontSize="16" FontWeight="SemiBold"
-                                   Grid.Row="1" Foreground="#4CAF50"/>
+                                   Grid.Row="1" Foreground="{DynamicResource ButtonSuccessBrush}"/>
 
                         <TextBlock x:Name="txtSubscriptionEndDate" FontSize="14"
-                                   Grid.Row="2" Margin="0,5,0,0" Foreground="#666666"/>
+                                   Grid.Row="2" Margin="0,5,0,0" 
+                                   Foreground="{DynamicResource TextSecondaryBrush}"/>
 
                         <TextBlock x:Name="txtSubscriptionStatus" FontSize="14"
-                                   Grid.Row="3" Margin="0,5,0,0" Foreground="#666666"/>
+                                   Grid.Row="3" Margin="0,5,0,0" 
+                                   Foreground="{DynamicResource TextSecondaryBrush}"/>
                     </Grid>
                 </Border>
             </StackPanel>
