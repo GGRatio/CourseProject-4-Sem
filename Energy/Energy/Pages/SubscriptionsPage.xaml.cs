@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using Energy.Helpers;
+
 namespace Energy.Pages
 {
     public partial class SubscriptionsPage : Page
@@ -53,9 +55,9 @@ namespace Energy.Pages
                 SubscriptionsPanel.Children.Add(card);
             }
         }
-        
 
-         private void Filter_Click(object sender, RoutedEventArgs e)
+
+        private void Filter_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
             string filter = button.Tag.ToString();
@@ -142,7 +144,7 @@ namespace Energy.Pages
             var buyButton = new Button();
             buyButton.SetResourceReference(StyleProperty, "BuyButton");
             buyButton.Tag = subscriptionId;
-            buyButton.Click += (s, e) => BuySubscription(subscriptionId, price);
+            buyButton.Click += (s, e) => BuySubscription(subscriptionId, price, name);
             Grid.SetColumn(buyButton, 1);
             bottomGrid.Children.Add(buyButton);
 
@@ -152,11 +154,53 @@ namespace Energy.Pages
             return border;
         }
 
-        private void BuySubscription(int subscriptionId, int price)
+        private void BuySubscription(int subscriptionId, int price, string name)
         {
-            MessageBox.Show($"Абонемент куплен за {price} BYN", "Покупка",
-                          MessageBoxButton.OK, MessageBoxImage.Information);
-            // TODO: Добавить запись в таблицу Purchases
+            using (var db = new AppDbContext())
+            {
+                // Проверяем, есть ли активный абонемент
+                var activePurchase = db.Purchases
+                    .FirstOrDefault(p => p.UserId == Session.CurrentUserId && p.IsActive && p.EndDate > DateTime.Now);
+
+                if (activePurchase != null)
+                {
+                    // Спрашиваем пользователя
+                    var result = MessageBox.Show(
+                        "У вас уже есть активный абонемент!\n\n" +
+                        "Хотите заменить его новым?\n" +
+                        "(старый станет неактивным)",
+                        "Замена абонемента",
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Question);
+
+                    if (result == MessageBoxResult.No)
+                    {
+                        return; // Не покупаем
+                    }
+
+                    // Делаем старый абонемент неактивным
+                    activePurchase.IsActive = false;
+                    db.SaveChanges();
+                }
+
+                // Создаём новую покупку
+                var subscription = db.Subscriptions.Find(subscriptionId);
+
+                var purchase = new Purchase
+                {
+                    UserId = Session.CurrentUserId,
+                    Subscriptionid = subscriptionId,
+                    PurchaseDate = DateTime.Now,
+                    EndDate = DateTime.Now.AddDays(subscription.DurationDays),
+                    IsActive = true
+                };
+
+                db.Purchases.Add(purchase);
+                db.SaveChanges();
+
+                MessageBox.Show($"Абонемент '{name}' успешно куплен!", "Успех",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 }

@@ -28,6 +28,7 @@ namespace Energy.Pages
         {
             InitializeComponent();
             LoadUserData();
+            LoadCurrentSubscription();
             SetEditMode(false);
         }
 
@@ -43,6 +44,35 @@ namespace Energy.Pages
                     txtLastName.Text = user.LastName ?? "";
                     txtPhone.Text = user.Phone ?? "";
                     txtEmail.Text = user.Email ?? "";
+                }
+            }
+        }
+
+        private void LoadCurrentSubscription()
+        {
+            using (var db = new AppDbContext())
+            {
+                // Ищем активный абонемент (IsActive = true и EndDate > сегодня)
+                var activePurchase = db.Purchases
+                    .Where(p => p.UserId == Session.CurrentUserId && p.IsActive && p.EndDate > DateTime.Now)
+                    .OrderByDescending(p => p.PurchaseDate)
+                    .FirstOrDefault();
+
+                if (activePurchase != null)
+                {
+                    var subscription = db.Subscriptions.Find(activePurchase.Subscriptionid);
+
+                    txtSubscriptionName.Text = subscription.Name;
+                    txtSubscriptionEndDate.Text = $"Действует до: {activePurchase.EndDate:dd.MM.yyyy}";
+
+                    int daysLeft = (activePurchase.EndDate - DateTime.Now).Days;
+                    txtSubscriptionStatus.Text = $"Осталось дней: {daysLeft}";
+                }
+                else
+                {
+                    txtSubscriptionName.Text = "Нет активного абонемента";
+                    txtSubscriptionEndDate.Text = "";
+                    txtSubscriptionStatus.Text = "Купите абонемент в разделе 'Абонементы'";
                 }
             }
         }

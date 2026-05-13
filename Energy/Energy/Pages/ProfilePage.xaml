@@ -5,106 +5,135 @@
       Background="White">
 
     <Page.Resources>
-        <!-- Стиль для текстовых полей -->
         <Style TargetType="TextBlock">
-            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontSize" Value="14"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
 
-        <!-- Стиль для TextBox -->
         <Style TargetType="TextBox">
-            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontSize" Value="14"/>
             <Setter Property="Padding" Value="10,8"/>
             <Setter Property="BorderBrush" Value="#DDD"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Margin" Value="10,20,0,0"/>
+            <Setter Property="Margin" Value="10,15,0,0"/>
         </Style>
 
-        <!-- Стиль для кнопок -->
         <Style x:Key="ProfileButton" TargetType="Button">
-            <Setter Property="Width" Value="130"/>
-            <Setter Property="Height" Value="40"/>
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="35"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Cursor" Value="Hand"/>
         </Style>
     </Page.Resources>
 
-    <Grid>
+    <Grid Margin="30">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
+    
 
-        <!-- Карточка с данными -->
-        <Border Grid.Row="1"
-                Width="500"
-                Height="450"
-                Background="White" 
-                CornerRadius="15"
-                BorderBrush="#E0E0E0"
-                BorderThickness="1"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center">
+        <ScrollViewer Grid.Row="0" Grid.Column="0" VerticalScrollBarVisibility="Auto">
+            <StackPanel HorizontalAlignment="Center" Width="550" Margin="0,0,0,30">
 
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.1"/>
-            </Border.Effect>
+                <!-- Карточка профиля -->
+                <Border Background="White" CornerRadius="15" 
+                        BorderBrush="#E0E0E0" BorderThickness="1"
+                        Padding="25">
 
-            <Grid Margin="50">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.08"/>
+                    </Border.Effect>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
 
-                <!-- Логин -->
-                <TextBlock Text="Логин:" Grid.Row="0" Grid.Column="0"/>
-                <TextBlock x:Name="txtLogin" FontWeight="SemiBold" 
-                           Grid.Row="0" Grid.Column="1" Margin="10,0,0,0"/>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                <!-- Имя -->
-                <TextBlock Text="Имя:" Grid.Row="1" Grid.Column="0" Margin="0,20,0,0"/>
-                <TextBox x:Name="txtFirstName" Grid.Row="1" Grid.Column="1"/>
+                        <!-- Логин (только чтение) -->
+                        <TextBlock Text="Логин:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="txtLogin" FontWeight="SemiBold" 
+                                   Grid.Row="0" Grid.Column="1" Margin="10,0,0,0"/>
 
-                <!-- Фамилия -->
-                <TextBlock Text="Фамилия:" Grid.Row="2" Grid.Column="0" Margin="0,20,0,0"/>
-                <TextBox x:Name="txtLastName" Grid.Row="2" Grid.Column="1"/>
+                        <!-- Имя -->
+                        <TextBlock Text="Имя:" Grid.Row="1" Grid.Column="0" Margin="0,15,0,0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtFirstName" Grid.Row="1" Grid.Column="1"/>
 
-                <!-- Телефон -->
-                <TextBlock Text="Телефон:" Grid.Row="3" Grid.Column="0" Margin="0,20,0,0"/>
-                <TextBox x:Name="txtPhone" Grid.Row="3" Grid.Column="1"/>
+                        <!-- Фамилия -->
+                        <TextBlock Text="Фамилия:" Grid.Row="2" Grid.Column="0" Margin="0,15,0,0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtLastName" Grid.Row="2" Grid.Column="1"/>
 
-                <!-- Email -->
-                <TextBlock Text="Email:" Grid.Row="4" Grid.Column="0" Margin="0,20,0,0"/>
-                <TextBox x:Name="txtEmail" Grid.Row="4" Grid.Column="1"/>
+                        <!-- Телефон -->
+                        <TextBlock Text="Телефон:" Grid.Row="3" Grid.Column="0" Margin="0,15,0,0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtPhone" Grid.Row="3" Grid.Column="1"/>
 
-                <!-- Кнопки -->
-                <StackPanel Orientation="Horizontal" 
-                            Grid.Row="5" Grid.ColumnSpan="2" 
-                            HorizontalAlignment="Center"
-                            Margin="0,40,0,0">
+                        <!-- Email -->
+                        <TextBlock Text="Email:" Grid.Row="4" Grid.Column="0" Margin="0,15,0,0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtEmail" Grid.Row="4" Grid.Column="1"/>
 
-                    <Button x:Name="btnSave" Content="Сохранить" 
-                            Style="{StaticResource ProfileButton}"
-                            Background="#4CAF50" Click="btnSave_Click"/>
+                        <!-- Кнопки -->
+                        <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.ColumnSpan="2" 
+                                    HorizontalAlignment="Center" Margin="0,25,0,0">
+                            <Button x:Name="btnSave" Content="Сохранить" 
+                                    Style="{StaticResource ProfileButton}"
+                                    Background="#4CAF50" Click="btnSave_Click" 
+                                    Margin="0,0,10,0"/>
+                            <Button x:Name="btnEdit" Content="Редактировать" 
+                                    Style="{StaticResource ProfileButton}"
+                                    Background="#2196F3" Click="btnEdit_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
 
-                    <Button x:Name="btnEdit" Content="Редактировать" 
-                            Style="{StaticResource ProfileButton}"
-                            Background="#2196F3" Click="btnEdit_Click"/>
-                </StackPanel>
-            </Grid>
-        </Border>
+                <!-- Блок текущего абонемента -->
+                <Border Background="White" CornerRadius="15" 
+                        BorderBrush="#E0E0E0" BorderThickness="1"
+                        Padding="25" Margin="0,25,0,0"
+                        Grid.Row="0" Grid.Column="1">
+
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.08"/>
+                    </Border.Effect>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Мой абонемент" FontSize="20" FontWeight="Bold" 
+                                   Margin="0,0,0,15"/>
+
+                        <TextBlock x:Name="txtSubscriptionName" FontSize="16" FontWeight="SemiBold"
+                                   Grid.Row="1" Foreground="#4CAF50"/>
+
+                        <TextBlock x:Name="txtSubscriptionEndDate" FontSize="14"
+                                   Grid.Row="2" Margin="0,5,0,0" Foreground="#666666"/>
+
+                        <TextBlock x:Name="txtSubscriptionStatus" FontSize="14"
+                                   Grid.Row="3" Margin="0,5,0,0" Foreground="#666666"/>
+                    </Grid>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
