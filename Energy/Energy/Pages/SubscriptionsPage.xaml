@@ -39,6 +39,8 @@
             <Button x:Name="btnMonthly" Content="На месяц" 
                     Style="{StaticResource FilterButton}" 
                     Click="Filter_Click" Tag="monthly"/>
+            <Button Content="↩️ Отменить" Click="Undo_Click" Width="100" Margin="5"/>
+            <Button Content="↪️ Вернуть" Click="Redo_Click" Width="100" Margin="5"/>
         </StackPanel>
 
         <!-- Список абонементов -->

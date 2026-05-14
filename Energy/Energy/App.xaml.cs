@@ -1,8 +1,9 @@
-﻿using System.Configuration;
+﻿    
+using Energy.Helpers;
+using Energy.Models;
+using System.Configuration;
 using System.Data;
 using System.Windows;
-    
-using Energy.Helpers;
 
 
 namespace Energy
@@ -12,8 +13,13 @@ namespace Energy
     /// </summary>
     public partial class App : Application
     {
+        //
+        public static UndoRedoManager<PurchaseAction> PurchaseManager { get; set; }
         protected override void OnStartup(StartupEventArgs e)
         {
+            //
+            PurchaseManager = new UndoRedoManager<PurchaseAction>();
+
             base.OnStartup(e);
 
             // Проверяем, есть ли сохранённая сессия

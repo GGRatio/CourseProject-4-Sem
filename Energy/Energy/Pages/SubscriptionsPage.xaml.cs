@@ -214,39 +214,66 @@ namespace Energy.Pages
             return border;
         }
 
+        /* private void BuySubscription(int subscriptionId, int price, string name)
+         {
+             using (var db = new AppDbContext())
+             {
+                 // Проверяем, есть ли активный абонемент
+                 var activePurchase = db.Purchases
+                     .FirstOrDefault(p => p.UserId == Session.CurrentUserId && p.IsActive && p.EndDate > DateTime.Now);
+
+                 if (activePurchase != null)
+                 {
+                     // Спрашиваем пользователя
+                     var result = MessageBox.Show(
+                         "У вас уже есть активный абонемент!\n\n" +
+                         "Хотите заменить его новым?\n" +
+                         "(старый станет неактивным)",
+                         "Замена абонемента",
+                         MessageBoxButton.YesNo,
+                         MessageBoxImage.Question);
+
+                     if (result == MessageBoxResult.No)
+                     {
+                         return; // Не покупаем
+                     }
+
+                     // Делаем старый абонемент неактивным
+                     activePurchase.IsActive = false;
+                     db.SaveChanges();
+                 }
+
+                 // Создаём новую покупку
+                 var subscription = db.Subscriptions.Find(subscriptionId);
+
+                 var purchase = new Purchase
+                 {
+                     UserId = Session.CurrentUserId,
+                     Subscriptionid = subscriptionId,
+                     PurchaseDate = DateTime.Now,
+                     EndDate = DateTime.Now.AddDays(subscription.DurationDays),
+                     IsActive = true
+                 };
+
+                 db.Purchases.Add(purchase);
+                 db.SaveChanges();
+
+                 MessageBox.Show($"Абонемент '{name}' успешно куплен!", "Успех",
+                                 MessageBoxButton.OK, MessageBoxImage.Information);
+         }
+        */
+
+
+
+
+        //Версия для UndO Rendo
         private void BuySubscription(int subscriptionId, int price, string name)
         {
             using (var db = new AppDbContext())
             {
-                // Проверяем, есть ли активный абонемент
-                var activePurchase = db.Purchases
-                    .FirstOrDefault(p => p.UserId == Session.CurrentUserId && p.IsActive && p.EndDate > DateTime.Now);
-
-                if (activePurchase != null)
-                {
-                    // Спрашиваем пользователя
-                    var result = MessageBox.Show(
-                        "У вас уже есть активный абонемент!\n\n" +
-                        "Хотите заменить его новым?\n" +
-                        "(старый станет неактивным)",
-                        "Замена абонемента",
-                        MessageBoxButton.YesNo,
-                        MessageBoxImage.Question);
-
-                    if (result == MessageBoxResult.No)
-                    {
-                        return; // Не покупаем
-                    }
-
-                    // Делаем старый абонемент неактивным
-                    activePurchase.IsActive = false;
-                    db.SaveChanges();
-                }
-
-                // Создаём новую покупку
                 var subscription = db.Subscriptions.Find(subscriptionId);
 
-                var purchase = new Purchase
+                var purchase = new Energy.Models.Purchase
                 {
                     UserId = Session.CurrentUserId,
                     Subscriptionid = subscriptionId,
@@ -258,9 +285,71 @@ namespace Energy.Pages
                 db.Purchases.Add(purchase);
                 db.SaveChanges();
 
-                MessageBox.Show($"Абонемент '{name}' успешно куплен!", "Успех",
+                var action = new PurchaseAction
+                {
+                    Id = purchase.Id,
+                    SubscriptionId = subscriptionId,
+                    SubscriptionName = name,
+                    Price = price,
+                    PurchaseDate = purchase.PurchaseDate,
+                    DurationDays = subscription.DurationDays
+                };
+
+                // Выполняем с сохранением в историю
+                App.PurchaseManager.Execute(action, a => { });
+
+                RefreshSubscriptions();
+                MessageBox.Show($"Абонемент '{name}' куплен!", "Успех",
                                 MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
+
+        private void UndoLastPurchase()
+        {
+            App.PurchaseManager.Undo(action =>
+            {
+                using (var db = new AppDbContext())
+                {
+                    var purchase = db.Purchases.Find(action.Id);
+                    if (purchase != null)
+                    {
+                        purchase.IsActive = false;
+                        db.SaveChanges();
+                    }
+                }
+                RefreshSubscriptions();
+                MessageBox.Show($"Отменено: {action.SubscriptionName}", "Undo",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+            });
+        }
+
+        private void RedoLastPurchase()
+        {
+            App.PurchaseManager.Redo(action =>
+            {
+                using (var db = new AppDbContext())
+                {
+                    var purchase = db.Purchases.Find(action.Id);
+                    if (purchase != null)
+                    {
+                        purchase.IsActive = true;
+                        db.SaveChanges();
+                    }
+                }
+                RefreshSubscriptions();
+                MessageBox.Show($"Восстановлено: {action.SubscriptionName}", "Redo",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+            });
+        }
+
+        private void RefreshSubscriptions()
+        {
+            SubscriptionsPanel.Children.Clear();
+            LoadSubscription();
+        }
+
+        private void Undo_Click(object sender, RoutedEventArgs e) => UndoLastPurchase();
+        private void Redo_Click(object sender, RoutedEventArgs e) => RedoLastPurchase();
+
     }
 }
