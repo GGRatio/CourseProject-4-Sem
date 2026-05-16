@@ -88,6 +88,7 @@ namespace Energy
 
                         Session.CurrentUserLogin = user.Login;
                         Session.CurrentUserId = user.Id;
+                        Session.CurrentUserRole = user.Role;
 
 
 

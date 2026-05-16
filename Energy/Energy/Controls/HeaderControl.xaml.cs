@@ -29,14 +29,25 @@ namespace Energy.Controls
 
         private void HeaderControl_Loaded(object sender, RoutedEventArgs e)
         {
-            // Загружаем имя из session.json
             var savedUser = SessionManager.LoadUser();
-
             if (savedUser != null)
             {
                 btn_Profile.Content = $"👤 {savedUser.Login}";
             }
+
+            // Показываем кнопку админа только если роль Admin
+            if (Session.CurrentUserRole == "Admin")
+            {
+                btn_Admin.Visibility = Visibility.Visible;
+            }
         }
+
+        private void btn_Admin_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow?.NavigateTo(new Pages.AdminPage());
+        }
+
 
         private void btn_Trainers_Click(object sender, RoutedEventArgs e)
         {

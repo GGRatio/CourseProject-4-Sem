@@ -1,0 +1,83 @@
+﻿<Page x:Class="Energy.Pages.AdminSubscriptionsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Управление абонементами"
+      Background="White">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="📋 Управление абонементами" FontSize="24" FontWeight="Bold" 
+                   HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+        <!-- Форма ввода -->
+        <Border Grid.Row="1" Background="#F0F0F0" Padding="15" CornerRadius="10" Margin="0,0,0,15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Название:" VerticalAlignment="Center" FontSize="14"/>
+                <TextBox x:Name="txtName" Grid.Column="1" Margin="5" Height="35" FontSize="14" VerticalAlignment="Center"/>
+
+                <TextBlock Text="Цена:" Grid.Row="1" VerticalAlignment="Center" FontSize="14"/>
+                <TextBox x:Name="txtPrice" Grid.Row="1" Grid.Column="1" Margin="5" Height="35" FontSize="14" VerticalAlignment="Center"/>
+
+                <TextBlock Text="Срок (дней):" Grid.Column="2" VerticalAlignment="Center" FontSize="14"/>
+                <TextBox x:Name="txtDurationDays" Grid.Column="3" Margin="5" Height="35" FontSize="14" VerticalAlignment="Center"/>
+
+                <TextBlock Text="Условие:" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" FontSize="14"/>
+                <TextBox x:Name="txtCondition" Grid.Row="1" Grid.Column="3" Margin="5" Height="35" FontSize="14" VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+
+        <!-- Кнопки -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,15">
+            <Button Content="Добавить" Click="btnAdd_Click" Width="100" Height="35" Margin="5" 
+                    Background="#4CAF50" Foreground="White" FontSize="14"/>
+            <Button Content="Обновить" Click="btnUpdate_Click" Width="100" Height="35" Margin="5" 
+                    Background="#2196F3" Foreground="White" FontSize="14"/>
+            <Button Content="Удалить" Click="btnDelete_Click" Width="100" Height="35" Margin="5" 
+                    Background="#F44336" Foreground="White" FontSize="14"/>
+            <Button Content="Очистить" Click="btnClear_Click" Width="100" Height="35" Margin="5" 
+                    Background="#9E9E9E" Foreground="White" FontSize="14"/>
+        </StackPanel>
+        
+
+        <!-- Таблица -->
+        <DataGrid x:Name="dgSubscriptions" Grid.Row="3" 
+                  AutoGenerateColumns="True" 
+                  CanUserSortColumns="True"
+                  SelectionChanged="dgSubscriptions_SelectionChanged"
+                  Margin="0,10"
+                  RowHeight="35"
+                  FontSize="13"/>
+
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5">
+            <Button Content="⬆️ Цена ↑" Click="SortByPriceAsc_Click" Width="100" Margin="5" Height="30"/>
+            <Button Content="⬇️ Цена ↓" Click="SortByPriceDesc_Click" Width="100" Margin="5" Height="30"/>
+
+            <TextBox x:Name="txtSearchName" Width="120" Margin="5" Height="30" ToolTip="Поиск по названию"/>
+            <Button Content="🔍 Поиск" Click="SearchByName_Click" Width="80" Margin="5" Height="30"/>
+
+            <TextBox x:Name="txtMinPriceFilter" Width="80" Margin="5" Height="30" ToolTip="Цена от"/>
+            <TextBox x:Name="txtMaxPriceFilter" Width="80" Margin="5" Height="30" ToolTip="Цена до"/>
+            <Button Content="🎯 Фильтр" Click="FilterByPrice_Click" Width="80" Margin="5" Height="30"/>
+            <Button Content="🔄 Сброс" Click="ResetFilter_Click" Width="80" Margin="5" Height="30"/>
+        </StackPanel>
+    </Grid>
+</Page>

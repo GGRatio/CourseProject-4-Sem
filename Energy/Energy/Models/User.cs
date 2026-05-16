@@ -13,10 +13,14 @@ namespace Energy.Models
         public string PasswordHash {get; set;}
         public string Email { get; set;}
 
+        public string Role { get; set; } = "User";
         //Доп информация
+
+        
         public string FirstName { get; set; }   
         public string LastName { get; set; }    
         public string Phone { get; set; }     
+        
 
         //Текущий Абонимент
 

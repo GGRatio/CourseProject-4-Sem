@@ -42,6 +42,7 @@
             <Button x:Name="btn_Groupe" Content="Групповые занятия" Click="btn_Groupe_Click"/>
             <Button x:Name="btn_Trainers" Content="Тренеры" Click="btn_Trainers_Click"/>
             <Button x:Name="btn_Subscriptions" Content="Абонементы" Click="btn_Subscriptions_Click"/>
+            <Button x:Name="btn_Admin" Content="👑 Админ" Click="btn_Admin_Click" Visibility="Collapsed"/>
         </StackPanel>
 
         <!-- Разделительная черта -->

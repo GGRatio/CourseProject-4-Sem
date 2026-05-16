@@ -20,5 +20,39 @@ namespace Energy.Data
                 "Server=LOST\\MSSQLSERVER06;Database=fitness_db;Trusted_Connection=True;Encrypt=False"
             );
         }
+
+
+        public async Task<List<Subscription>> GetSubscriptionsAsync()
+        {
+            return await Subscriptions.ToListAsync();
+        }
+
+        public async Task<Subscription> GetSubscriptionByIdAsync(int id)
+        {
+            return await Subscriptions.FindAsync(id);
+        }
+
+        public async Task AddSubscriptionAsync(Subscription subscription)
+        {
+            await Subscriptions.AddAsync(subscription);
+            await SaveChangesAsync();
+        }
+
+        public async Task UpdateSubscriptionAsync(Subscription subscription)
+        {
+            Subscriptions.Update(subscription);
+            await SaveChangesAsync();
+        }
+
+        public async Task DeleteSubscriptionAsync(int id)
+        {
+            var sub = await Subscriptions.FindAsync(id);
+            if (sub != null)
+            {
+                Subscriptions.Remove(sub);
+                await SaveChangesAsync();
+            }
+        }
+
     }
 }

@@ -57,80 +57,59 @@ namespace Energy
 
         private void Button_Reg_Click(object sender, RoutedEventArgs e)
         {
-
             string login = txtBoxLogin.Text.Trim();
             string pass = txtBoxPassword.Password;
             string pass2 = txtBoxPassword2.Password;
             string email = txtBoxEmail.Text.Trim();
 
-            ResetFieldsBackground();
+            if (login.Length < 3)
+            {
+                MessageBox.Show("Логин не менее 3 символов!");
+                return;
+            }
+            if (pass.Length < 4)
+            {
+                MessageBox.Show("Пароль не менее 4 символов!");
+                return;
+            }
+            if (pass != pass2)
+            {
+                MessageBox.Show("Пароли не совпадают!");
+                return;
+            }
 
-            if (login.Length < 5)
+            try
             {
-                ShowError(txtBoxLogin, "Логин не менее 5 символов!");
-                txtBoxLogin.Focus();
-                return;
-            }
-            else if (pass.Length < 8)
-            {
-                ShowError(txtBoxPassword, "Пароль не менее 8 символов!");
-                txtBoxPassword.Focus();
-                return;
-            }
-            else if (pass != pass2)
-            {
-                ShowError(txtBoxPassword2, "Пароли не совпадают!");
-                txtBoxPassword2.Focus();
-                return;
-            }
-            else if (!email.Contains("@") || !email.Contains("."))
-            {
-                ShowError(txtBoxEmail, "Неверный формат email!");
-                txtBoxEmail.Focus();
-                return;
-            }
-            else
-            {
-                try
+                using (var db = new AppDbContext())
                 {
-                    using (var db = new AppDbContext())
+                    // Создаём пользователя ТОЛЬКО с обязательными полями
+                    var newUser = new User
                     {
-                        if (db.Users.Any(u => u.Login == login))
-                        {
-                            ShowError(txtBoxLogin, "Пользователь с таким логином уже существует!");
-                            return;
-                        }
-                        if (db.Users.Any(u => u.Email == email))
-                        {
-                            ShowError(txtBoxEmail, "Пользователь с таким email уже существует!");
-                            return;
-                        }
+                        Login = login,
+                        PasswordHash = PasswordHelper.HashPassword(pass),
+                        Email = email,
+                        FirstName = "",      
+                        LastName = "",       
+                        Phone = "",          
+                        Role = "User"        
+                    };
 
-                        //Создаем нового пользователя
-                        var newUser = new User
-                        {
-                            Login = login,
-                            PasswordHash = PasswordHelper.HashPassword(pass),
-                            Email = email
-                        };
+                    db.Users.Add(newUser);
+                    db.SaveChanges();
 
-                        db.Users.Add(newUser);
-                        db.SaveChanges();
-
-                        MessageBox.Show("Регистрация успешна!", "Успех",
-                            MessageBoxButton.OK, MessageBoxImage.Information);
-
-                        this.Close();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка",
-                        MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Регистрация успешна!");
+                    this.Close();
                 }
             }
-
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+                if (ex.InnerException != null)
+                    MessageBox.Show($"Детали: {ex.InnerException.Message}");
+            }
         }
+
+
 
 
         private void ShowError(Control control, string message)
