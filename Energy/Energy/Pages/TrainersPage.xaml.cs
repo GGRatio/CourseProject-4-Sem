@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Media.Imaging;
 
 namespace Energy.Pages
 {
@@ -49,7 +50,7 @@ namespace Energy.Pages
             var border = new Border
             {
                 Width = 280,
-                MinHeight = 220,
+                MinHeight = 300,
                 Margin = new Thickness(15),
                 Background = (SolidColorBrush)FindResource("CardBackgroundBrush"),
                 BorderBrush = (SolidColorBrush)FindResource("BorderBrush"),
@@ -60,13 +61,64 @@ namespace Energy.Pages
             var stack = new StackPanel();
             stack.Margin = new Thickness(15);
 
-            // Имя и фамилия
+            // ФОТО (берём путь из БД)
+            var photoBorder = new Border
+            {
+                Width = 100,
+                Height = 100,
+                CornerRadius = new CornerRadius(50),
+                Background = (SolidColorBrush)FindResource("BorderBrush"),
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Margin = new Thickness(0, 0, 0, 10),
+                VerticalAlignment = VerticalAlignment.Center
+            };
+
+            try
+            {
+                if (!string.IsNullOrEmpty(trainer.PhotoUrl))
+                {
+                    var photo = new Image
+                    {
+                        Width = 100,
+                        Height = 100,
+                        Stretch = Stretch.UniformToFill
+                    };
+
+                    // Формируем полный путь
+                    string fullPath = $"pack://application:,,,/{trainer.PhotoUrl}";
+                    photo.Source = new BitmapImage(new Uri(fullPath));
+                    photoBorder.Child = photo;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            catch
+            {
+                // Если фото не загрузилось
+                photoBorder.Background = new SolidColorBrush(Colors.LightGray);
+                var noPhoto = new TextBlock
+                {
+                    Text = "🏋️",
+                    FontSize = 30,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center
+                };
+                photoBorder.Child = noPhoto;
+            }
+
+            stack.Children.Add(photoBorder);
+
+            // ===== ОСТАЛЬНОЙ КОД БЕЗ ИЗМЕНЕНИЙ =====
+            // Имя
             stack.Children.Add(new TextBlock
             {
                 Text = $"{trainer.FirstName} {trainer.LastName}",
                 FontSize = 18,
                 FontWeight = FontWeights.Bold,
-                Foreground = (SolidColorBrush)FindResource("TextPrimaryBrush")
+                Foreground = (SolidColorBrush)FindResource("TextPrimaryBrush"),
+                HorizontalAlignment = HorizontalAlignment.Center
             });
 
             // Специализация
@@ -75,7 +127,8 @@ namespace Energy.Pages
                 Text = trainer.Specialization,
                 FontSize = 13,
                 Foreground = (SolidColorBrush)FindResource("TextSecondaryBrush"),
-                Margin = new Thickness(0, 5, 0, 0)
+                Margin = new Thickness(0, 5, 0, 0),
+                HorizontalAlignment = HorizontalAlignment.Center
             });
 
             // Опыт
@@ -84,7 +137,8 @@ namespace Energy.Pages
                 Text = $"Опыт: {trainer.YearsOfExperience} лет",
                 FontSize = 12,
                 Foreground = (SolidColorBrush)FindResource("TextSecondaryBrush"),
-                Margin = new Thickness(0, 5, 0, 0)
+                Margin = new Thickness(0, 5, 0, 0),
+                HorizontalAlignment = HorizontalAlignment.Center
             });
 
             // Описание
@@ -95,10 +149,11 @@ namespace Energy.Pages
                 Foreground = (SolidColorBrush)FindResource("TextSecondaryBrush"),
                 TextWrapping = TextWrapping.Wrap,
                 Margin = new Thickness(0, 10, 0, 0),
-                MaxHeight = 60
+                MaxHeight = 60,
+                TextAlignment = TextAlignment.Center
             });
 
-            // Кнопка выбора тренера
+            // Кнопка
             bool isSelected = _selectedTrainerId == trainer.Id;
             var selectButton = new Button
             {
