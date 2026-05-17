@@ -125,5 +125,24 @@ namespace Energy.Pages
         {
             ThemeManager.ChangeTheme(ThemeManager.ThemeType.Dark);
         }
+
+        private void LoadMyTrainer()
+        {
+            using (var db = new AppDbContext())
+            {
+                var userTrainer = db.UserTrainers
+                    .FirstOrDefault(ut => ut.UserId == Session.CurrentUserId);
+
+                if (userTrainer != null)
+                {
+                    var trainer = db.Trainers.Find(userTrainer.TrainerId);
+                    txtMyTrainer.Text = $"{trainer.FirstName} {trainer.LastName} - {trainer.Specialization}";
+                }
+                else
+                {
+                    txtMyTrainer.Text = "Тренер не выбран. Перейдите в раздел 'Тренеры' чтобы выбрать.";
+                }
+            }
+        }
     }
 }
