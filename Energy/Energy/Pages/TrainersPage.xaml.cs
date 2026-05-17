@@ -12,10 +12,11 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
+
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Media.Imaging;
 
 namespace Energy.Pages
 {
@@ -50,27 +51,31 @@ namespace Energy.Pages
             var border = new Border
             {
                 Width = 280,
-                MinHeight = 300,
+                MinHeight = 350,
                 Margin = new Thickness(15),
                 Background = (SolidColorBrush)FindResource("CardBackgroundBrush"),
                 BorderBrush = (SolidColorBrush)FindResource("BorderBrush"),
-                BorderThickness = new Thickness(1),
-                CornerRadius = new CornerRadius(12)
+                BorderThickness = new Thickness(0),
+                CornerRadius = new CornerRadius(15)
             };
 
-            var stack = new StackPanel();
-            stack.Margin = new Thickness(15);
+            border.Effect = new DropShadowEffect
+            {
+                BlurRadius = 12,
+                ShadowDepth = 3,
+                Opacity = 0.15,
+                Color = Colors.Black
+            };
 
-            // ФОТО (берём путь из БД)
+            var mainStack = new StackPanel();
+
             var photoBorder = new Border
             {
-                Width = 100,
-                Height = 100,
-                CornerRadius = new CornerRadius(50),
+                Height = 220,
+                CornerRadius = new CornerRadius(15, 15, 0, 0),
                 Background = (SolidColorBrush)FindResource("BorderBrush"),
-                HorizontalAlignment = HorizontalAlignment.Center,
-                Margin = new Thickness(0, 0, 0, 10),
-                VerticalAlignment = VerticalAlignment.Center
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalAlignment = VerticalAlignment.Top
             };
 
             try
@@ -79,12 +84,10 @@ namespace Energy.Pages
                 {
                     var photo = new Image
                     {
-                        Width = 100,
-                        Height = 100,
-                        Stretch = Stretch.UniformToFill
+                        Stretch = Stretch.UniformToFill,
+                        VerticalAlignment = VerticalAlignment.Top
                     };
 
-                    // Формируем полный путь
                     string fullPath = $"pack://application:,,,/{trainer.PhotoUrl}";
                     photo.Source = new BitmapImage(new Uri(fullPath));
                     photoBorder.Child = photo;
@@ -96,73 +99,79 @@ namespace Energy.Pages
             }
             catch
             {
-                // Если фото не загрузилось
                 photoBorder.Background = new SolidColorBrush(Colors.LightGray);
                 var noPhoto = new TextBlock
                 {
                     Text = "🏋️",
-                    FontSize = 30,
+                    FontSize = 48,
                     HorizontalAlignment = HorizontalAlignment.Center,
                     VerticalAlignment = VerticalAlignment.Center
                 };
                 photoBorder.Child = noPhoto;
             }
 
-            stack.Children.Add(photoBorder);
+            mainStack.Children.Add(photoBorder);
 
-            // ===== ОСТАЛЬНОЙ КОД БЕЗ ИЗМЕНЕНИЙ =====
+
+            var textStack = new StackPanel
+            {
+                Margin = new Thickness(15),
+                VerticalAlignment = VerticalAlignment.Bottom
+            };
+
             // Имя
-            stack.Children.Add(new TextBlock
+            textStack.Children.Add(new TextBlock
             {
                 Text = $"{trainer.FirstName} {trainer.LastName}",
-                FontSize = 18,
+                FontSize = 20,
                 FontWeight = FontWeights.Bold,
                 Foreground = (SolidColorBrush)FindResource("TextPrimaryBrush"),
-                HorizontalAlignment = HorizontalAlignment.Center
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Margin = new Thickness(0, 0, 0, 5)
             });
 
             // Специализация
-            stack.Children.Add(new TextBlock
+            textStack.Children.Add(new TextBlock
             {
                 Text = trainer.Specialization,
                 FontSize = 13,
                 Foreground = (SolidColorBrush)FindResource("TextSecondaryBrush"),
-                Margin = new Thickness(0, 5, 0, 0),
-                HorizontalAlignment = HorizontalAlignment.Center
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Margin = new Thickness(0, 0, 0, 5)
             });
 
             // Опыт
-            stack.Children.Add(new TextBlock
+            textStack.Children.Add(new TextBlock
             {
                 Text = $"Опыт: {trainer.YearsOfExperience} лет",
                 FontSize = 12,
                 Foreground = (SolidColorBrush)FindResource("TextSecondaryBrush"),
-                Margin = new Thickness(0, 5, 0, 0),
-                HorizontalAlignment = HorizontalAlignment.Center
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Margin = new Thickness(0, 0, 0, 8)
             });
 
-            // Описание
-            stack.Children.Add(new TextBlock
+            // Описание (обрезаем до 2 строк)
+            var descText = new TextBlock
             {
                 Text = trainer.Description,
-                FontSize = 12,
+                FontSize = 11,
                 Foreground = (SolidColorBrush)FindResource("TextSecondaryBrush"),
                 TextWrapping = TextWrapping.Wrap,
-                Margin = new Thickness(0, 10, 0, 0),
-                MaxHeight = 60,
-                TextAlignment = TextAlignment.Center
-            });
+                MaxHeight = 40,
+                TextAlignment = TextAlignment.Center,
+                Margin = new Thickness(0, 0, 0, 12)
+            };
+            textStack.Children.Add(descText);
 
-            // Кнопка
+            // Кнопка выбора
             bool isSelected = _selectedTrainerId == trainer.Id;
             var selectButton = new Button
             {
                 Content = isSelected ? "✅ Мой тренер" : "📝 Выбрать тренера",
                 Tag = trainer.Id,
-                Margin = new Thickness(0, 15, 0, 0),
-                Padding = new Thickness(10, 8, 10, 8),
+                Height = 36,
                 Cursor = System.Windows.Input.Cursors.Hand,
-                FontSize = 13
+                FontSize = 13,
             };
 
             if (isSelected)
@@ -178,9 +187,10 @@ namespace Energy.Pages
                 selectButton.Click += (s, e) => SelectTrainer(trainer.Id, $"{trainer.FirstName} {trainer.LastName}");
             }
 
-            stack.Children.Add(selectButton);
+            textStack.Children.Add(selectButton);
+            mainStack.Children.Add(textStack);
 
-            border.Child = stack;
+            border.Child = mainStack;
             return border;
         }
 

@@ -139,18 +139,72 @@ namespace Energy.Pages
                     var trainer = db.Trainers.Find(userTrainer.TrainerId);
                     if (trainer != null)
                     {
-                        txtMyTrainer.Text = $"{trainer.FirstName} {trainer.LastName} — {trainer.Specialization}";
+                        txtMyTrainer.Text = $"{trainer.FirstName} {trainer.LastName}";
+                        txtTrainerSpecialization.Text = trainer.Specialization;
+
+                        // Загружаем фото тренера
+                        LoadTrainerPhoto(trainer.PhotoUrl);
                     }
                     else
                     {
                         txtMyTrainer.Text = "Тренер не найден";
+                        TrainerPhotoBorder.Visibility = Visibility.Collapsed;
                     }
                 }
                 else
                 {
                     txtMyTrainer.Text = "Тренер не выбран. Перейдите в раздел 'Тренеры' чтобы выбрать.";
+                    txtTrainerSpecialization.Text = "";
+                    TrainerPhotoBorder.Visibility = Visibility.Collapsed;
                 }
             }
+        }
+
+        private void LoadTrainerPhoto(string photoPath)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(photoPath))
+                {
+                    string fullPath = $"pack://application:,,,/{photoPath}";
+                    TrainerPhoto.Source = new BitmapImage(new Uri(fullPath));
+                    TrainerPhotoBorder.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    // Если фото нет - показываем иконку
+                    TrainerPhotoBorder.Background = (SolidColorBrush)FindResource("ButtonPrimaryBrush");
+                    var icon = new TextBlock
+                    {
+                        Text = "🏋️",
+                        FontSize = 28,
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        VerticalAlignment = VerticalAlignment.Center
+                    };
+                    TrainerPhotoBorder.Child = icon;
+                    TrainerPhoto.Visibility = Visibility.Collapsed;
+                }
+            }
+            catch
+            {
+                // Если ошибка загрузки
+                TrainerPhotoBorder.Background = (SolidColorBrush)FindResource("ButtonPrimaryBrush");
+                var icon = new TextBlock
+                {
+                    Text = "🏋️",
+                    FontSize = 28,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center
+                };
+                TrainerPhotoBorder.Child = icon;
+                TrainerPhoto.Visibility = Visibility.Collapsed;
+            }
+        }
+
+
+        private void btnDetail_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
 
     }
