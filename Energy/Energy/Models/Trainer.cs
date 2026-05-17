@@ -22,7 +22,7 @@ namespace Energy.Models
 
         public string Description { get; set; }
 
-        public string PhotoUrl { get; set; }
+        public string? PhotoUrl { get; set; }
 
         public int YearsOfExperience { get; set; }
     }

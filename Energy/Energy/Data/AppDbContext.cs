@@ -13,7 +13,8 @@ namespace Energy.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
-
+        public DbSet<Trainer> Trainers { get; set; }
+        public DbSet<UserTrainer> UserTrainers { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) //EF сам вызовет для подклюени к бд
         {
             optionsBuilder.UseSqlServer(

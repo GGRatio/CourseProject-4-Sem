@@ -29,6 +29,7 @@ namespace Energy.Pages
             InitializeComponent();
             LoadUserData();
             LoadCurrentSubscription();
+            LoadMyTrainer();
             SetEditMode(false);
         }
 
@@ -136,7 +137,14 @@ namespace Energy.Pages
                 if (userTrainer != null)
                 {
                     var trainer = db.Trainers.Find(userTrainer.TrainerId);
-                    txtMyTrainer.Text = $"{trainer.FirstName} {trainer.LastName} - {trainer.Specialization}";
+                    if (trainer != null)
+                    {
+                        txtMyTrainer.Text = $"{trainer.FirstName} {trainer.LastName} — {trainer.Specialization}";
+                    }
+                    else
+                    {
+                        txtMyTrainer.Text = "Тренер не найден";
+                    }
                 }
                 else
                 {
@@ -144,5 +152,6 @@ namespace Energy.Pages
                 }
             }
         }
+
     }
 }

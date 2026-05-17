@@ -34,6 +34,7 @@ namespace Energy.Pages
             using (var db = new AppDbContext())
             {
                 var trainers = db.Trainers.ToList();
+                TrainersPanel.Children.Clear();
 
                 foreach (var trainer in trainers)
                 {
@@ -48,7 +49,7 @@ namespace Energy.Pages
             var border = new Border
             {
                 Width = 280,
-                MinHeight = 200,
+                MinHeight = 220,
                 Margin = new Thickness(15),
                 Background = (SolidColorBrush)FindResource("CardBackgroundBrush"),
                 BorderBrush = (SolidColorBrush)FindResource("BorderBrush"),
@@ -59,6 +60,7 @@ namespace Energy.Pages
             var stack = new StackPanel();
             stack.Margin = new Thickness(15);
 
+            // Имя и фамилия
             stack.Children.Add(new TextBlock
             {
                 Text = $"{trainer.FirstName} {trainer.LastName}",
@@ -67,6 +69,7 @@ namespace Energy.Pages
                 Foreground = (SolidColorBrush)FindResource("TextPrimaryBrush")
             });
 
+            // Специализация
             stack.Children.Add(new TextBlock
             {
                 Text = trainer.Specialization,
@@ -75,36 +78,50 @@ namespace Energy.Pages
                 Margin = new Thickness(0, 5, 0, 0)
             });
 
+            // Опыт
+            stack.Children.Add(new TextBlock
+            {
+                Text = $"Опыт: {trainer.YearsOfExperience} лет",
+                FontSize = 12,
+                Foreground = (SolidColorBrush)FindResource("TextSecondaryBrush"),
+                Margin = new Thickness(0, 5, 0, 0)
+            });
+
+            // Описание
             stack.Children.Add(new TextBlock
             {
                 Text = trainer.Description,
                 FontSize = 12,
                 Foreground = (SolidColorBrush)FindResource("TextSecondaryBrush"),
                 TextWrapping = TextWrapping.Wrap,
-                Margin = new Thickness(0, 10, 0, 0)
-            });
-
-            stack.Children.Add(new TextBlock
-            {
-                Text = $"Опыт: {trainer.YearsOfExperience} лет",
-                FontSize = 12,
-                Margin = new Thickness(0, 5, 0, 10)
+                Margin = new Thickness(0, 10, 0, 0),
+                MaxHeight = 60
             });
 
             // Кнопка выбора тренера
+            bool isSelected = _selectedTrainerId == trainer.Id;
             var selectButton = new Button
             {
-                Content = _selectedTrainerId == trainer.Id ? "✅ Мой тренер" : "📝 Выбрать",
+                Content = isSelected ? "✅ Мой тренер" : "📝 Выбрать тренера",
                 Tag = trainer.Id,
-                Margin = new Thickness(0, 10, 0, 0),
-                Padding = new Thickness(10, 5, 10, 5),
-                Cursor = System.Windows.Input.Cursors.Hand
+                Margin = new Thickness(0, 15, 0, 0),
+                Padding = new Thickness(10, 8, 10, 8),
+                Cursor = System.Windows.Input.Cursors.Hand,
+                FontSize = 13
             };
-            selectButton.Click += (s, e) => SelectTrainer(trainer.Id, trainer.FirstName + " " + trainer.LastName);
 
-            // Стиль для кнопки
-            selectButton.SetResourceReference(Button.BackgroundProperty, "ButtonPrimaryBrush");
-            selectButton.SetResourceReference(Button.ForegroundProperty, "TextPrimaryBrush");
+            if (isSelected)
+            {
+                selectButton.Background = (SolidColorBrush)FindResource("ButtonSuccessBrush");
+                selectButton.Foreground = (SolidColorBrush)FindResource("TextPrimaryBrush");
+                selectButton.IsEnabled = false;
+            }
+            else
+            {
+                selectButton.Background = (SolidColorBrush)FindResource("ButtonPrimaryBrush");
+                selectButton.Foreground = (SolidColorBrush)FindResource("TextPrimaryBrush");
+                selectButton.Click += (s, e) => SelectTrainer(trainer.Id, $"{trainer.FirstName} {trainer.LastName}");
+            }
 
             stack.Children.Add(selectButton);
 
@@ -150,11 +167,10 @@ namespace Energy.Pages
             }
 
             _selectedTrainerId = trainerId;
-            MessageBox.Show($"Ваш тренер: {trainerName}!", "Тренер выбран",
+            MessageBox.Show($"Теперь {trainerName} ваш тренер!", "Тренер выбран",
                             MessageBoxButton.OK, MessageBoxImage.Information);
 
             // Обновляем страницу
-            TrainersPanel.Children.Clear();
             LoadTrainers();
         }
     }
