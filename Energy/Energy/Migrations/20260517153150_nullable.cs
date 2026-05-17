@@ -5,22 +5,30 @@
 namespace Energy.Migrations
 {
     /// <inheritdoc />
-    public partial class AllowNullConditionAndDescription : Migration
+    public partial class nullable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "Description",
-                table: "Subscriptions",
+                name: "Phone",
+                table: "Users",
                 type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)");
 
             migrationBuilder.AlterColumn<string>(
-                name: "Condition",
-                table: "Subscriptions",
+                name: "LastName",
+                table: "Users",
+                type: "nvarchar(max)",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "FirstName",
+                table: "Users",
                 type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
@@ -31,8 +39,8 @@ namespace Energy.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "Description",
-                table: "Subscriptions",
+                name: "Phone",
+                table: "Users",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "",
@@ -41,8 +49,18 @@ namespace Energy.Migrations
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
-                name: "Condition",
-                table: "Subscriptions",
+                name: "LastName",
+                table: "Users",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)",
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<string>(
+                name: "FirstName",
+                table: "Users",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "",

@@ -17,8 +17,10 @@ namespace Energy.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) //EF сам вызовет для подклюени к бд
         {
             optionsBuilder.UseSqlServer(
-                "Server=LOST\\MSSQLSERVER06;Database=fitness_db;Trusted_Connection=True;Encrypt=False"
+                "Server=LOST\\MSSQLSERVER06;Database=Energy_DB;Trusted_Connection=True;Encrypt=False"
             );
         }
+
+
     }
 }

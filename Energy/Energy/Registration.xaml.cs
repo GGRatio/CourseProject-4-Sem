@@ -120,7 +120,16 @@ namespace Energy
                         MessageBox.Show("Регистрация успешна!", "Успех",
                             MessageBoxButton.OK, MessageBoxImage.Information);
 
+
+                        var loginWindow = new Login();
+                        loginWindow.Show();
+
+                        loginWindow.txtBoxLogin.Text = login;
+                        loginWindow.txtBoxPassword.Password = pass;
+
                         this.Close();
+                        
+
                     }
                 }
                 catch (Exception ex)
