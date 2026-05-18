@@ -15,7 +15,6 @@ namespace Energy.Data
         public DbSet<Purchase> Purchases { get; set; }
         public DbSet<Trainer> Trainers { get; set; }
         public DbSet<UserTrainer> UserTrainers { get; set; }
-
         public DbSet<GroupClass> GroupClasses { get; set; }
         public DbSet<ClassRegistration> ClassRegistrations { get; set; }
 

@@ -40,7 +40,7 @@
         <StackPanel Orientation="Vertical" VerticalAlignment="Top"  
                     Grid.Row="0" Margin="0,40,0,0">
             <Button x:Name="btn_Groupe" Content="Групповые занятия" Click="btn_Groupe_Click"/>
-            <Button x:Name="btn_Trainers" Content="Тренеры" Click="btn_Trainers_Click"/>
+            <Button x:Name="btn_Trainers" Content="Тренерский состав" Click="btn_Trainers_Click"/>
             <Button x:Name="btn_Subscriptions" Content="Абонементы" Click="btn_Subscriptions_Click"/>
         </StackPanel>
 

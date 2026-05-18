@@ -66,15 +66,11 @@ namespace Energy.Controls
 
         }
 
-        private void CloseCurrentWindow()
-        {
-            var window = Window.GetWindow(this);
-            window?.Close();
-        }
 
         private void btn_Groupe_Click(object sender, RoutedEventArgs e)
         {
-
+            var mainWindow = (Application.Current.MainWindow as MainWindow);
+            mainWindow?.NavigateTo(new Pages.GroupClassesPage());
         }
     }
 }
