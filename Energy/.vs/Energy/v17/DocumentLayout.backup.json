@@ -179,8 +179,7 @@
               "RelativeToolTip": "Energy\\Pages\\GroupClassesPage.xaml.cs",
               "ViewState": "AgIAAJgAAAAAAAAAAAAmwK4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-18T06:16:06.964Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-18T06:16:06.964Z"
             },
             {
               "$type": "Document",
@@ -191,8 +190,7 @@
               "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\GroupClassesPage.xaml",
               "RelativeToolTip": "Energy\\Pages\\GroupClassesPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-18T06:04:08.332Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-18T06:04:08.332Z"
             },
             {
               "$type": "Document",
@@ -200,8 +198,8 @@
               "Title": "ProfilePage.xaml",
               "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\ProfilePage.xaml",
               "RelativeDocumentMoniker": "Energy\\Pages\\ProfilePage.xaml",
-              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\ProfilePage.xaml",
-              "RelativeToolTip": "Energy\\Pages\\ProfilePage.xaml",
+              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\ProfilePage.xaml*",
+              "RelativeToolTip": "Energy\\Pages\\ProfilePage.xaml*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-05-11T18:19:24.692Z",
               "EditorCaption": ""
@@ -226,7 +224,7 @@
               "RelativeDocumentMoniker": "Energy\\Pages\\ProfilePage.xaml.cs",
               "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\ProfilePage.xaml.cs",
               "RelativeToolTip": "Energy\\Pages\\ProfilePage.xaml.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAcwO4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAPUAAAAAAAAAAAAewNwAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-11T18:19:44.45Z",
               "EditorCaption": ""
@@ -240,8 +238,7 @@
               "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\SubscriptionsPage.xaml",
               "RelativeToolTip": "Energy\\Pages\\SubscriptionsPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-11T18:05:32.276Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-11T18:05:32.276Z"
             },
             {
               "$type": "Document",
@@ -288,8 +285,7 @@
               "RelativeToolTip": "Energy\\Controls\\HeaderControl.xaml.cs",
               "ViewState": "AgIAADQAAAAAAAAAAAAcwEgAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-11T09:56:15.341Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-11T09:56:15.341Z"
             },
             {
               "$type": "Document",

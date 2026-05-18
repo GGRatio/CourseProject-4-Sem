@@ -194,8 +194,7 @@
                    Margin="0,0,0,15"/>
 
                         <ListBox x:Name="lstMyClasses" Grid.Row="1" 
-                 Background="Transparent" BorderThickness="0"
-                 MaxHeight="200">
+                 Background="Transparent" BorderThickness="0">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Border Background="{DynamicResource CardBackgroundBrush}" 
@@ -208,7 +207,7 @@
                                                 <ColumnDefinition Width="Auto"/>
                                             </Grid.ColumnDefinitions>
 
-                                            <StackPanel>
+                                            <StackPanel Grid.Column="0" MinWidth="350">
                                                 <TextBlock Text="{Binding Name}" FontWeight="SemiBold" 
                                            Foreground="{DynamicResource TextPrimaryBrush}"/>
                                                 <TextBlock Text="{Binding Instructor}" FontSize="12" 
@@ -218,10 +217,10 @@
                                             </StackPanel>
 
                                             <Button Grid.Column="1" Content="❌ Отменить" 
-                                    Click="CancelClass_Click" Tag="{Binding Id}"
-                                    Background="#F44336" Foreground="White"
-                                    Padding="10,5" Margin="10,0,0,0"
-                                    Cursor="Hand" FontSize="12"/>
+                                            Click="CancelClass_Click" Tag="{Binding Id}"
+                                            Background="#F44336" Foreground="White"
+                                            Padding="10,5" Margin="10,0,0,0"
+                                            Cursor="Hand" FontSize="12"/>
                                         </Grid>
                                     </Border>
                                 </DataTemplate>
