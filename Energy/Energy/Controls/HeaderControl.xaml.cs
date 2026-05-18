@@ -55,7 +55,7 @@ namespace Energy.Controls
             var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
             if (Session.CurrentUserRole == "Admin" && mainWindow!=null)
             {
-                mainWindow.NavigateTo(new SubscriptionAdminPage());
+                mainWindow.NavigateTo(new AdminSubscriptionsPage());
             }
             else 
             {

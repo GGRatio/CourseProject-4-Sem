@@ -4,27 +4,5 @@
       Title="Панель управления"
       Background="{DynamicResource BackgroundBrush}">
 
-    <Grid Margin="20">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
 
-        <TextBlock Text="👑 Панель управления" FontSize="28" FontWeight="Bold" 
-                   HorizontalAlignment="Center" Margin="0,0,0,20"/>
-
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
-            <Button Content="Абонементы" Click="Subscriptions_Click" 
-                    Width="150" Margin="5" Background="#4CAF50" Foreground="White"/>
-            <Button Content="Тренеры" Click="Trainers_Click" 
-                    Width="150" Margin="5" Background="#2196F3" Foreground="White"/>
-            <Button Content="Пользователи" Click="Users_Click" 
-                    Width="150" Margin="5" Background="#FF9800" Foreground="White"/>
-            <Button Content="Групповые Занятия" Click="GroupClasses_Click" 
-                    Width="150" Margin="5" Background="#9C27B0" Foreground="White"/>
-        </StackPanel>
-
-        <Frame x:Name="AdminFrame" Grid.Row="2" NavigationUIVisibility="Hidden"/>
-    </Grid>
 </Page>

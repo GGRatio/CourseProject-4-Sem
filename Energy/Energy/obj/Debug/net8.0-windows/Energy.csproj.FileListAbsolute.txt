@@ -145,5 +145,5 @@ D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\GroupCl
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\GroupClassesPage.baml
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\AdminPages\AdminPage.g.cs
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\AdminPages\AdminPage.baml
-D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\AdminPages\SubscriptionAdminPage.g.cs
-D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\AdminPages\SubscriptionAdminPage.baml
+D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\AdminPages\AdminSubscriptionPage.baml
+D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\AdminPages\AdminSubscriptionPage.g.cs
