@@ -147,3 +147,5 @@ D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\AdminPa
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\AdminPages\AdminPage.baml
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\AdminPages\AdminSubscriptionPage.baml
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\AdminPages\AdminSubscriptionPage.g.cs
+D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\AdminPages\AdminGroupClassesPage.baml
+D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\AdminPages\AdminGroupClassesPage.g.cs

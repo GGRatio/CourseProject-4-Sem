@@ -88,7 +88,11 @@ namespace Energy.Controls
         private void btn_Groupe_Click(object sender, RoutedEventArgs e)
         {
             var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
-            if (mainWindow != null)
+            if (Session.CurrentUserRole == "Admin" && mainWindow != null)
+            {
+                mainWindow.NavigateTo(new AdminGroupClassesPage());
+            }
+            else
             {
                 mainWindow.NavigateTo(new Pages.GroupClassesPage());
             }
