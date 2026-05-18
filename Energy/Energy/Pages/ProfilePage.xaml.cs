@@ -30,6 +30,7 @@ namespace Energy.Pages
             LoadUserData();
             LoadCurrentSubscription();
             LoadMyTrainer();
+            LoadMyClasses();
             SetEditMode(false);
         }
 
@@ -205,6 +206,84 @@ namespace Energy.Pages
         private void btnDetail_Click(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        public class UserClassInfo
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public string Instructor { get; set; }
+            public DateTime ClassDate { get; set; }
+            public int RegistrationId { get; set; }
+            public string ClassDateText => ClassDate.ToString("dd.MM.yyyy HH:mm");
+        }
+
+        private void LoadMyClasses()
+        {
+            using (var db = new AppDbContext())
+            {
+                var registrations = db.ClassRegistrations
+                    .Where(r => r.UserId == Session.CurrentUserId && !r.IsCanceled && r.GroupClass.ClassDate > DateTime.Now)
+                    .Select(r => new UserClassInfo
+                    {
+                        Id = r.GroupClass.Id,
+                        Name = r.GroupClass.Name,
+                        Instructor = r.GroupClass.Instructor,
+                        ClassDate = r.GroupClass.ClassDate,
+                        RegistrationId = r.Id
+                    })
+                    .OrderBy(r => r.ClassDate)
+                    .ToList();
+
+                lstMyClasses.ItemsSource = registrations;
+
+                if (registrations.Count == 0)
+                {
+                    lstMyClasses.ItemsSource = null;
+                    lstMyClasses.Items.Add(new TextBlock
+                    {
+                        Text = "Нет активных записей",
+                        FontSize = 12,
+                        Foreground = (SolidColorBrush)FindResource("TextSecondaryBrush"),
+                        Margin = new Thickness(10)
+                    });
+                }
+            }
+        }
+
+        //Отмена записи на гупповое занятие 
+        private void CancelClass_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            int classId = (int)button.Tag;
+
+            if (MessageBox.Show("Отменить запись на занятие?", "Подтверждение",
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                using (var db = new AppDbContext())
+                {
+                    // Находим регистрацию
+                    var registration = db.ClassRegistrations
+                        .FirstOrDefault(r => r.UserId == Session.CurrentUserId && r.GroupClassId == classId && !r.IsCanceled);
+
+                    if (registration != null)
+                    {
+                        registration.IsCanceled = true;
+
+                        // Уменьшаем количество участников в занятии
+                        var classItem = db.GroupClasses.Find(classId);
+                        if (classItem != null && classItem.CurrentParticipants > 0)
+                        {
+                            classItem.CurrentParticipants--;
+                        }
+
+                        db.SaveChanges();
+                    }
+                }
+
+                LoadMyClasses();
+                MessageBox.Show("Запись отменена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
     }
