@@ -16,8 +16,10 @@ namespace Energy.Models
         //Доп информация
         public string? FirstName { get; set; }   
         public string? LastName { get; set; }    
-        public string? Phone { get; set; }     
+        public string? Phone { get; set; }
 
+
+        public string Role { get; set; } = "User";
         //Текущий Абонимент
 
         //Текущий Тренер 

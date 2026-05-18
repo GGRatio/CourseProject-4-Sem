@@ -65,13 +65,13 @@ namespace Energy
 
             ResetFieldsBackground();
 
-            if (login.Length < 5)
+            if (login.Length < 4)
             {
                 ShowError(txtBoxLogin, "Логин не менее 5 символов!");
                 txtBoxLogin.Focus();
                 return;
             }
-            else if (pass.Length < 8)
+            else if (pass.Length < 5)
             {
                 ShowError(txtBoxPassword, "Пароль не менее 8 символов!");
                 txtBoxPassword.Focus();

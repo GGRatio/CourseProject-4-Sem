@@ -203,10 +203,6 @@ namespace Energy.Pages
         }
 
 
-        private void btnDetail_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
 
         public class UserClassInfo
         {

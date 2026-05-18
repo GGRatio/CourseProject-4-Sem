@@ -170,11 +170,11 @@
                                 <TextBlock x:Name="txtTrainerSpecialization" FontSize="12" 
                            Foreground="{DynamicResource TextSecondaryBrush}"/>
                             </StackPanel>
-                            <Button x:Name="btnDetails" Margin="20" Content="Подробнее" 
+                           <!-- <Button x:Name="btnDetails" Margin="20" Content="Подробнее" 
                                 Width="120" Height="35"
                                 Background="{DynamicResource ButtonPrimaryBrush}" 
                                 Foreground="White"
-                                Click="btnDetail_Click"/>
+                                Click="btnDetail_Click"/> -->
                         </StackPanel>
                     </Grid>
                 </Border>
@@ -216,6 +216,8 @@
                                            Foreground="{DynamicResource TextSecondaryBrush}"/>
                                             </StackPanel>
 
+                                            
+                                            <!--TODO: добавлять кнопку в C#-->
                                             <Button Grid.Column="1" Content="❌ Отменить" 
                                             Click="CancelClass_Click" Tag="{Binding Id}"
                                             Background="#F44336" Foreground="White"

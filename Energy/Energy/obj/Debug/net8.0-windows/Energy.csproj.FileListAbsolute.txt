@@ -143,3 +143,7 @@ D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Themes\DarkTh
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Themes\LightTheme.baml
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\GroupClassesPage.g.cs
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\GroupClassesPage.baml
+D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\AdminPages\AdminPage.g.cs
+D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\AdminPages\AdminPage.baml
+D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\AdminPages\SubscriptionAdminPage.g.cs
+D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\AdminPages\SubscriptionAdminPage.baml

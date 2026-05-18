@@ -14,6 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using Energy.Pages.AdminPages;
+using System.IO;
+
 namespace Energy.Controls
 {
     /// <summary>
@@ -29,48 +32,70 @@ namespace Energy.Controls
 
         private void HeaderControl_Loaded(object sender, RoutedEventArgs e)
         {
-            // Загружаем имя из session.json
+
             var savedUser = SessionManager.LoadUser();
 
             if (savedUser != null)
             {
                 btn_Profile.Content = $"👤 {savedUser.Login}";
             }
+            if(Session.CurrentUserRole== "Admin")
+            {
+
+                btn_Profile.Content = "Пользователи";
+                btn_Subscriptions.Content = "Управление абонементаами";
+                btn_Trainers.Content = "Управление тренерами";
+                btn_Groupe.Content = "управление занятиями";
+            }
         }
 
-        private void btn_Trainers_Click(object sender, RoutedEventArgs e)
-        {
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow?.NavigateTo(new Pages.TrainersPage());
-        }
 
         private void btn_Subscriptions_Click(object sender, RoutedEventArgs e)
         {
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow?.NavigateTo(new Pages.SubscriptionsPage());
-
+            var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            if (Session.CurrentUserRole == "Admin" && mainWindow!=null)
+            {
+                mainWindow.NavigateTo(new SubscriptionAdminPage());
+            }
+            else 
+            {
+                mainWindow.NavigateTo(new Pages.SubscriptionsPage());
+            }
         }
 
         private void btn_Profile_Click(object sender, RoutedEventArgs e)
         {
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-            if (mainWindow != null)
+            var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            if (Session.CurrentUserRole == "Admin" && mainWindow != null)
             {
-                mainWindow.NavigateTo(new Pages.ProfilePage());
+                mainWindow.NavigateTo(new AdminPage());
             }
             else
             {
-                MessageBox.Show("MainWindow не найден!");
+                mainWindow.NavigateTo(new Pages.ProfilePage());
             }
-
-
         }
 
+        private void btn_Trainers_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            if (mainWindow != null)
+            {
+                mainWindow.NavigateTo(new Pages.TrainersPage());
+            }
+        }
 
         private void btn_Groupe_Click(object sender, RoutedEventArgs e)
         {
-            var mainWindow = (Application.Current.MainWindow as MainWindow);
-            mainWindow?.NavigateTo(new Pages.GroupClassesPage());
+            var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            if (mainWindow != null)
+            {
+                mainWindow.NavigateTo(new Pages.GroupClassesPage());
+            }
         }
+
+
+
+
     }
 }

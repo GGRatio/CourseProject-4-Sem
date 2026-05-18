@@ -52,61 +52,33 @@ namespace Energy
             string login = txtBoxLogin.Text.Trim();
             string pass = txtBoxPassword.Password;
 
-            ResetFieldsBackground();
-
-            if (string.IsNullOrEmpty(login))
+            using (var db = new AppDbContext())
             {
-                ShowError(txtBoxLogin, "Введите логин");
-                return;
-            }
+                var user = db.Users.FirstOrDefault(u => u.Login == login);
 
-            if (string.IsNullOrEmpty(pass))
-            {
-                ShowError(txtBoxPassword, "Введите пароль");
-                return;
-            }
-
-            try
-            {
-                using (var db = new AppDbContext())
+                if (user == null)
                 {
-                    //Пытаемся найти пользователя с таким логином
-                    var user = db.Users.FirstOrDefault(u => u.Login == login);
-
-                    if (user == null)
-                    {
-                        ShowError(txtBoxLogin, "Неверный логин");   
-                        return;
-                    }
-
-                    if (PasswordHelper.HashPassword(pass) == user.PasswordHash)
-                    {
-                        if(RememberMeCheckBox.IsChecked == true)
-                        {
-                            SessionManager.SaveUser(user.Id, user.Login);
-                        }
-
-                        Session.CurrentUserLogin = user.Login;
-                        Session.CurrentUserId = user.Id;
-
-
-
-                        var mainWindow = new MainWindow();
-                        mainWindow.Show();
-                        Application.Current.MainWindow = mainWindow;
-                        this.Close();
-                    }
-                    else
-                    {
-                        ShowError(txtBoxLogin, "Неверный пароль");
-                        return;
-                    }
-
+                    MessageBox.Show("Пользователь не найден!");
+                    return;
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка БД: {ex.Message}");
+
+                // Проверка пароля
+                if (PasswordHelper.HashPassword(pass) == user.PasswordHash)
+                {
+                    Session.CurrentUserId = user.Id;
+                    Session.CurrentUserLogin = user.Login;
+                    Session.CurrentUserRole = user.Role;
+
+                    MessageBox.Show($"Добро пожаловать, {user.Login}! Роль: {user.Role}");
+
+                    var mainWindow = new MainWindow();
+                    mainWindow.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Неверный пароль!");
+                }
             }
         }
 

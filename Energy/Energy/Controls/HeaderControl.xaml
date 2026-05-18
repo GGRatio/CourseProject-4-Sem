@@ -54,14 +54,6 @@
         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom"  
                     HorizontalAlignment="Center" Grid.Row="2"
                     Margin="0,0,0,30">
-            <!-- Аватарка -->
-            <Border Width="40" Height="40" CornerRadius="20" 
-                    Background="{DynamicResource ButtonSuccessBrush}" 
-                    Margin="0,0,10,0">
-                <TextBlock Text="👤" FontSize="20" 
-                           HorizontalAlignment="Center" 
-                           VerticalAlignment="Center"/>
-            </Border>
             <Button x:Name="btn_Profile" Content="Профиль" Click="btn_Profile_Click"/>
         </StackPanel>
     </Grid>
