@@ -14,10 +14,13 @@
     <Compile Update="Pages\AdminPages\AdminGroupClassesPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Pages\AdminPages\AdminPage.xaml.cs">
+    <Compile Update="Pages\AdminPages\AdminUsersPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Pages\AdminPages\AdminSubscriptionPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\AdminPages\AdminTrainersPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Pages\GroupClassesPage.xaml.cs">

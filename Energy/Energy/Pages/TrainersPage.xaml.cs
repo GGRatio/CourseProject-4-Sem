@@ -1,22 +1,21 @@
-﻿using Energy.Data;
-using Energy.Helpers;
-using Energy.Models;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
+using System.IO;
+using Energy.Data;
+using Energy.Models;
+using Energy.Helpers;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
+using Path = System.IO.Path;
+using File = System.IO.File;
+using Directory = System.IO.Directory;
 
 namespace Energy.Pages
 {
@@ -69,6 +68,7 @@ namespace Energy.Pages
 
             var mainStack = new StackPanel();
 
+            // Фото (верхняя часть)
             var photoBorder = new Border
             {
                 Height = 220,
@@ -88,13 +88,26 @@ namespace Energy.Pages
                         VerticalAlignment = VerticalAlignment.Top
                     };
 
-                    string fullPath = $"pack://application:,,,/{trainer.PhotoUrl}";
-                    photo.Source = new BitmapImage(new Uri(fullPath));
-                    photoBorder.Child = photo;
+                    string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, trainer.PhotoUrl);
+
+                    if (File.Exists(fullPath))
+                    {
+                        var bitmap = new BitmapImage();
+                        bitmap.BeginInit();
+                        bitmap.UriSource = new Uri(fullPath);
+                        bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                        bitmap.EndInit();
+                        photo.Source = bitmap;
+                        photoBorder.Child = photo;
+                    }
+                    else
+                    {
+                        throw new Exception("Фото не найдено");
+                    }
                 }
                 else
                 {
-                    throw new Exception();
+                    throw new Exception("Нет пути к фото");
                 }
             }
             catch
@@ -112,7 +125,7 @@ namespace Energy.Pages
 
             mainStack.Children.Add(photoBorder);
 
-
+            // Текстовая часть (нижняя)
             var textStack = new StackPanel
             {
                 Margin = new Thickness(15),
@@ -150,7 +163,7 @@ namespace Energy.Pages
                 Margin = new Thickness(0, 0, 0, 8)
             });
 
-            // Описание (обрезаем до 2 строк)
+            // Описание
             var descText = new TextBlock
             {
                 Text = trainer.Description,
@@ -163,7 +176,7 @@ namespace Energy.Pages
             };
             textStack.Children.Add(descText);
 
-            // Кнопка выбора
+            // Кнопка выбора тренера
             bool isSelected = _selectedTrainerId == trainer.Id;
             var selectButton = new Button
             {

@@ -18,9 +18,9 @@ using Energy.Pages.AdminPages;
 
 namespace Energy.Pages.AdminPages
 {
-    public partial class AdminPage : Page
+    public partial class AdminUsersPage : Page
     {
-        public AdminPage()
+        public AdminUsersPage()
         {
             InitializeComponent();
 

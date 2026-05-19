@@ -68,7 +68,7 @@ namespace Energy.Controls
             var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
             if (Session.CurrentUserRole == "Admin" && mainWindow != null)
             {
-                mainWindow.NavigateTo(new AdminPage());
+                mainWindow.NavigateTo(new AdminUsersPage());
             }
             else
             {
@@ -79,7 +79,11 @@ namespace Energy.Controls
         private void btn_Trainers_Click(object sender, RoutedEventArgs e)
         {
             var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
-            if (mainWindow != null)
+            if (Session.CurrentUserRole == "Admin" && mainWindow != null)
+            {
+                mainWindow.NavigateTo(new AdminTrainersPage());
+            }
+            else
             {
                 mainWindow.NavigateTo(new Pages.TrainersPage());
             }

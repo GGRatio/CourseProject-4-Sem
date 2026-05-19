@@ -1,0 +1,134 @@
+﻿<Page x:Class="Energy.Pages.AdminPages.AdminTrainersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Управление тренерами"
+      Background="{DynamicResource BackgroundBrush}">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Text="👨‍🏫 Управление тренерами" FontSize="24" FontWeight="Bold" 
+                   HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+        <!-- Форма ввода -->
+        <Border Grid.Row="1" Background="{DynamicResource CardBackgroundBrush}" 
+                CornerRadius="12" Padding="20" Margin="0,0,0,20"
+                BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Строка 1: Логин + Пароль -->
+                <TextBlock Text="Логин:" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                <TextBox x:Name="txtLogin" Grid.Column="1" Margin="0,0,20,0" 
+                         Height="35" Padding="8,0" VerticalAlignment="Center"
+                         Background="{DynamicResource CardBackgroundBrush}"
+                         BorderBrush="{DynamicResource BorderBrush}"/>
+
+                <TextBlock Text="Пароль:" Grid.Column="2" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                <PasswordBox x:Name="txtPassword" Grid.Column="3" Margin="0" 
+                         Height="35" Padding="8,0" VerticalAlignment="Center"
+                         Background="{DynamicResource CardBackgroundBrush}"
+                         BorderBrush="{DynamicResource BorderBrush}"/>
+
+                <!-- Строка 2: Имя + Фамилия -->
+                <TextBlock Text="Имя:" Grid.Row="1" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                <TextBox x:Name="txtFirstName" Grid.Row="1" Grid.Column="1" Margin="0,0,20,0" 
+                         Height="35" Padding="8,0" VerticalAlignment="Center"
+                         Background="{DynamicResource CardBackgroundBrush}"
+                         BorderBrush="{DynamicResource BorderBrush}"/>
+
+                <TextBlock Text="Фамилия:" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                <TextBox x:Name="txtLastName" Grid.Row="1" Grid.Column="3" Margin="0" 
+                         Height="35" Padding="8,0" VerticalAlignment="Center"
+                         Background="{DynamicResource CardBackgroundBrush}"
+                         BorderBrush="{DynamicResource BorderBrush}"/>
+
+                <!-- Строка 3: Email + Специализация -->
+                <TextBlock Text="Email:" Grid.Row="2" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                <TextBox x:Name="txtEmail" Grid.Row="2" Grid.Column="1" Margin="0,0,20,0" 
+                         Height="35" Padding="8,0" VerticalAlignment="Center"
+                         Background="{DynamicResource CardBackgroundBrush}"
+                         BorderBrush="{DynamicResource BorderBrush}"/>
+
+                <TextBlock Text="Специализация:" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                <TextBox x:Name="txtSpecialization" Grid.Row="2" Grid.Column="3" Margin="0" 
+                         Height="35" Padding="8,0" VerticalAlignment="Center"
+                         Background="{DynamicResource CardBackgroundBrush}"
+                         BorderBrush="{DynamicResource BorderBrush}"/>
+
+                <!-- Строка 4: Опыт + Фото -->
+                <TextBlock Text="Опыт (лет):" Grid.Row="3" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                <TextBox x:Name="txtExperience" Grid.Row="3" Grid.Column="1" Margin="0,0,20,0" 
+         Height="35" Padding="8,0" VerticalAlignment="Center"
+         Background="{DynamicResource CardBackgroundBrush}"
+         BorderBrush="{DynamicResource BorderBrush}"/>
+
+                <TextBlock Text="Фото:" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                <StackPanel Grid.Row="3" Grid.Column="3" Orientation="Horizontal" Margin="0">
+                    <TextBox x:Name="txtPhotoPath" Width="150" Height="35" Padding="8,0" VerticalAlignment="Center"
+             Background="{DynamicResource CardBackgroundBrush}"
+             BorderBrush="{DynamicResource BorderBrush}"
+             IsReadOnly="True"/>
+                    <Button Content="📁 Выбрать" Click="SelectPhoto_Click" Width="70" Height="35" Margin="5,0,0,0"
+            Background="#2196F3" Foreground="White" FontWeight="SemiBold"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Кнопки управления -->
+        <WrapPanel Grid.Row="2" HorizontalAlignment="Center" Margin="0,0,0,20">
+            <Button Content="➕ Создать тренера" Click="Add_Click" Width="130" Height="35" Margin="5" 
+                    Background="#4CAF50" Foreground="White" FontWeight="SemiBold"/>
+            <Button Content="✏️ Обновить" Click="Update_Click" Width="110" Height="35" Margin="5" 
+                    Background="#2196F3" Foreground="White" FontWeight="SemiBold"/>
+            <Button Content="🗑️ Удалить" Click="Delete_Click" Width="110" Height="35" Margin="5" 
+                    Background="#F44336" Foreground="White" FontWeight="SemiBold"/>
+            <Button Content="🔄 Очистить" Click="Clear_Click" Width="110" Height="35" Margin="5" 
+                    Background="#607D8B" Foreground="White" FontWeight="SemiBold"/>
+        </WrapPanel>
+
+        <!-- Таблица -->
+        <Border Grid.Row="3" CornerRadius="12" Background="{DynamicResource CardBackgroundBrush}"
+                BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Padding="1">
+            <DataGrid x:Name="dgTrainers" 
+                      AutoGenerateColumns="True" 
+                      CanUserSortColumns="True"
+                      SelectionChanged="dgTrainers_SelectionChanged"
+                      SelectionMode="Single"
+                      Background="Transparent"
+                      RowHeight="40"
+                      HeadersVisibility="Column"
+                      GridLinesVisibility="Horizontal"
+                      BorderThickness="0"
+                      RowBackground="{DynamicResource CardBackgroundBrush}"
+                      Foreground="{DynamicResource TextPrimaryBrush}">
+                <DataGrid.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#4CAF50"/>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent"/>
+                </DataGrid.Resources>
+            </DataGrid>
+        </Border>
+
+        <!-- Статус -->
+        <TextBlock x:Name="txtStatus" Grid.Row="4" Margin="0,10" Foreground="{DynamicResource TextSecondaryBrush}" 
+                   FontSize="11" HorizontalAlignment="Right"/>
+    </Grid>
+</Page>
