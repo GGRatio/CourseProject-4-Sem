@@ -1,30 +1,200 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Energy.Data;
+using Energy.Helpers;
+using Energy.Models;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-
-using Energy.Pages.AdminPages;
 
 namespace Energy.Pages.AdminPages
 {
     public partial class AdminUsersPage : Page
     {
+        private int _selectedId;
+
         public AdminUsersPage()
         {
             InitializeComponent();
-
+            LoadData();
         }
 
+        private void LoadData()
+        {
+            using (var db = new AppDbContext())
+            {
+                var users = db.Users.ToList();
+                dgUsers.ItemsSource = users;
+                txtStatus.Text = $"Всего пользователей: {users.Count}";
+            }
+        }
+
+        private void ClearForm()
+        {
+            _selectedId = 0;
+            txtLogin.Text = "";
+            txtEmail.Text = "";
+            txtFirstName.Text = "";
+            txtLastName.Text = "";
+            txtPhone.Text = "";
+            cbRole.SelectedIndex = 0;
+        }
+
+        private void Update_Click(object sender, RoutedEventArgs e)
+        {
+            if (_selectedId == 0)
+            {
+                MessageBox.Show("Выберите пользователя!");
+                return;
+            }
+
+            using (var db = new AppDbContext())
+            {
+                var user = db.Users.Find(_selectedId);
+                if (user != null)
+                {
+                    user.Email = txtEmail.Text;
+                    user.FirstName = txtFirstName.Text;
+                    user.LastName = txtLastName.Text;
+                    user.Phone = txtPhone.Text;
+                    user.Role = (cbRole.SelectedItem as ComboBoxItem)?.Content.ToString();
+
+                    db.SaveChanges();
+                }
+            }
+
+            LoadData();
+            ClearForm();
+            MessageBox.Show("Данные пользователя обновлены!");
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (_selectedId == 0)
+            {
+                MessageBox.Show("Выберите пользователя!");
+                return;
+            }
+
+            using (var db = new AppDbContext())
+            {
+                var user = db.Users.Find(_selectedId);
+
+                if (user == null)
+                {
+                    MessageBox.Show("Пользователь не найден!");
+                    return;
+                }
+
+                // Нельзя удалить самого себя
+                if (user.Login == Session.CurrentUserLogin)
+                {
+                    MessageBox.Show("Нельзя удалить свою учётную запись!");
+                    return;
+                }
+
+                // Подтверждение удаления
+                if (MessageBox.Show($"Удалить пользователя {user.Login}?", "Подтверждение",
+                    MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    db.Users.Remove(user);
+                    db.SaveChanges();
+                    LoadData();
+                    ClearForm();
+                    MessageBox.Show("Пользователь удалён!");
+                }
+            }
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            ClearForm();
+        }
+
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            using (var db = new AppDbContext())
+            {
+                if (string.IsNullOrEmpty(txtLogin.Text) || string.IsNullOrEmpty(txtPassword.Password))
+                {
+                    MessageBox.Show("Заполните Логин и Пароль!");
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtFirstName.Text) || string.IsNullOrEmpty(txtLastName.Text))
+                {
+                    MessageBox.Show("Заполните имя и фамилию!");
+                    return;
+                }
+                if (db.Users.Any(u => u.Login == txtLogin.Text))
+                {
+                    MessageBox.Show("Такой логин занят");
+                    return;
+                }
+
+                // Получаем выбранную роль
+                string role = (cbRole.SelectedItem as ComboBoxItem)?.Content.ToString() ?? "User";
+
+                // 1. Создаём пользователя
+                var newUser = new User
+                {
+                    Login = txtLogin.Text,
+                    PasswordHash = PasswordHelper.HashPassword(txtPassword.Password),
+                    Email = txtEmail.Text,
+                    FirstName = txtFirstName.Text,
+                    LastName = txtLastName.Text,
+                    Phone = txtPhone.Text,
+                    Role = role
+                };
+                db.Users.Add(newUser);
+                db.SaveChanges();
+
+                // 2. Если роль Trainer — создаём запись в Trainers
+                if (role == "Trainer")
+                {
+                    var trainer = new Trainer
+                    {
+                        FirstName = txtFirstName.Text,
+                        LastName = txtLastName.Text,
+                        Specialization = "",
+                        YearsOfExperience = 0,
+                        Description = "",
+                        PhotoUrl = ""
+                    };
+                    db.Trainers.Add(trainer);
+                    db.SaveChanges();
+                }
+
+                MessageBox.Show("Пользователь успешно добавлен!", "Успех",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+
+                // Очищаем форму и обновляем таблицу
+                ClearForm();
+                LoadData();
+            }
+        }
+
+        private void dgUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dgUsers.SelectedItem != null && dgUsers.SelectedItem is User user)
+            {
+                _selectedId = user.Id;
+                txtLogin.Text = user.Login;
+                txtEmail.Text = user.Email;
+                txtFirstName.Text = user.FirstName;
+                txtLastName.Text = user.LastName;
+                txtPhone.Text = user.Phone;
+
+                // Устанавливаем роль в комбобоксе
+                for (int i = 0; i < cbRole.Items.Count; i++)
+                {
+                    var item = cbRole.Items[i] as ComboBoxItem;
+                    if (item != null && item.Content.ToString() == user.Role)
+                    {
+                        cbRole.SelectedIndex = i;
+                        break;
+                    }
+                }
+            }
+        }
     }
 }

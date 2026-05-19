@@ -224,8 +224,6 @@ namespace Energy.Pages.AdminPages
             }
         }
 
-
-
         private void SelectPhoto_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new OpenFileDialog();

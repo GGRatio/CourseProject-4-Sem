@@ -82,27 +82,5 @@ namespace Energy
             }
         }
 
-        private void ShowError(Control control, string message)
-        {
-            control.ToolTip = message;
-            control.Background = new SolidColorBrush(Colors.LightPink);
-
-            // Сброс через 3 секунды
-            var timer = new System.Windows.Threading.DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(3);
-            timer.Tick += (s, args) =>
-            {
-                control.Background = Brushes.White;
-                control.ToolTip = null;
-                timer.Stop();
-            };
-            timer.Start();
-        }
-
-        private void ResetFieldsBackground()
-        {
-            txtBoxLogin.Background = Brushes.White;
-            txtBoxPassword.Background = Brushes.White;
-        }
     }
 }
