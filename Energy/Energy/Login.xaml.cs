@@ -56,20 +56,22 @@ namespace Energy
             {
                 var user = db.Users.FirstOrDefault(u => u.Login == login);
 
-                if (user == null)
-                {
-                    MessageBox.Show("Пользователь не найден!");
-                    return;
-                }
-
-                // Проверка пароля
-                if (PasswordHelper.HashPassword(pass) == user.PasswordHash)
+                if (user != null && PasswordHelper.HashPassword(pass) == user.PasswordHash)
                 {
                     Session.CurrentUserId = user.Id;
                     Session.CurrentUserLogin = user.Login;
                     Session.CurrentUserRole = user.Role;
 
-                    MessageBox.Show($"Добро пожаловать, {user.Login}! Роль: {user.Role}");
+                    // Сохраняем сессию если чекбокс выбран
+                    if (RememberMeCheckBox.IsChecked == true)
+                    {
+                        SessionManager.SaveUser(user.Id, user.Login);
+                    }
+                    else
+                    {
+                        // Если чекбокс не выбран — удаляем старый файл
+                        SessionManager.ClearSession();
+                    }
 
                     var mainWindow = new MainWindow();
                     mainWindow.Show();
@@ -77,7 +79,7 @@ namespace Energy
                 }
                 else
                 {
-                    MessageBox.Show("Неверный пароль!");
+                    MessageBox.Show("Неверный логин или пароль!");
                 }
             }
         }

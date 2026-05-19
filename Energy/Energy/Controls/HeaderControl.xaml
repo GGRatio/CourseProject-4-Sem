@@ -55,6 +55,7 @@
                     HorizontalAlignment="Center" Grid.Row="2"
                     Margin="0,0,0,30">
             <Button x:Name="btn_Profile" Content="Профиль" Click="btn_Profile_Click"/>
+            <Button x:Name="btn_Logout" Content="Выйти" Click="btn_Logout_Click" Margin="0,30,0,0"/>
         </StackPanel>
     </Grid>
 </UserControl>

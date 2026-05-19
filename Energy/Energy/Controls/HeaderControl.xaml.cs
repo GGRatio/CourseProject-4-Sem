@@ -102,7 +102,21 @@ namespace Energy.Controls
             }
         }
 
+        private void btn_Logout_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Выйти из аккаунта?", "Выход",
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                Session.CurrentUserId = 0;
+                Session.CurrentUserLogin = "";
+                Session.CurrentUserRole = "";
+                SessionManager.ClearSession();
 
+                var loginWindow = new Login();
+                loginWindow.Show();
+                Application.Current.MainWindow?.Close();
+            }
+        }
 
 
     }
