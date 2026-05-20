@@ -56,7 +56,17 @@ namespace Energy.Pages.AdminPages
                     user.FirstName = txtFirstName.Text;
                     user.LastName = txtLastName.Text;
                     user.Phone = txtPhone.Text;
-                    user.Role = (cbRole.SelectedItem as ComboBoxItem)?.Content.ToString();
+
+                    // СИНХРОНИЗАЦИЯ: если пользователь — тренер, обновляем Trainers
+                    if (user.Role == "Trainer")
+                    {
+                        var trainer = db.Trainers.FirstOrDefault(t => t.FirstName == user.FirstName || t.LastName == user.LastName);
+                        if (trainer != null)
+                        {
+                            trainer.FirstName = txtFirstName.Text;
+                            trainer.LastName = txtLastName.Text;
+                        }
+                    }
 
                     db.SaveChanges();
                 }
@@ -66,6 +76,8 @@ namespace Energy.Pages.AdminPages
             ClearForm();
             MessageBox.Show("Данные пользователя обновлены!");
         }
+
+
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {

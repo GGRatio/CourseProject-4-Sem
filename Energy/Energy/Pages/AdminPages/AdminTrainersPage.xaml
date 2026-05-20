@@ -16,7 +16,7 @@
         <TextBlock Text="👨‍🏫 Управление тренерами" FontSize="24" FontWeight="Bold" 
                    HorizontalAlignment="Center" Margin="0,0,0,20"/>
 
-        <!-- Форма ввода -->
+        <!-- Форма редактирования -->
         <Border Grid.Row="1" Background="{DynamicResource CardBackgroundBrush}" 
                 CornerRadius="12" Padding="20" Margin="0,0,0,20"
                 BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1">
@@ -35,67 +35,59 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- Строка 1: Логин + Пароль -->
-                <TextBlock Text="Логин:" VerticalAlignment="Center" FontWeight="SemiBold"/>
-                <TextBox x:Name="txtLogin" Grid.Column="1" Margin="0,0,20,0" 
+                <!-- Имя -->
+                <TextBlock Text="Имя:" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                <TextBox x:Name="txtFirstName" Grid.Column="1" Margin="0,0,20,0" 
                          Height="35" Padding="8,0" VerticalAlignment="Center"
                          Background="{DynamicResource CardBackgroundBrush}"
                          BorderBrush="{DynamicResource BorderBrush}"/>
 
-                <TextBlock Text="Пароль:" Grid.Column="2" VerticalAlignment="Center" FontWeight="SemiBold"/>
-                <PasswordBox x:Name="txtPassword" Grid.Column="3" Margin="0" 
+                <!-- Фамилия -->
+                <TextBlock Text="Фамилия:" Grid.Column="2" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                <TextBox x:Name="txtLastName" Grid.Column="3" Margin="0" 
                          Height="35" Padding="8,0" VerticalAlignment="Center"
                          Background="{DynamicResource CardBackgroundBrush}"
                          BorderBrush="{DynamicResource BorderBrush}"/>
 
-                <!-- Строка 2: Имя + Фамилия -->
-                <TextBlock Text="Имя:" Grid.Row="1" VerticalAlignment="Center" FontWeight="SemiBold"/>
-                <TextBox x:Name="txtFirstName" Grid.Row="1" Grid.Column="1" Margin="0,0,20,0" 
+                <!-- Специализация -->
+                <TextBlock Text="Специализация:" Grid.Row="1" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                <TextBox x:Name="txtSpecialization" Grid.Row="1" Grid.Column="1" Margin="0,0,20,0" 
                          Height="35" Padding="8,0" VerticalAlignment="Center"
                          Background="{DynamicResource CardBackgroundBrush}"
                          BorderBrush="{DynamicResource BorderBrush}"/>
 
-                <TextBlock Text="Фамилия:" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" FontWeight="SemiBold"/>
-                <TextBox x:Name="txtLastName" Grid.Row="1" Grid.Column="3" Margin="0" 
+                <!-- Опыт -->
+                <TextBlock Text="Опыт (лет):" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                <TextBox x:Name="txtExperience" Grid.Row="1" Grid.Column="3" Margin="0" 
                          Height="35" Padding="8,0" VerticalAlignment="Center"
                          Background="{DynamicResource CardBackgroundBrush}"
                          BorderBrush="{DynamicResource BorderBrush}"/>
 
-                <!-- Строка 3: Email + Специализация -->
-                <TextBlock Text="Email:" Grid.Row="2" VerticalAlignment="Center" FontWeight="SemiBold"/>
-                <TextBox x:Name="txtEmail" Grid.Row="2" Grid.Column="1" Margin="0,0,20,0" 
-                         Height="35" Padding="8,0" VerticalAlignment="Center"
-                         Background="{DynamicResource CardBackgroundBrush}"
-                         BorderBrush="{DynamicResource BorderBrush}"/>
-
-                <TextBlock Text="Специализация:" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" FontWeight="SemiBold"/>
-                <TextBox x:Name="txtSpecialization" Grid.Row="2" Grid.Column="3" Margin="0" 
-                         Height="35" Padding="8,0" VerticalAlignment="Center"
-                         Background="{DynamicResource CardBackgroundBrush}"
-                         BorderBrush="{DynamicResource BorderBrush}"/>
-
-                <!-- Строка 4: Опыт + Фото -->
-                <TextBlock Text="Опыт (лет):" Grid.Row="3" VerticalAlignment="Center" FontWeight="SemiBold"/>
-                <TextBox x:Name="txtExperience" Grid.Row="3" Grid.Column="1" Margin="0,0,20,0" 
-         Height="35" Padding="8,0" VerticalAlignment="Center"
-         Background="{DynamicResource CardBackgroundBrush}"
-         BorderBrush="{DynamicResource BorderBrush}"/>
-
-                <TextBlock Text="Фото:" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" FontWeight="SemiBold"/>
-                <StackPanel Grid.Row="3" Grid.Column="3" Orientation="Horizontal" Margin="0">
-                    <TextBox x:Name="txtPhotoPath" Width="150" Height="35" Padding="8,0" VerticalAlignment="Center"
-             Background="{DynamicResource CardBackgroundBrush}"
-             BorderBrush="{DynamicResource BorderBrush}"
-             IsReadOnly="True"/>
-                    <Button Content="📁 Выбрать" Click="SelectPhoto_Click" Width="70" Height="35" Margin="5,0,0,0"
-            Background="#2196F3" Foreground="White" FontWeight="SemiBold"/>
+                <!-- Фото -->
+                <TextBlock Text="Фото:" Grid.Row="2" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Orientation="Horizontal">
+                    <TextBox x:Name="txtPhotoPath" Width="200" Height="35" Padding="8,0" VerticalAlignment="Center"
+                             Background="{DynamicResource CardBackgroundBrush}"
+                             BorderBrush="{DynamicResource BorderBrush}"
+                             IsReadOnly="True"/>
+                    <Button Content="📁 Выбрать" Click="SelectPhoto_Click" Width="80" Height="35" Margin="10,0,0,0"
+                            Background="#2196F3" Foreground="White" FontWeight="SemiBold"/>
                 </StackPanel>
+
+                <!-- Описание -->
+                <TextBlock Text="Описание:" Grid.Row="3" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                <TextBox x:Name="txtDescription" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" 
+                         Height="60" Padding="8,5" TextWrapping="Wrap"
+                         AcceptsReturn="True"
+                         VerticalScrollBarVisibility="Auto"
+                         Background="{DynamicResource CardBackgroundBrush}"
+                         BorderBrush="{DynamicResource BorderBrush}"/>
             </Grid>
         </Border>
 
         <!-- Кнопки управления -->
         <WrapPanel Grid.Row="2" HorizontalAlignment="Center" Margin="0,0,0,20">
-            <Button Content="➕ Создать тренера" Click="Add_Click" Width="130" Height="35" Margin="5" 
+            <Button Content="➕ Добавить" Click="Add_Click" Width="110" Height="35" Margin="5" 
                     Background="#4CAF50" Foreground="White" FontWeight="SemiBold"/>
             <Button Content="✏️ Обновить" Click="Update_Click" Width="110" Height="35" Margin="5" 
                     Background="#2196F3" Foreground="White" FontWeight="SemiBold"/>
@@ -105,7 +97,7 @@
                     Background="#607D8B" Foreground="White" FontWeight="SemiBold"/>
         </WrapPanel>
 
-        <!-- Таблица -->
+        <!-- Таблица тренеров -->
         <Border Grid.Row="3" CornerRadius="12" Background="{DynamicResource CardBackgroundBrush}"
                 BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Padding="1">
             <DataGrid x:Name="dgTrainers" 
@@ -119,6 +111,7 @@
                       GridLinesVisibility="Horizontal"
                       BorderThickness="0"
                       RowBackground="{DynamicResource CardBackgroundBrush}"
+                      
                       Foreground="{DynamicResource TextPrimaryBrush}">
                 <DataGrid.Resources>
                     <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#4CAF50"/>
