@@ -11,5 +11,8 @@ namespace Energy.Helpers
         public static int CurrentUserId { get; set; }
         public static string CurrentUserLogin { get; set; }
         public static string CurrentUserRole { get; set; }
+
+        public static string CurrentUserFirstName { get; set; }  
+        public static string CurrentUserLastName { get; set; }   
     }
 }

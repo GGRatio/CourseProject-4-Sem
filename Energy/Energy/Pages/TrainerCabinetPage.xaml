@@ -1,0 +1,90 @@
+﻿<Page x:Class="Energy.Pages.TrainerCabinetPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Кабинет тренера"
+      Background="{DynamicResource BackgroundBrush}">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock x:Name="txtTitle" FontSize="24" FontWeight="Bold" 
+                   HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+        <!-- Вкладки -->
+        <TabControl Grid.Row="1" Margin="0,0,0,20">
+            <TabItem Header="📋 Мои клиенты">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="400">
+                    <ItemsControl x:Name="clientsList">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="{DynamicResource CardBackgroundBrush}" 
+                                        CornerRadius="8" Margin="0,0,0,8"
+                                        BorderBrush="{DynamicResource BorderBrush}" 
+                                        BorderThickness="1" Padding="10">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel>
+                                            <TextBlock FontWeight="SemiBold" 
+                                                       Foreground="{DynamicResource TextPrimaryBrush}">
+                                                <Run Text="{Binding FirstName}"/> <Run Text="{Binding LastName}"/>
+                                            </TextBlock>
+                                            <TextBlock FontSize="11" 
+                                                       Foreground="{DynamicResource TextSecondaryBrush}"
+                                                       Text="{Binding Email}"/>
+                                            <TextBlock FontSize="11" 
+                                                       Foreground="{DynamicResource TextSecondaryBrush}"
+                                                       Text="{Binding Phone}"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Header="🧘 Мои занятия">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="400">
+                    <ItemsControl x:Name="classesList">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="{DynamicResource CardBackgroundBrush}" 
+                                        CornerRadius="8" Margin="0,0,0,8"
+                                        BorderBrush="{DynamicResource BorderBrush}" 
+                                        BorderThickness="1" Padding="10">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel>
+                                            <TextBlock FontWeight="SemiBold" 
+                                                       Foreground="{DynamicResource TextPrimaryBrush}"
+                                                       Text="{Binding Name}"/>
+                                            <TextBlock FontSize="11" 
+                                                       Foreground="{DynamicResource TextSecondaryBrush}"
+                                                        Text="{Binding ClassDateText}"/>
+                                            <TextBlock FontSize="11" 
+                                                       Foreground="{DynamicResource TextSecondaryBrush}"
+                                                       Text="Свободных мест: {Binding CurrentParticipants}/{Binding MaxParticipants}"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Page>

@@ -28,6 +28,8 @@ namespace Energy.Models
 
         public int CurrentParticipants { get; set; }  
 
-        public int DurationMinutes { get; set; } 
+        public int DurationMinutes { get; set; }
+
+        public string ClassDateText => ClassDate.ToString("dd.MM.yyyy HH:mm");
     }
 }

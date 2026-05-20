@@ -92,10 +92,19 @@ namespace Energy.Pages.AdminPages
                     return;
                 }
 
-                // Подтверждение удаления
                 if (MessageBox.Show($"Удалить пользователя {user.Login}?", "Подтверждение",
                     MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
+                    // Если пользователь был тренером — удаляем из таблицы Trainers
+                    if (user.Role == "Trainer")
+                    {
+                        var trainer = db.Trainers.FirstOrDefault(t => t.FirstName == user.FirstName && t.LastName == user.LastName);
+                        if (trainer != null)
+                        {
+                            db.Trainers.Remove(trainer);
+                        }
+                    }
+
                     db.Users.Remove(user);
                     db.SaveChanges();
                     LoadData();

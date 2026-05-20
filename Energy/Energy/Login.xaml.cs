@@ -61,6 +61,8 @@ namespace Energy
                     Session.CurrentUserId = user.Id;
                     Session.CurrentUserLogin = user.Login;
                     Session.CurrentUserRole = user.Role;
+                    Session.CurrentUserFirstName = user.FirstName ?? "";  
+                    Session.CurrentUserLastName = user.LastName ?? "";     
 
                     // Сохраняем сессию если чекбокс выбран
                     if (RememberMeCheckBox.IsChecked == true)

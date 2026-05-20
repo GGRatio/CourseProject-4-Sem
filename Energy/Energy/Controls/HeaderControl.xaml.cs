@@ -70,9 +70,13 @@ namespace Energy.Controls
             {
                 mainWindow.NavigateTo(new AdminUsersPage());
             }
-            else
+            if (Session.CurrentUserRole == "User" && mainWindow != null)
             {
                 mainWindow.NavigateTo(new Pages.ProfilePage());
+            }
+            if (Session.CurrentUserRole == "Trainer" && mainWindow != null)
+            {
+                mainWindow.NavigateTo(new Pages.TrainerCabinetPage());
             }
         }
 
