@@ -1,44 +1,44 @@
-﻿using System.Configuration;
-using System.Data;
+﻿
 using System.Windows;
-    
+using Energy.Data;
 using Energy.Helpers;
 
 
 namespace Energy
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
-            // Проверяем, есть ли сохранённая сессия
             var savedUser = SessionManager.LoadUser();
 
             if (savedUser != null)
             {
-                // Автоматический вход
                 Session.CurrentUserId = savedUser.UserId;
                 Session.CurrentUserLogin = savedUser.Login;
+                Session.CurrentUserRole = savedUser.Role;
 
+                // Загружаем имя и фамилию из БД
+                using (var db = new AppDbContext())
+                {
+                    var user = db.Users.Find(savedUser.UserId);
+                    if (user != null)
+                    {
+                        Session.CurrentUserFirstName = user.FirstName;
+                        Session.CurrentUserLastName = user.LastName;
+                    }
+                }
 
                 var mainWindow = new MainWindow();
                 mainWindow.Show();
-
             }
             else
             {
-                // Показываем окно входа
                 var loginWindow = new Login();
                 loginWindow.Show();
             }
         }
-
     }
-
 }
-

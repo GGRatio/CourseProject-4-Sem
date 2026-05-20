@@ -1,10 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Energy.Helpers
 {
@@ -12,18 +8,18 @@ namespace Energy.Helpers
     {
         private static string filePath = "session.json";
 
-        public static void SaveUser(int  userId, string login)
+        public static void SaveUser(int userId, string login, string role)
         {
             var savedUser = new SavedUser
             {
                 UserId = userId,
                 Login = login,
+                Role = role,
                 SavedAt = DateTime.Now
             };
 
             string json = JsonConvert.SerializeObject(savedUser, Formatting.Indented);
             File.WriteAllText(filePath, json);
-
         }
 
         public static SavedUser LoadUser()
