@@ -79,6 +79,9 @@ namespace Energy.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("InstructorId")
+                        .HasColumnType("int");
+
                     b.Property<int>("MaxParticipants")
                         .HasColumnType("int");
 

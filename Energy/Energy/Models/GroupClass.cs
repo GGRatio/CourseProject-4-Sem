@@ -16,7 +16,8 @@ namespace Energy.Models
         public string Name { get; set; }  
 
         [Required]
-        public string Instructor { get; set; }  
+        public string Instructor { get; set; }
+        public int? InstructorId { get; set; }
 
         public string Description { get; set; }
 

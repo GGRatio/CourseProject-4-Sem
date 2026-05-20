@@ -87,8 +87,7 @@
 
         <!-- Кнопки управления -->
         <WrapPanel Grid.Row="2" HorizontalAlignment="Center" Margin="0,0,0,20">
-            <Button Content="➕ Добавить" Click="Add_Click" Width="110" Height="35" Margin="5" 
-                    Background="#4CAF50" Foreground="White" FontWeight="SemiBold"/>
+    
             <Button Content="✏️ Обновить" Click="Update_Click" Width="110" Height="35" Margin="5" 
                     Background="#2196F3" Foreground="White" FontWeight="SemiBold"/>
             <Button Content="🗑️ Удалить" Click="Delete_Click" Width="110" Height="35" Margin="5" 

@@ -1,19 +1,9 @@
-﻿using Energy.Data;
-using Energy.Models;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Energy.Data;
+using Energy.Models;
 
 namespace Energy.Pages.AdminPages
 {
@@ -24,9 +14,28 @@ namespace Energy.Pages.AdminPages
         public AdminGroupClassesPage()
         {
             InitializeComponent();
+            LoadTrainers();
             LoadData();
-            // Устанавливаем время по умолчанию
-            cbTime.SelectedItem = cbTime.Items.OfType<ComboBoxItem>().FirstOrDefault(i => i.Content.ToString() == "18:00");
+            cbTime.SelectedIndex = 0;
+        }
+
+        private void LoadTrainers()
+        {
+            using (var db = new AppDbContext())
+            {
+                var trainers = db.Trainers.ToList();
+
+                if (trainers.Count == 0)
+                {
+                    MessageBox.Show("Нет тренеров! Сначала добавьте тренеров.");
+                    return;
+                }
+
+                cbTrainer.ItemsSource = trainers;
+                cbTrainer.DisplayMemberPath = "FirstName";
+                cbTrainer.SelectedValuePath = "Id";
+
+            }
         }
 
         private DateTime GetSelectedDateTime()
@@ -55,7 +64,7 @@ namespace Energy.Pages.AdminPages
         {
             _selectedId = 0;
             txtName.Text = "";
-            txtInstructor.Text = "";
+            cbTrainer.SelectedIndex = -1;
             dpDate.SelectedDate = DateTime.Now;
             cbTime.SelectedIndex = 0;
             txtDuration.Text = "60";
@@ -65,9 +74,15 @@ namespace Energy.Pages.AdminPages
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtInstructor.Text))
+            if (string.IsNullOrEmpty(txtName.Text))
             {
-                MessageBox.Show("Заполните название и инструктора!");
+                MessageBox.Show("Введите название занятия!");
+                return;
+            }
+
+            if (cbTrainer.SelectedItem == null)
+            {
+                MessageBox.Show("Выберите тренера!");
                 return;
             }
 
@@ -83,6 +98,7 @@ namespace Energy.Pages.AdminPages
                 return;
             }
 
+            var selectedTrainer = cbTrainer.SelectedItem as Trainer;
             DateTime classDate = GetSelectedDateTime();
 
             using (var db = new AppDbContext())
@@ -90,7 +106,8 @@ namespace Energy.Pages.AdminPages
                 var item = new GroupClass
                 {
                     Name = txtName.Text,
-                    Instructor = txtInstructor.Text,
+                    Instructor = selectedTrainer.FirstName + " " + selectedTrainer.LastName,
+                    InstructorId = selectedTrainer.Id,
                     ClassDate = classDate,
                     DurationMinutes = duration,
                     MaxParticipants = maxParticipants,
@@ -110,11 +127,18 @@ namespace Energy.Pages.AdminPages
         {
             if (_selectedId == 0)
             {
-                MessageBox.Show("Выберите запись!");
+                MessageBox.Show("Выберите занятие!");
+                return;
+            }
+
+            if (cbTrainer.SelectedItem == null)
+            {
+                MessageBox.Show("Выберите тренера!");
                 return;
             }
 
             DateTime classDate = GetSelectedDateTime();
+            var selectedTrainer = cbTrainer.SelectedItem as Trainer;
 
             using (var db = new AppDbContext())
             {
@@ -122,7 +146,8 @@ namespace Energy.Pages.AdminPages
                 if (item != null)
                 {
                     item.Name = txtName.Text;
-                    item.Instructor = txtInstructor.Text;
+                    item.Instructor = selectedTrainer.FirstName + " " + selectedTrainer.LastName;
+                    item.InstructorId = selectedTrainer.Id;
                     item.ClassDate = classDate;
                     item.DurationMinutes = int.Parse(txtDuration.Text);
                     item.MaxParticipants = int.Parse(txtMaxParticipants.Text);
@@ -140,7 +165,7 @@ namespace Energy.Pages.AdminPages
         {
             if (_selectedId == 0)
             {
-                MessageBox.Show("Выберите запись!");
+                MessageBox.Show("Выберите занятие!");
                 return;
             }
 
@@ -173,7 +198,6 @@ namespace Energy.Pages.AdminPages
             {
                 _selectedId = item.Id;
                 txtName.Text = item.Name;
-                txtInstructor.Text = item.Instructor;
                 dpDate.SelectedDate = item.ClassDate;
 
                 string time = item.ClassDate.ToString("HH:mm");
@@ -186,8 +210,13 @@ namespace Energy.Pages.AdminPages
                 txtDuration.Text = item.DurationMinutes.ToString();
                 txtMaxParticipants.Text = item.MaxParticipants.ToString();
                 txtDescription.Text = item.Description;
+
+                // Выбираем тренера в ComboBox
+                if (item.InstructorId.HasValue)
+                {
+                    cbTrainer.SelectedValue = item.InstructorId.Value;
+                }
             }
         }
     }
 }
-
