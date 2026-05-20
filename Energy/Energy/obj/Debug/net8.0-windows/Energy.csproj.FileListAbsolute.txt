@@ -153,3 +153,5 @@ D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\AdminPa
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\AdminPages\AdminUsersPage.g.cs
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\TrainerCabinetPage.baml
 D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\TrainerCabinetPage.g.cs
+D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\TrainerProfilePage.baml
+D:\University\CourseProject\Energy\Energy\obj\Debug\net8.0-windows\Pages\TrainerProfilePage.g.cs

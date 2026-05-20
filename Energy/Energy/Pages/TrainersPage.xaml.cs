@@ -203,7 +203,10 @@ namespace Energy.Pages
             textStack.Children.Add(selectButton);
             mainStack.Children.Add(textStack);
 
+
             border.Child = mainStack;
+            border.Cursor = System.Windows.Input.Cursors.Hand;
+            border.MouseLeftButtonUp += (s, e) => GoToTrainerProfile(trainer.Id);
             return border;
         }
 
@@ -250,6 +253,13 @@ namespace Energy.Pages
 
             // Обновляем страницу
             LoadTrainers();
+        }
+
+
+        private void GoToTrainerProfile(int trainerId)
+        {
+            var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            mainWindow?.NavigateTo(new TrainerProfilePage(trainerId));
         }
     }
 }

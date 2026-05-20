@@ -35,6 +35,9 @@
     <Compile Update="Pages\TrainerCabinetPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Pages\TrainerProfilePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Pages\TrainersPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

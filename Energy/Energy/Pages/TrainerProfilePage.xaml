@@ -1,0 +1,128 @@
+﻿<Page x:Class="Energy.Pages.TrainerProfilePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Профиль тренера"
+      Background="{DynamicResource BackgroundBrush}">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="30" HorizontalAlignment="Center" Width="600">
+
+            <!-- Фото -->
+            <Border Width="150" Height="150" CornerRadius="75" 
+                    Background="{DynamicResource BorderBrush}"
+                    HorizontalAlignment="Center" Margin="0,0,0,20">
+                <Image x:Name="imgPhoto" Stretch="UniformToFill"/>
+            </Border>
+
+            <!-- Имя -->
+            <TextBlock x:Name="txtName" FontSize="28" FontWeight="Bold" 
+                       HorizontalAlignment="Center" Margin="0,0,0,5"
+                       Foreground="{DynamicResource TextPrimaryBrush}"/>
+
+            <!-- Специализация -->
+            <TextBlock x:Name="txtSpecialization" FontSize="16" 
+                       HorizontalAlignment="Center" Margin="0,0,0,15"
+                       Foreground="{DynamicResource TextSecondaryBrush}"/>
+
+            <!-- Опыт -->
+            <Border Background="{DynamicResource CardBackgroundBrush}" 
+                    CornerRadius="12" Padding="15" Margin="0,0,0,15"
+                    BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="📅 Опыт:" FontWeight="SemiBold" Margin="0,0,10,0"/>
+                    <TextBlock x:Name="txtExperience" Grid.Column="1"/>
+                </Grid>
+            </Border>
+
+            <!-- Описание -->
+            <Border Background="{DynamicResource CardBackgroundBrush}" 
+                    CornerRadius="12" Padding="15" Margin="0,0,0,15"
+                    BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="📝 О себе:" FontWeight="SemiBold" Margin="0,0,0,10"/>
+                    <TextBlock x:Name="txtDescription" Grid.Row="1" TextWrapping="Wrap"/>
+                </Grid>
+            </Border>
+
+            <!-- Форма добавления отзыва -->
+            <Border Background="{DynamicResource CardBackgroundBrush}" 
+                    CornerRadius="12" Padding="15" Margin="0,0,0,15"
+                    BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="✍️ Оставить отзыв" FontWeight="SemiBold" Margin="0,0,0,10"/>
+
+                    <TextBox x:Name="txtComment" Grid.Row="1" Height="80" 
+                             TextWrapping="Wrap" AcceptsReturn="True"
+                             Padding="8,5" VerticalScrollBarVisibility="Auto"
+                             Background="{DynamicResource CardBackgroundBrush}"
+                             BorderBrush="{DynamicResource BorderBrush}"
+                             ToolTip="Ваш отзыв о тренере"/>
+
+                    <Button Grid.Row="2" Content="📤 Отправить отзыв" Click="SendReview_Click"
+                            Width="150" Height="35" Margin="0,15,0,0"
+                            Background="{DynamicResource ButtonSuccessBrush}" 
+                            Foreground="White" FontWeight="SemiBold"/>
+                </Grid>
+            </Border>
+
+            <!-- Список отзывов -->
+            <Border Background="{DynamicResource CardBackgroundBrush}" 
+                    CornerRadius="12" Padding="15" Margin="0,0,0,15"
+                    BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="💬 Отзывы клиентов" FontWeight="SemiBold" Margin="0,0,0,10"/>
+
+                    <ListBox x:Name="lstReviews" Grid.Row="1" Background="Transparent" 
+                             BorderThickness="0" MaxHeight="300">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="{DynamicResource BorderBrush}" 
+                                        CornerRadius="8" Margin="0,0,0,8" Padding="10">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                            <TextBlock Text="{Binding UserName}" 
+                                                       FontWeight="SemiBold"
+                                                       Foreground="{DynamicResource TextPrimaryBrush}"/>
+                                            <TextBlock Text=" · " Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                            <TextBlock Text="{Binding CreatedAt, StringFormat='dd.MM.yyyy'}" 
+                                                       Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                        </StackPanel>
+                                        <TextBlock Text="{Binding Comment}" 
+                                                   Foreground="{DynamicResource TextPrimaryBrush}"
+                                                   TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </Border>
+
+            <!-- Кнопка назад -->
+            <Button Content="← Назад к тренерам" Click="Back_Click" 
+                    Width="150" Height="35" Margin="0,20"
+                    Background="{DynamicResource ButtonPrimaryBrush}" 
+                    Foreground="White" FontWeight="SemiBold"/>
+
+        </StackPanel>
+    </ScrollViewer>
+</Page>

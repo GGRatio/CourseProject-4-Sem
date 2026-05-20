@@ -34,7 +34,7 @@ namespace Energy.Pages
 
                     LoadClients(db);
                     LoadClasses(db);
-                }
+                }   
                 else
                 {
                     txtTitle.Text = "👨‍🏫 Кабинет тренера";

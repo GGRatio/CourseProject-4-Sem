@@ -17,6 +17,7 @@ namespace Energy.Data
         public DbSet<UserTrainer> UserTrainers { get; set; }
         public DbSet<GroupClass> GroupClasses { get; set; }
         public DbSet<ClassRegistration> ClassRegistrations { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) //EF сам вызовет для подклюени к бд
