@@ -366,6 +366,7 @@ namespace Energy.Pages
 
                     MessageBox.Show($"Абонемент продлён до {activePurchase.EndDate:dd.MM.yyyy}!",
                                     "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    LoadPurchaseHistory();
                     LoadCurrentSubscription();
                 }
             }
