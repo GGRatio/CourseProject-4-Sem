@@ -4,123 +4,175 @@
       Title="Управление тренерами"
       Background="{DynamicResource BackgroundBrush}">
 
-    <Grid Margin="20">
+    <Grid Margin="24">
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Заголовок -->
-        <TextBlock Text="👨‍🏫 Управление тренерами" FontSize="24" FontWeight="Bold" 
-                   HorizontalAlignment="Center" Margin="0,0,0,20"/>
+        <!-- HEADER -->
+        <TextBlock Text="Управление тренерами"
+                   Style="{DynamicResource PageTitle}"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,24"/>
 
-        <!-- Форма редактирования -->
-        <Border Grid.Row="1" Background="{DynamicResource CardBackgroundBrush}" 
-                CornerRadius="12" Padding="20" Margin="0,0,0,20"
-                BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1">
-
+        <!-- FORM -->
+        <Border Grid.Row="1"
+                Style="{DynamicResource SectionCard}">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="130"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="130"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="16"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="16"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="16"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- Имя -->
-                <TextBlock Text="Имя:" VerticalAlignment="Center" FontWeight="SemiBold"/>
-                <TextBox x:Name="txtFirstName" Grid.Column="1" Margin="0,0,20,0" 
-                         Height="35" Padding="8,0" VerticalAlignment="Center"
-                         Background="{DynamicResource CardBackgroundBrush}"
-                         BorderBrush="{DynamicResource BorderBrush}"/>
+                <!-- FIRST NAME -->
+                <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           Text="Имя:"
+                           Style="{DynamicResource FormLabel}"
+                           VerticalAlignment="Center"/>
+                <TextBox x:Name="txtFirstName"
+                         Grid.Row="0"
+                         Grid.Column="1"
+                         Margin="0,0,20,0"/>
 
-                <!-- Фамилия -->
-                <TextBlock Text="Фамилия:" Grid.Column="2" VerticalAlignment="Center" FontWeight="SemiBold"/>
-                <TextBox x:Name="txtLastName" Grid.Column="3" Margin="0" 
-                         Height="35" Padding="8,0" VerticalAlignment="Center"
-                         Background="{DynamicResource CardBackgroundBrush}"
-                         BorderBrush="{DynamicResource BorderBrush}"/>
+                <!-- LAST NAME -->
+                <TextBlock Grid.Row="0"
+                           Grid.Column="2"
+                           Text="Фамилия:"
+                           Style="{DynamicResource FormLabel}"
+                           VerticalAlignment="Center"/>
+                <TextBox x:Name="txtLastName"
+                         Grid.Row="0"
+                         Grid.Column="3"/>
 
-                <!-- Специализация -->
-                <TextBlock Text="Специализация:" Grid.Row="1" VerticalAlignment="Center" FontWeight="SemiBold"/>
-                <TextBox x:Name="txtSpecialization" Grid.Row="1" Grid.Column="1" Margin="0,0,20,0" 
-                         Height="35" Padding="8,0" VerticalAlignment="Center"
-                         Background="{DynamicResource CardBackgroundBrush}"
-                         BorderBrush="{DynamicResource BorderBrush}"/>
+                <!-- SPECIALIZATION -->
+                <TextBlock Grid.Row="2"
+                           Grid.Column="0"
+                           Text="Специализация:"
+                           Style="{DynamicResource FormLabel}"
+                           VerticalAlignment="Center"/>
+                <TextBox x:Name="txtSpecialization"
+                         Grid.Row="2"
+                         Grid.Column="1"
+                         Margin="0,0,20,0"/>
 
-                <!-- Опыт -->
-                <TextBlock Text="Опыт (лет):" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" FontWeight="SemiBold"/>
-                <TextBox x:Name="txtExperience" Grid.Row="1" Grid.Column="3" Margin="0" 
-                         Height="35" Padding="8,0" VerticalAlignment="Center"
-                         Background="{DynamicResource CardBackgroundBrush}"
-                         BorderBrush="{DynamicResource BorderBrush}"/>
+                <!-- EXPERIENCE -->
+                <TextBlock Grid.Row="2"
+                           Grid.Column="2"
+                           Text="Опыт (лет):"
+                           Style="{DynamicResource FormLabel}"
+                           VerticalAlignment="Center"/>
+                <TextBox x:Name="txtExperience"
+                         Grid.Row="2"
+                         Grid.Column="3"/>
 
-                <!-- Фото -->
-                <TextBlock Text="Фото:" Grid.Row="2" VerticalAlignment="Center" FontWeight="SemiBold"/>
-                <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Orientation="Horizontal">
-                    <TextBox x:Name="txtPhotoPath" Width="200" Height="35" Padding="8,0" VerticalAlignment="Center"
-                             Background="{DynamicResource CardBackgroundBrush}"
-                             BorderBrush="{DynamicResource BorderBrush}"
+                <!-- PHOTO -->
+                <TextBlock Grid.Row="4"
+                           Grid.Column="0"
+                           Text="Фото:"
+                           Style="{DynamicResource FormLabel}"
+                           VerticalAlignment="Center"/>
+                <StackPanel Grid.Row="4"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="3"
+                            Orientation="Horizontal">
+                    <TextBox x:Name="txtPhotoPath"
+                             Width="260"
                              IsReadOnly="True"/>
-                    <Button Content="📁 Выбрать" Click="SelectPhoto_Click" Width="80" Height="35" Margin="10,0,0,0"
-                            Background="#2196F3" Foreground="White" FontWeight="SemiBold"/>
+                    <Button Content="Выбрать"
+                            Click="SelectPhoto_Click"
+                            Style="{DynamicResource PrimaryButton}"
+                            Width="130"
+                            Margin="12,0,0,0"/>
                 </StackPanel>
 
-                <!-- Описание -->
-                <TextBlock Text="Описание:" Grid.Row="3" VerticalAlignment="Center" FontWeight="SemiBold"/>
-                <TextBox x:Name="txtDescription" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" 
-                         Height="60" Padding="8,5" TextWrapping="Wrap"
+                <!-- DESCRIPTION -->
+                <TextBlock Grid.Row="6"
+                           Grid.Column="0"
+                           Text="Описание:"
+                           Style="{DynamicResource FormLabel}"
+                           VerticalAlignment="Top"
+                           Margin="0,10,0,0"/>
+                <TextBox x:Name="txtDescription"
+                         Grid.Row="6"
+                         Grid.Column="1"
+                         Grid.ColumnSpan="3"
+                         Height="100"
+                         Padding="12"
+                         TextWrapping="Wrap"
                          AcceptsReturn="True"
-                         VerticalScrollBarVisibility="Auto"
-                         Background="{DynamicResource CardBackgroundBrush}"
-                         BorderBrush="{DynamicResource BorderBrush}"/>
+                         VerticalScrollBarVisibility="Auto"/>
             </Grid>
         </Border>
 
-        <!-- Кнопки управления -->
-        <WrapPanel Grid.Row="2" HorizontalAlignment="Center" Margin="0,0,0,20">
-    
-            <Button Content="✏️ Обновить" Click="Update_Click" Width="110" Height="35" Margin="5" 
-                    Background="#2196F3" Foreground="White" FontWeight="SemiBold"/>
-            <Button Content="🗑️ Удалить" Click="Delete_Click" Width="110" Height="35" Margin="5" 
-                    Background="#F44336" Foreground="White" FontWeight="SemiBold"/>
-            <Button Content="🔄 Очистить" Click="Clear_Click" Width="110" Height="35" Margin="5" 
-                    Background="#607D8B" Foreground="White" FontWeight="SemiBold"/>
+        <!-- ACTION BUTTONS -->
+        <WrapPanel Grid.Row="2"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20">
+            <Button Content="✏️ Обновить"
+                    Click="Update_Click"
+                    Width="140"
+                    Margin="6"
+                    Style="{DynamicResource PrimaryButton}"/>
+            <Button Content="🗑️ Удалить"
+                    Click="Delete_Click"
+                    Width="140"
+                    Margin="6"
+                    Style="{DynamicResource DangerButton}"/>
+            <Button Content="🔄 Очистить"
+                    Click="Clear_Click"
+                    Width="140"
+                    Margin="6"
+                    Style="{DynamicResource SecondaryButton}"/>
         </WrapPanel>
 
-        <!-- Таблица тренеров -->
-        <Border Grid.Row="3" CornerRadius="12" Background="{DynamicResource CardBackgroundBrush}"
-                BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Padding="1">
-            <DataGrid x:Name="dgTrainers" 
-                      AutoGenerateColumns="True" 
+        <!-- DATAGRID -->
+        <Border Grid.Row="3"
+                Style="{DynamicResource SectionCard}"
+                Padding="0">
+            <DataGrid x:Name="dgTrainers"
+                      AutoGenerateColumns="True"
                       CanUserSortColumns="True"
                       SelectionChanged="dgTrainers_SelectionChanged"
                       SelectionMode="Single"
-                      Background="Transparent"
-                      RowHeight="40"
-                      HeadersVisibility="Column"
-                      GridLinesVisibility="Horizontal"
-                      BorderThickness="0"
-                      RowBackground="{DynamicResource CardBackgroundBrush}"
-                      
-                      Foreground="{DynamicResource TextPrimaryBrush}">
+                      RowHeight="42"
+                      Margin="1"
+                      BorderThickness="0">
                 <DataGrid.Resources>
-                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#4CAF50"/>
-                    <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent"/>
+                    <SolidColorBrush
+                        x:Key="{x:Static SystemColors.HighlightBrushKey}"
+                        Color="#4CAF50"/>
+                    <SolidColorBrush
+                        x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}"
+                        Color="#4CAF50"/>
                 </DataGrid.Resources>
             </DataGrid>
         </Border>
 
-        <!-- Статус -->
-        <TextBlock x:Name="txtStatus" Grid.Row="4" Margin="0,10" Foreground="{DynamicResource TextSecondaryBrush}" 
-                   FontSize="11" HorizontalAlignment="Right"/>
+        <!-- STATUS -->
+        <TextBlock x:Name="txtStatus"
+                   Grid.Row="4"
+                   Margin="0,12,0,0"
+                   HorizontalAlignment="Right"
+                   FontSize="12"
+                   Foreground="{DynamicResource TextSecondaryBrush}"/>
+
     </Grid>
 </Page>

@@ -5,64 +5,119 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Energy"
         mc:Ignorable="d"
-        Title="Login" Height="600" Width="1000" Background="#ffdadada"
-        WindowState="Maximized">
+        Title="Login"
+        Height="700"
+        Width="1200"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource BackgroundBrush}">
+
     <Grid>
-        <Border MinWidth="400" Margin="30" Background="White"
-                VerticalAlignment="Center" Padding="30" MaxWidth="600">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="540" />
+        </Grid.ColumnDefinitions>
+
+        <!-- LEFT -->
+        <Grid>
+            <StackPanel VerticalAlignment="Center"
+                        Margin="80">
+                <TextBlock Text="ENERGY"
+                           FontSize="48"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource TextPrimaryBrush}"/>
+                <TextBlock Text="Добро пожаловать обратно"
+                           Margin="0,14,0,0"
+                           FontSize="18"
+                           Foreground="{DynamicResource TextSecondaryBrush}"/>
+
+            </StackPanel>
+        </Grid>
+
+        <!-- RIGHT -->
+        <Border Grid.Column="1"
+                Margin="40"
+                Padding="50"
+                Background="{DynamicResource CardBackgroundBrush}"
+                BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="1"
+                CornerRadius="28"
+                VerticalAlignment="Center"
+                MaxWidth="500">
             <Border.Effect>
-                <DropShadowEffect BlurRadius="10" Color="LightGray" ShadowDepth="5"/>
+                <DropShadowEffect BlurRadius="30"
+                                  ShadowDepth="0"
+                                  Opacity="0.12"/>
             </Border.Effect>
+
             <StackPanel>
-                <TextBlock Text="Вход" FontSize="30" FontWeight="SemiBold" Margin="0 0 0 20"/>
 
-                <Grid Margin="0 0 0 20">
-                    <Button Background="Transparent" BorderBrush="Transparent"
-                            HorizontalAlignment="Left" Content="Зарегистрироваться" 
-                            Click="SwitchToRegistration_Click"></Button>
-                </Grid>
+                <TextBlock Text="Вход"
+                           FontSize="34"
+                           FontWeight="SemiBold"
+                           Margin="0,0,0,8"/>
 
-                <Grid Margin="0 0 0 10">
-                    <TextBox x:Name="txtBoxLogin" Padding="10,8" FontSize="14"/>
-                    <TextBlock Text="Логин" IsHitTestVisible="False" 
-                    Margin="12,0,0,0" VerticalAlignment="Center"
-                    Foreground="Gray" FontSize="14" 
-                    Cursor="IBeam">
+                <TextBlock Text="Введите данные аккаунта"
+                           FontSize="14"
+                           Margin="0,0,0,30"
+                           Foreground="{DynamicResource TextSecondaryBrush}"/>
+
+                <!-- LOGIN -->
+                <TextBlock Text="Логин"
+                           Margin="0,0,0,6"
+                           FontSize="13"
+                           Foreground="{DynamicResource TextSecondaryBrush}"/>
+                <TextBox x:Name="txtBoxLogin"
+                         Margin="0,0,0,18"/>
+
+                <!-- PASSWORD -->
+                <Grid Margin="0,0,0,14">
+                    <PasswordBox x:Name="txtBoxPassword"
+                 PasswordChanged="txtBoxPassword_PasswordChanged"/>
+                    <TextBlock x:Name="txtPasswordHint"
+               Text="Пароль"
+               IsHitTestVisible="False"
+               Margin="12,0,0,0"
+               VerticalAlignment="Center"
+               Foreground="{DynamicResource TextSecondaryBrush}">
                         <TextBlock.Style>
                             <Style TargetType="TextBlock">
-                                <Setter Property="Visibility" Value="Collapsed"/>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding Text, ElementName=txtBoxLogin}" Value="">
-                                        <Setter Property="Visibility" Value="Visible"/>
-                                    </DataTrigger>
-                                </Style.Triggers>
+                                <Setter Property="Visibility"
+                        Value="Visible"/>
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
                 </Grid>
-                <Grid Margin="0 0 0 10">
-                    <PasswordBox x:Name="txtBoxPassword" Padding="10,8" FontSize="14"
-                                 PasswordChanged="txtBoxPassword_PasswordChanged"/>
-                    <TextBlock x:Name="txtPasswordHint" Text="Пароль" IsHitTestVisible="False" 
-                               Margin="12,0,0,0" VerticalAlignment="Center"
-                               Foreground="Gray" FontSize="14" Cursor="IBeam">
-                        <TextBlock.Style>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Visibility" Value="Visible"/>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
-                </Grid>
-                
+
+                <!-- REMEMBER -->
                 <CheckBox x:Name="RememberMeCheckBox"
                           Content="Запомнить меня"
-                          Margin="0,10,0,10"
+                          Margin="0,0,0,28"
                           FontSize="14"
                           IsChecked="True"/>
-                
-                <Button Margin="0 20" Padding="0 5" Content="Войти" 
-                        Click="Button_Login_Click"></Button>
 
+                <!-- BUTTON -->
+                <Button Content="Войти"
+                        Height="48"
+                        FontSize="15"
+                        Background="{DynamicResource ButtonPrimaryBrush}"
+                        Click="Button_Login_Click"/>
+
+                <!-- SWITCH -->
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="0,24,0,0">
+                    <TextBlock Text="Нет аккаунта?"
+                               VerticalAlignment="Center"
+                               Foreground="{DynamicResource TextSecondaryBrush}"/>
+                    <Button Content="Регистрация"
+                            Margin="10,0,0,0"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Foreground="{DynamicResource AccentBrush}"
+                            Cursor="Hand"
+                            Click="SwitchToRegistration_Click"/>
+                </StackPanel>
             </StackPanel>
         </Border>
     </Grid>

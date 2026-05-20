@@ -17,9 +17,10 @@
         <!-- Кнопки переключения -->
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
             <Button x:Name="btnCurrent" Content="Текущие занятия" Click="btnCurrent_Click" 
-                    Width="150" Margin="5" Background="#4CAF50" Foreground="White"/>
+                    Width="150" Margin="5" Background="{DynamicResource ButtonSuccessBrush}" Foreground="White"/>
             <Button x:Name="btnHistory" Content="История" Click="btnHistory_Click" 
-                    Width="150" Margin="5" Background="#9E9E9E" Foreground="White"/>
+                    Width="150" Margin="5" Background="{DynamicResource SecondaryBackgroundBrush}"
+Foreground="{DynamicResource TextPrimaryBrush}"/>
         </StackPanel>
 
         <!-- Список занятий -->

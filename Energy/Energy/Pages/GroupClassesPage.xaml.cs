@@ -132,9 +132,10 @@ namespace Energy.Pages
 
             border.Effect = new DropShadowEffect
             {
-                BlurRadius = 8,
+                BlurRadius = 12,
                 ShadowDepth = 2,
-                Opacity = 0.1
+                Opacity = 0.18,
+                Color = ((SolidColorBrush)FindResource("ShadowColorBrush")).Color
             };
 
             var stack = new StackPanel();
@@ -180,13 +181,19 @@ namespace Energy.Pages
             // Места
             int freeSpots = classItem.MaxParticipants - classItem.CurrentParticipants;
             var spotsText = freeSpots > 0 ? $"🎟️ Свободно мест: {freeSpots}" : "❌ Мест нет";
-            var spotsColor = freeSpots > 5 ? Colors.Green : (freeSpots > 0 ? Colors.Orange : Colors.Red);
+            SolidColorBrush spotsBrush;
 
+            if (freeSpots > 5)
+                spotsBrush = (SolidColorBrush)FindResource("ButtonSuccessBrush");
+            else if (freeSpots > 0)
+                spotsBrush = (SolidColorBrush)FindResource("WarningBrush");
+            else
+                spotsBrush = (SolidColorBrush)FindResource("DangerBrush");
             stack.Children.Add(new TextBlock
             {
                 Text = spotsText,
                 FontSize = 13,
-                Foreground = new SolidColorBrush(spotsColor),
+                Foreground = spotsBrush,
                 Margin = new Thickness(0, 0, 0, 5)
             });
 
@@ -211,6 +218,7 @@ namespace Energy.Pages
 
                 var registerButton = new Button
                 {
+                    Style = (Style)FindResource("PrimaryButton"),
                     Tag = classItem.Id,
                     Margin = new Thickness(0, 5, 0, 0),
                     Padding = new Thickness(10, 8, 10, 8),
@@ -271,16 +279,32 @@ namespace Energy.Pages
         private void btnCurrent_Click(object sender, RoutedEventArgs e)
         {
             _showCurrent = true;
-            btnCurrent.Background = (SolidColorBrush)FindResource("ButtonSuccessBrush");
-            btnHistory.Background = (SolidColorBrush)FindResource("BorderBrush");
+
+            btnCurrent.Background =
+                (SolidColorBrush)FindResource("ButtonSuccessBrush");
+
+            btnHistory.Background =
+                (SolidColorBrush)FindResource("SecondaryBackgroundBrush");
+
+            btnHistory.Foreground =
+                (SolidColorBrush)FindResource("TextPrimaryBrush");
+
             LoadClasses();
         }
 
         private void btnHistory_Click(object sender, RoutedEventArgs e)
         {
             _showCurrent = false;
-            btnCurrent.Background = (SolidColorBrush)FindResource("BorderBrush");
-            btnHistory.Background = (SolidColorBrush)FindResource("ButtonSuccessBrush");
+
+            btnHistory.Background =
+                (SolidColorBrush)FindResource("ButtonSuccessBrush");
+
+            btnCurrent.Background =
+                (SolidColorBrush)FindResource("SecondaryBackgroundBrush");
+
+            btnCurrent.Foreground =
+                (SolidColorBrush)FindResource("TextPrimaryBrush");
+
             LoadClasses();
         }
     }

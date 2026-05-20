@@ -114,11 +114,16 @@ namespace Energy.Controls
                 Session.CurrentUserId = 0;
                 Session.CurrentUserLogin = "";
                 Session.CurrentUserRole = "";
+                Session.CurrentUserFirstName = "";
+                Session.CurrentUserLastName = "";
+
                 SessionManager.ClearSession();
 
                 var loginWindow = new Login();
                 loginWindow.Show();
-                Application.Current.MainWindow?.Close();
+
+                var currentWindow = Window.GetWindow(this);
+                currentWindow?.Close();
             }
         }
 

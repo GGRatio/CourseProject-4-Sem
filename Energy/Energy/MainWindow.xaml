@@ -3,7 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="clr-namespace:Energy.Controls"
         Title="Фитнес клуб" Height="1080" Width="1920"
-        WindowState="Maximized">
+        WindowState="Maximized"
+
+        Background="{DynamicResource BackgroundBrush}"
+        Foreground="{DynamicResource TextPrimaryBrush}">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -12,6 +15,9 @@
         </Grid.ColumnDefinitions>
 
         <controls:HeaderControl Grid.Column="0"/>
-        <Frame x:Name="ContentFrame" Grid.Column="1" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="ContentFrame"
+            Grid.Column="1"
+            NavigationUIVisibility="Hidden"
+            Background="{DynamicResource BackgroundBrush}"/>
     </Grid>
 </Window> 

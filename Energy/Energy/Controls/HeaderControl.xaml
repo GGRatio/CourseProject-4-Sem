@@ -1,61 +1,78 @@
 ﻿<UserControl x:Class="Energy.Controls.HeaderControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
-             d:DesignHeight="1920" d:DesignWidth="260">
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="1920"
+             d:DesignWidth="260">
 
     <Grid Background="{DynamicResource MenuBackgroundBrush}">
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Grid.Resources>
-            <Style TargetType="Button">
-                <Setter Property="Padding" Value="20,12"/>
-                <Setter Property="Margin" Value="0"/>
-                <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                <Setter Property="BorderBrush" Value="Transparent"/>
-                <Setter Property="Background" Value="{DynamicResource MenuButtonBackgroundBrush}"/>
-                <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="FontSize" Value="16"/>
-                <Setter Property="Foreground" Value="{DynamicResource MenuButtonForegroundBrush}"/>
-                <Setter Property="Cursor" Value="Hand"/>
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="{DynamicResource MenuButtonHoverBrush}"/>
-                    </Trigger>
-                    <Trigger Property="IsFocused" Value="True">
-                        <Setter Property="FontWeight" Value="SemiBold"/>
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
-        </Grid.Resources>
+        <!-- LOGO -->
 
-        <!-- Верхнее меню -->
-        <StackPanel Orientation="Vertical" VerticalAlignment="Top"  
-                    Grid.Row="0" Margin="0,40,0,0">
-            <Button x:Name="btn_Groupe" Content="Групповые занятия" Click="btn_Groupe_Click"/>
-            <Button x:Name="btn_Trainers" Content="Тренерский состав" Click="btn_Trainers_Click"/>
-            <Button x:Name="btn_Subscriptions" Content="Абонементы" Click="btn_Subscriptions_Click"/>
+        <StackPanel Grid.Row="0"
+                    Margin="24,30,24,20">
+
+            <TextBlock Text="ENERGY"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       Foreground="{DynamicResource TextPrimaryBrush}"/>
+
+            <TextBlock Text="fitness club"
+                       Margin="0,4,0,0"
+                       FontSize="13"
+                       Foreground="{DynamicResource TextSecondaryBrush}"/>
+
         </StackPanel>
 
-        <!-- Разделительная черта -->
-        <Border Grid.Row="1" 
-                Height="1" 
-                Background="{DynamicResource BorderBrush}" 
-                Margin="20,10,20,10"/>
+        <!-- MENU -->
 
-        <!-- Профиль внизу -->
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom"  
-                    HorizontalAlignment="Center" Grid.Row="2"
-                    Margin="0,0,0,30">
-            <Button x:Name="btn_Profile" Content="Профиль" Click="btn_Profile_Click"/>
-            <Button x:Name="btn_Logout" Content="Выйти" Click="btn_Logout_Click" Margin="0,30,0,0"/>
+        <StackPanel Grid.Row="1">
+
+            <Button x:Name="btn_Groupe"
+                    Style="{StaticResource SidebarButton}"
+                    Content="Групповые занятия"
+                    Click="btn_Groupe_Click"/>
+
+            <Button x:Name="btn_Trainers"
+                    Style="{StaticResource SidebarButton}"
+                    Content="Тренерский состав"
+                    Click="btn_Trainers_Click"/>
+
+            <Button x:Name="btn_Subscriptions"
+                    Style="{StaticResource SidebarButton}"
+                    Content="Абонементы"
+                    Click="btn_Subscriptions_Click"/>
+
         </StackPanel>
+
+        <!-- BOTTOM -->
+
+        <StackPanel Grid.Row="2"
+                    Margin="0,10,0,24">
+
+            <Border Height="1"
+                    Margin="20,0,20,16"
+                    Background="{DynamicResource BorderBrush}"/>
+
+            <Button x:Name="btn_Profile"
+                    Style="{StaticResource SidebarButton}"
+                    Content="Профиль"
+                    Click="btn_Profile_Click"/>
+
+            <Button x:Name="btn_Logout"
+                    Style="{StaticResource SidebarButton}"
+                    Content="Выйти"
+                    Click="btn_Logout_Click"/>
+
+        </StackPanel>
+
     </Grid>
 </UserControl>

@@ -4,94 +4,148 @@
       Title="Кабинет тренера"
       Background="{DynamicResource BackgroundBrush}">
 
-    <Grid Margin="20">
+    <Grid Margin="28">
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock x:Name="txtTitle" FontSize="24" FontWeight="Bold" 
-                   HorizontalAlignment="Center" Margin="0,0,0,20"/>
+        <TextBlock x:Name="txtTitle"
+                   Style="{StaticResource PageTitle}"
+                   Margin="0,0,0,24"/>
 
         <TabControl Grid.Row="1">
 
-            <!-- Вкладка: Будущие занятия -->
-            <TabItem Header="📅 Будущие занятия">
+            <TabItem Header="Будущие занятия">
+
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ItemsControl x:Name="futureClassesList" Margin="10">
+
+                    <ItemsControl x:Name="futureClassesList"
+                                  Margin="4">
+
                         <ItemsControl.ItemTemplate>
+
                             <DataTemplate>
-                                <Border Background="{DynamicResource CardBackgroundBrush}" 
-            CornerRadius="10" Margin="0,0,0,10"
-            BorderBrush="{DynamicResource BorderBrush}" 
-            BorderThickness="1" Padding="15">
+
+                                <Border Style="{StaticResource SimpleCard}">
+
                                     <StackPanel>
-                                        <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
-                                        <TextBlock Text="{Binding ClassDate, StringFormat='dd.MM.yyyy HH:mm'}" 
-                       Margin="0,5,0,0" Foreground="{DynamicResource TextSecondaryBrush}"/>
-                                        <TextBlock Margin="0,5,0,0" Foreground="{DynamicResource TextSecondaryBrush}">
-                <Run Text="Мест: "/>
-                <Run Text="{Binding CurrentParticipants}"/>
-                <Run Text="/"/>
-                <Run Text="{Binding MaxParticipants}"/>
+
+                                        <TextBlock Text="{Binding Name}"
+                                                   Style="{StaticResource CardTitleSmall}"/>
+
+                                        <TextBlock Text="{Binding ClassDate, StringFormat='dd.MM.yyyy HH:mm'}"
+                                                   Margin="0,8,0,0"
+                                                   Foreground="{DynamicResource TextSecondaryBrush}"/>
+
+                                        <TextBlock Margin="0,4,0,0"
+                                                   Foreground="{DynamicResource TextSecondaryBrush}">
+
+                                            <Run Text="Участников: "/>
+                                            <Run Text="{Binding CurrentParticipants}"/>
+                                            <Run Text="/"/>
+                                            <Run Text="{Binding MaxParticipants}"/>
+
                                         </TextBlock>
+
                                     </StackPanel>
+
                                 </Border>
+
                             </DataTemplate>
+
                         </ItemsControl.ItemTemplate>
+
                     </ItemsControl>
+
                 </ScrollViewer>
+
             </TabItem>
 
-            <!-- Вкладка: Прошедшие занятия (для отметки посещаемости) -->
-            <TabItem Header="✅ Отметить посещаемость">
+            <TabItem Header="Посещаемость">
+
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ItemsControl x:Name="pastClassesList" Margin="10">
+
+                    <ItemsControl x:Name="pastClassesList"
+                                  Margin="4">
+
                         <ItemsControl.ItemTemplate>
+
                             <DataTemplate>
-                                <Border Background="{DynamicResource CardBackgroundBrush}" 
-                                        CornerRadius="10" Margin="0,0,0,10"
-                                        BorderBrush="{DynamicResource BorderBrush}" 
-                                        BorderThickness="1" Padding="15">
+
+                                <Border Style="{StaticResource SimpleCard}">
+
                                     <StackPanel>
-                                        <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
-                                        <TextBlock Text="{Binding ClassDate, StringFormat='dd.MM.yyyy HH:mm'}" 
-                                                   Margin="0,5,0,0" Foreground="{DynamicResource TextSecondaryBrush}"/>
-                                        <TextBlock Text="Мест: {Binding CurrentParticipants}/{Binding MaxParticipants}" 
-                                                   Margin="0,5,0,5" Foreground="{DynamicResource TextSecondaryBrush}"/>
-                                        <Button Content="✅ Отметить посещаемость" 
-                                                Click="MarkAttendance_Click" Tag="{Binding Id}"
-                                                Background="#4CAF50" Foreground="White"
-                                                Padding="10,5" Margin="0,5,0,0"
-                                                Cursor="Hand"/>
+
+                                        <TextBlock Text="{Binding Name}"
+                                                   Style="{StaticResource CardTitleSmall}"/>
+
+                                        <TextBlock Text="{Binding ClassDate, StringFormat='dd.MM.yyyy HH:mm'}"
+                                                   Margin="0,8,0,0"
+                                                   Foreground="{DynamicResource TextSecondaryBrush}"/>
+
+                                        <TextBlock Margin="0,4,0,10"
+                                                   Foreground="{DynamicResource TextSecondaryBrush}">
+
+                                            <Run Text="Участников: "/>
+                                            <Run Text="{Binding CurrentParticipants}"/>
+                                            <Run Text="/"/>
+                                            <Run Text="{Binding MaxParticipants}"/>
+
+                                        </TextBlock>
+
+                                        <Button Content="Отметить посещаемость"
+                                                Width="220"
+                                                Style="{StaticResource SuccessButton}"
+                                                Click="MarkAttendance_Click"
+                                                Tag="{Binding Id}"/>
+
                                     </StackPanel>
+
                                 </Border>
+
                             </DataTemplate>
+
                         </ItemsControl.ItemTemplate>
+
                     </ItemsControl>
+
                 </ScrollViewer>
+
             </TabItem>
 
-            <!-- Вкладка: Мои клиенты -->
-            <TabItem Header="👥 Мои клиенты">
+            <TabItem Header="Мои клиенты">
+
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ItemsControl x:Name="clientsList" Margin="10">
+
+                    <ItemsControl x:Name="clientsList"
+                                  Margin="4">
+
                         <ItemsControl.ItemTemplate>
+
                             <DataTemplate>
-                                <Border Background="{DynamicResource CardBackgroundBrush}" 
-                                        CornerRadius="10" Margin="0,0,0,10"
-                                        BorderBrush="{DynamicResource BorderBrush}" 
-                                        BorderThickness="1" Padding="15">
+
+                                <Border Style="{StaticResource SimpleCard}">
+
                                     <StackPanel>
-                                        <TextBlock FontWeight="Bold" FontSize="14">
-                                            <Run Text="{Binding FirstName}"/> <Run Text="{Binding LastName}"/>
+
+                                        <TextBlock Style="{StaticResource CardTitleSmall}">
+
+                                            <Run Text="{Binding FirstName}"/>
+                                            <Run Text=" "/>
+                                            <Run Text="{Binding LastName}"/>
+
                                         </TextBlock>
-                                        <TextBlock Text="{Binding Email}" 
-                                                   Foreground="{DynamicResource TextSecondaryBrush}"
-                                                   FontSize="11"/>
-                                        <TextBlock Text="{Binding Phone}" 
-                                                   Foreground="{DynamicResource TextSecondaryBrush}"
-                                                   FontSize="11"/>
+
+                                        <TextBlock Text="{Binding Email}"
+                                                   Margin="0,8,0,0"
+                                                   Foreground="{DynamicResource TextSecondaryBrush}"/>
+
+                                        <TextBlock Text="{Binding Phone}"
+                                                   Margin="0,4,0,0"
+                                                   Foreground="{DynamicResource TextSecondaryBrush}"/>
+
                                     </StackPanel>
                                 </Border>
                             </DataTemplate>

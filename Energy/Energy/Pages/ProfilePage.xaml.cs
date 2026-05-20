@@ -288,7 +288,7 @@ namespace Energy.Pages
             public DateTime PurchaseDate { get; set; }
             public DateTime EndDate { get; set; }
             public string Status { get; set; }
-            public string StatusColor { get; set; }
+            public Brush StatusColor { get; set; }
         }
 
         private void LoadPurchaseHistory()
@@ -297,6 +297,9 @@ namespace Energy.Pages
             {
                 using (var db = new AppDbContext())
                 {
+                    var successBrush = (Brush)Application.Current.FindResource("SuccessTextBrush");
+                    var mutedBrush = (Brush)Application.Current.FindResource("MutedTextBrush");
+
                     var purchases = db.Purchases
                         .Include(p => p.Subscription)
                         .Where(p => p.UserId == Session.CurrentUserId)
@@ -308,8 +311,15 @@ namespace Energy.Pages
                         SubscriptionName = p.Subscription?.Name ?? "Неизвестно",
                         PurchaseDate = p.PurchaseDate,
                         EndDate = p.EndDate,
-                        Status = p.IsActive && p.EndDate > DateTime.Now ? "✅ Активен" : "⏰ Завершён",
-                        StatusColor = p.IsActive && p.EndDate > DateTime.Now ? "Green" : "Gray"
+
+                        Status = p.IsActive && p.EndDate > DateTime.Now
+                            ? "✅ Активен"
+                            : "⏰ Завершён",
+
+                        StatusColor = p.IsActive && p.EndDate > DateTime.Now
+                            ? successBrush
+                            : mutedBrush
+
                     }).ToList();
 
                     lstPurchaseHistory.ItemsSource = items;

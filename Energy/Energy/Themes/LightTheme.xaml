@@ -1,35 +1,203 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- Меню -->
-    <SolidColorBrush x:Key="MenuBackgroundBrush" Color="#758a87"/>
-    <SolidColorBrush x:Key="MenuButtonBackgroundBrush" Color="Transparent"/>
-    <SolidColorBrush x:Key="MenuButtonHoverBrush" Color="#5e6f6c"/>
-    <SolidColorBrush x:Key="MenuButtonForegroundBrush" Color="White"/>
+    <!-- ========================================================= -->
+    <!-- ОСНОВНЫЕ ЦВЕТА -->
+    <!-- ========================================================= -->
 
+    <SolidColorBrush x:Key="BackgroundBrush" Color="#F4F6F8"/>
 
-    <!-- Фоны -->
-    <SolidColorBrush x:Key="BackgroundBrush" Color="#F5F5F5"/>
     <SolidColorBrush x:Key="CardBackgroundBrush" Color="#FFFFFF"/>
 
-    <!-- Текст -->
-    <SolidColorBrush x:Key="TextPrimaryBrush" Color="#333333"/>
-    <SolidColorBrush x:Key="TextSecondaryBrush" Color="#888888"/>
+    <SolidColorBrush x:Key="SecondaryBackgroundBrush" Color="#ECEFF1"/>
 
-    <!-- Границы -->
-    <SolidColorBrush x:Key="BorderBrush" Color="#E0E0E0"/>
+    <SolidColorBrush x:Key="InputBackgroundBrush" Color="#F8FAFC"/>
 
-    <!-- Кнопка фильтра -->
-    <SolidColorBrush x:Key="FilterButtonBrush" Color="#E0E0E0"/>
-    <SolidColorBrush x:Key="FilterButtonHoverBrush" Color="#CCCCCC"/>
+    <SolidColorBrush x:Key="BorderBrush" Color="#D6DCE5"/>
 
-    <!-- Кнопка основная (синяя) -->
-    <SolidColorBrush x:Key="ButtonPrimaryBrush" Color="#2196F3"/>
-    <SolidColorBrush x:Key="ButtonPrimaryHoverBrush" Color="#1976D2"/>
+    <!-- ========================================================= -->
+    <!-- ТЕКСТ -->
+    <!-- ========================================================= -->
 
-    <!-- Кнопка успеха (зелёная) -->
-    <SolidColorBrush x:Key="ButtonSuccessBrush" Color="#4CAF50"/>
-    <SolidColorBrush x:Key="ButtonSuccessHoverBrush" Color="#45A049"/>
-    <SolidColorBrush x:Key="ButtonSuccessPressedBrush" Color="#2E7D32"/>
+    <SolidColorBrush x:Key="TextPrimaryBrush" Color="#1E293B"/>
+
+    <SolidColorBrush x:Key="TextSecondaryBrush" Color="#64748B"/>
+
+    <SolidColorBrush x:Key="MutedTextBrush" Color="#94A3B8"/>
+
+    <SolidColorBrush x:Key="WhiteBrush" Color="#FFFFFF"/>
+
+    <!-- ========================================================= -->
+    <!-- КНОПКИ -->
+    <!-- ========================================================= -->
+
+    <SolidColorBrush x:Key="ButtonPrimaryBrush" Color="#2563EB"/>
+
+    <SolidColorBrush x:Key="ButtonPrimaryHoverBrush" Color="#1D4ED8"/>
+
+    <SolidColorBrush x:Key="ButtonSuccessBrush" Color="#16A34A"/>
+
+    <SolidColorBrush x:Key="ButtonSuccessHoverBrush" Color="#15803D"/>
+
+    <SolidColorBrush x:Key="ButtonSuccessPressedBrush" Color="#166534"/>
+
+    <SolidColorBrush x:Key="DangerBrush" Color="#DC2626"/>
+
+    <SolidColorBrush x:Key="WarningBrush" Color="#F59E0B"/>
+
+    <!-- ========================================================= -->
+    <!-- СТАТУСЫ -->
+    <!-- ========================================================= -->
+
+    <SolidColorBrush x:Key="SuccessTextBrush" Color="#16A34A"/>
+
+    <!-- ========================================================= -->
+    <!-- FILTER -->
+    <!-- ========================================================= -->
+
+    <SolidColorBrush x:Key="FilterButtonBrush" Color="#E2E8F0"/>
+
+    <SolidColorBrush x:Key="FilterButtonHoverBrush" Color="#CBD5E1"/>
+
+    <!-- ========================================================= -->
+    <!-- MENU -->
+    <!-- ========================================================= -->
+
+    <SolidColorBrush x:Key="MenuBackgroundBrush" Color="#6B7C93"/>
+
+    <SolidColorBrush x:Key="MenuButtonBackgroundBrush" Color="Transparent"/>
+
+    <SolidColorBrush x:Key="MenuButtonHoverBrush" Color="#5A6A80"/>
+
+    <SolidColorBrush x:Key="MenuButtonForegroundBrush" Color="#FFFFFF"/>
+
+    <!-- ========================================================= -->
+    <!-- SHADOW -->
+    <!-- ========================================================= -->
+
+    <SolidColorBrush x:Key="ShadowColorBrush" Color="#22000000"/>
+
+    <!-- ========================================================= -->
+    <!-- PAGE -->
+    <!-- ========================================================= -->
+
+    <Style TargetType="Page">
+
+        <Setter Property="Background"
+                Value="{DynamicResource BackgroundBrush}"/>
+
+    </Style>
+
+    <!-- ========================================================= -->
+    <!-- WINDOW -->
+    <!-- ========================================================= -->
+
+    <Style TargetType="Window">
+
+        <Setter Property="Background"
+                Value="{DynamicResource BackgroundBrush}"/>
+
+    </Style>
+
+    <!-- ========================================================= -->
+    <!-- TEXTBLOCK -->
+    <!-- ========================================================= -->
+
+    <Style TargetType="TextBlock">
+
+        <Setter Property="Foreground"
+                Value="{DynamicResource TextPrimaryBrush}"/>
+
+    </Style>
+
+    <!-- ========================================================= -->
+    <!-- TEXTBOX -->
+    <!-- ========================================================= -->
+
+    <Style TargetType="TextBox">
+
+        <Setter Property="Height" Value="42"/>
+
+        <Setter Property="FontSize" Value="14"/>
+
+        <Setter Property="Padding" Value="12,8"/>
+
+        <Setter Property="Background"
+                Value="{DynamicResource InputBackgroundBrush}"/>
+
+        <Setter Property="Foreground"
+                Value="{DynamicResource TextPrimaryBrush}"/>
+
+        <Setter Property="CaretBrush"
+                Value="{DynamicResource TextPrimaryBrush}"/>
+
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource BorderBrush}"/>
+
+        <Setter Property="BorderThickness" Value="1.5"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+
+                <ControlTemplate TargetType="TextBox">
+
+                    <Border x:Name="Border"
+                            CornerRadius="12"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+
+                        <ScrollViewer x:Name="PART_ContentHost"
+                                      Margin="2"/>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+
+                            <Setter TargetName="Border"
+                                    Property="BorderBrush"
+                                    Value="{DynamicResource ButtonPrimaryBrush}"/>
+
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <!-- ========================================================= -->
+    <!-- PASSWORD -->
+    <!-- ========================================================= -->
+
+    <Style TargetType="PasswordBox">
+
+        <Setter Property="Height" Value="42"/>
+
+        <Setter Property="FontSize" Value="14"/>
+
+        <Setter Property="Padding" Value="12,8"/>
+
+        <Setter Property="Background"
+                Value="{DynamicResource InputBackgroundBrush}"/>
+
+        <Setter Property="Foreground"
+                Value="{DynamicResource TextPrimaryBrush}"/>
+
+        <Setter Property="CaretBrush"
+                Value="{DynamicResource TextPrimaryBrush}"/>
+
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource BorderBrush}"/>
+
+        <Setter Property="BorderThickness" Value="1.5"/>
+
+    </Style>
 
 </ResourceDictionary>
+

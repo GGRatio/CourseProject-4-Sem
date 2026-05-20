@@ -198,7 +198,7 @@ namespace Energy.Pages
             else
             {
                 buyButton.Background = (SolidColorBrush)FindResource("ButtonPrimaryBrush");
-                buyButton.Foreground = (SolidColorBrush)FindResource("TextPrimaryBrush");
+                buyButton.Foreground = Brushes.White;
                 buyButton.Click += (s, e) => BuySubscription(subscriptionId, price, name);
             }
 

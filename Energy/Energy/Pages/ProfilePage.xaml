@@ -2,37 +2,64 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       Title="Профиль"
+      Background="{DynamicResource BackgroundBrush}"
       MinHeight="800">
 
     <Grid Background="{DynamicResource BackgroundBrush}">
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Кнопки смены тем -->
-        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,0">
-            <Button Content="Светлая" Click="LightTheme_Click" Width="100" Margin="5"
-                    Background="{DynamicResource ButtonPrimaryBrush}" Foreground="White"/>
-            <Button Content="Тёмная" Click="DarkTheme_Click" Width="100" Margin="5"
-                    Background="{DynamicResource ButtonPrimaryBrush}" Foreground="White"/>
+        <!-- КНОПКИ ТЕМ -->
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Margin="0,15,0,15">
+
+            <Button Content="Светлая"
+                    Width="110"
+                    Margin="5"
+                    Click="LightTheme_Click"
+                    Background="{DynamicResource ButtonPrimaryBrush}"
+                    Foreground="{DynamicResource WhiteBrush}"/>
+
+            <Button Content="Тёмная"
+                    Width="110"
+                    Margin="5"
+                    Click="DarkTheme_Click"
+                    Background="{DynamicResource ButtonPrimaryBrush}"
+                    Foreground="{DynamicResource WhiteBrush}"/>
+
         </StackPanel>
 
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-            <StackPanel HorizontalAlignment="Center" Width="550" Margin="0,0,0,30">
+        <!-- ОСНОВНОЙ КОНТЕНТ -->
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
 
-                <!-- Карточка профиля -->
-                <Border Background="{DynamicResource CardBackgroundBrush}" 
-                        CornerRadius="15" 
-                        BorderBrush="{DynamicResource BorderBrush}" 
-                        BorderThickness="1"
-                        Padding="25">
+            <StackPanel Width="560"
+                        HorizontalAlignment="Center"
+                        Margin="0,0,0,30">
+
+                <!-- ПРОФИЛЬ -->
+                <Border Margin="0,0,0,25"
+                        Padding="25"
+                        CornerRadius="14"
+                        Background="{DynamicResource CardBackgroundBrush}"
+                        BorderBrush="{DynamicResource BorderBrush}"
+                        BorderThickness="1">
 
                     <Border.Effect>
-                        <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.08"/>
+                        <DropShadowEffect BlurRadius="12"
+                                          ShadowDepth="2"
+                                          Opacity="0.25"
+                                          Color="{Binding Color, Source={StaticResource ShadowColorBrush}}"/>
                     </Border.Effect>
 
                     <Grid>
+
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -47,288 +74,431 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="Логин:" Grid.Row="0" Grid.Column="0" 
-                                   Foreground="{DynamicResource TextPrimaryBrush}"/>
-                        <TextBlock x:Name="txtLogin" FontWeight="SemiBold" 
-                                   Grid.Row="0" Grid.Column="1" Margin="10,0,0,0"
+                        <!-- ЛОГИН -->
+                        <TextBlock Text="Логин:"
                                    Foreground="{DynamicResource TextPrimaryBrush}"/>
 
-                        <TextBlock Text="Имя:" Grid.Row="1" Grid.Column="0" Margin="0,15,0,0" 
+                        <TextBlock x:Name="txtLogin"
+                                   Grid.Column="1"
+                                   Margin="10,0,0,0"
+                                   FontWeight="SemiBold"
                                    Foreground="{DynamicResource TextPrimaryBrush}"/>
-                        <TextBox x:Name="txtFirstName" Grid.Row="1" Grid.Column="1"
-                                 Background="{DynamicResource CardBackgroundBrush}"
+
+                        <!-- ИМЯ -->
+                        <TextBlock Grid.Row="1"
+                                   Text="Имя:"
+                                   Margin="0,15,0,0"
+                                   Foreground="{DynamicResource TextPrimaryBrush}"/>
+
+                        <TextBox x:Name="txtFirstName"
+                                 Grid.Row="1"
+                                 Grid.Column="1"
+                                 Margin="0,15,0,0"
+                                 Background="{DynamicResource InputBackgroundBrush}"
                                  Foreground="{DynamicResource TextPrimaryBrush}"
-                                 BorderBrush="{DynamicResource BorderBrush}"/>
+                                 BorderBrush="{DynamicResource BorderBrush}"
+                                 CaretBrush="{DynamicResource TextPrimaryBrush}"/>
 
-                        <TextBlock Text="Фамилия:" Grid.Row="2" Grid.Column="0" Margin="0,15,0,0"
+                        <!-- ФАМИЛИЯ -->
+                        <TextBlock Grid.Row="2"
+                                   Text="Фамилия:"
+                                   Margin="0,15,0,0"
                                    Foreground="{DynamicResource TextPrimaryBrush}"/>
-                        <TextBox x:Name="txtLastName" Grid.Row="2" Grid.Column="1"
-                                 Background="{DynamicResource CardBackgroundBrush}"
-                                 Foreground="{DynamicResource TextPrimaryBrush}"
-                                 BorderBrush="{DynamicResource BorderBrush}"/>
 
-                        <TextBlock Text="Телефон:" Grid.Row="3" Grid.Column="0" Margin="0,15,0,0"
+                        <TextBox x:Name="txtLastName"
+                                 Grid.Row="2"
+                                 Grid.Column="1"
+                                 Margin="0,15,0,0"
+                                 Background="{DynamicResource InputBackgroundBrush}"
+                                 Foreground="{DynamicResource TextPrimaryBrush}"
+                                 BorderBrush="{DynamicResource BorderBrush}"
+                                 CaretBrush="{DynamicResource TextPrimaryBrush}"/>
+
+                        <!-- ТЕЛЕФОН -->
+                        <TextBlock Grid.Row="3"
+                                   Text="Телефон:"
+                                   Margin="0,15,0,0"
                                    Foreground="{DynamicResource TextPrimaryBrush}"/>
-                        <TextBox x:Name="txtPhone" Grid.Row="3" Grid.Column="1"
-                                 Background="{DynamicResource CardBackgroundBrush}"
-                                 Foreground="{DynamicResource TextPrimaryBrush}"
-                                 BorderBrush="{DynamicResource BorderBrush}"/>
 
-                        <TextBlock Text="Email:" Grid.Row="4" Grid.Column="0" Margin="0,15,0,0"
+                        <TextBox x:Name="txtPhone"
+                                 Grid.Row="3"
+                                 Grid.Column="1"
+                                 Margin="0,15,0,0"
+                                 Background="{DynamicResource InputBackgroundBrush}"
+                                 Foreground="{DynamicResource TextPrimaryBrush}"
+                                 BorderBrush="{DynamicResource BorderBrush}"
+                                 CaretBrush="{DynamicResource TextPrimaryBrush}"/>
+
+                        <!-- EMAIL -->
+                        <TextBlock Grid.Row="4"
+                                   Text="Email:"
+                                   Margin="0,15,0,0"
                                    Foreground="{DynamicResource TextPrimaryBrush}"/>
-                        <TextBox x:Name="txtEmail" Grid.Row="4" Grid.Column="1"
-                                 Background="{DynamicResource CardBackgroundBrush}"
-                                 Foreground="{DynamicResource TextPrimaryBrush}"
-                                 BorderBrush="{DynamicResource BorderBrush}"/>
 
-                        <!-- Кнопки -->
-                        <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.ColumnSpan="2" 
-                                    HorizontalAlignment="Center" Margin="0,25,0,0">
-                            <Button x:Name="btnSave" Content="Сохранить" 
-                                    Width="120" Height="35"
-                                    Background="{DynamicResource ButtonSuccessBrush}" 
-                                    Foreground="White"
-                                    Click="btnSave_Click" 
-                                    Margin="0,0,10,0"/>
-                            <Button x:Name="btnEdit" Content="Редактировать" 
-                                    Width="120" Height="35"
-                                    Background="{DynamicResource ButtonPrimaryBrush}" 
-                                    Foreground="White"
-                                    Click="btnEdit_Click"/>
+                        <TextBox x:Name="txtEmail"
+                                 Grid.Row="4"
+                                 Grid.Column="1"
+                                 Margin="0,15,0,0"
+                                 Background="{DynamicResource InputBackgroundBrush}"
+                                 Foreground="{DynamicResource TextPrimaryBrush}"
+                                 BorderBrush="{DynamicResource BorderBrush}"
+                                 CaretBrush="{DynamicResource TextPrimaryBrush}"/>
+
+                        <!-- КНОПКИ -->
+                        <StackPanel Grid.Row="5"
+                                    Grid.ColumnSpan="2"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    Margin="0,25,0,0">
+
+                            <Button x:Name="btnSave"
+                                    Content="Сохранить"
+                                    Width="120"
+                                    Height="36"
+                                    Margin="0,0,10,0"
+                                    Click="btnSave_Click"
+                                    Background="{DynamicResource ButtonSuccessBrush}"
+                                    Foreground="{DynamicResource WhiteBrush}"/>
+
+                            <Button x:Name="btnEdit"
+                                    Content="Редактировать"
+                                    Width="140"
+                                    Height="36"
+                                    Click="btnEdit_Click"
+                                    Background="{DynamicResource ButtonPrimaryBrush}"
+                                    Foreground="{DynamicResource WhiteBrush}"/>
+
                         </StackPanel>
+
                     </Grid>
+
                 </Border>
 
-                <!-- Блок текущего абонемента -->
-                <Border Background="{DynamicResource CardBackgroundBrush}" 
-        CornerRadius="15" 
-        BorderBrush="{DynamicResource BorderBrush}" 
-        BorderThickness="1"
-        Padding="25" Margin="0,25,0,0">
+                <!-- АБОНЕМЕНТ -->
+                <Border Margin="0,0,0,25"
+                        Padding="25"
+                        CornerRadius="14"
+                        Background="{DynamicResource CardBackgroundBrush}"
+                        BorderBrush="{DynamicResource BorderBrush}"
+                        BorderThickness="1">
 
                     <Border.Effect>
-                        <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.08"/>
+                        <DropShadowEffect BlurRadius="12"
+                                          ShadowDepth="2"
+                                          Opacity="0.25"
+                                          Color="{Binding Color, Source={StaticResource ShadowColorBrush}}"/>
                     </Border.Effect>
 
                     <Grid>
+
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
-                        <Grid Grid.Column="0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
+                        <StackPanel>
 
-                            <TextBlock Text="Мой абонемент" FontSize="20" FontWeight="Bold" 
-                       Margin="0,0,0,15"
-                       Foreground="{DynamicResource TextPrimaryBrush}"/>
-
-                            <TextBlock x:Name="txtSubscriptionName" FontSize="16" FontWeight="SemiBold"
-                       Grid.Row="1" Foreground="{DynamicResource ButtonSuccessBrush}"/>
-
-                            <TextBlock x:Name="txtSubscriptionEndDate" FontSize="14"
-                       Grid.Row="2" Margin="0,5,0,0" 
-                       Foreground="{DynamicResource TextSecondaryBrush}"/>
-
-                            <TextBlock x:Name="txtSubscriptionStatus" FontSize="14"
-                       Grid.Row="3" Margin="0,5,0,0" 
-                       Foreground="{DynamicResource TextSecondaryBrush}"/>
-                        </Grid>
-
-                        <Button x:Name="btnExtend" Grid.Column="1" 
-                Content="🔄 Продлить" 
-                Click="ExtendSubscription_Click" 
-                Width="120" Height="35"
-                Background="#FF9800" Foreground="White" 
-                Margin="15,0,0,0" VerticalAlignment="Center"
-                Visibility="Collapsed"/>
-                    </Grid>
-                </Border>
-
-                <!-- История абонементов -->
-                <Border Background="{DynamicResource CardBackgroundBrush}" CornerRadius="15" 
-        BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1"
-        Padding="25" Margin="0,25,0,0">
-
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-
-                        <TextBlock Text="📜 История абонементов" FontSize="18" FontWeight="SemiBold" 
-                   Margin="0,0,0,15"/>
-
-                        <ListBox x:Name="lstPurchaseHistory" Grid.Row="1" 
-                 Background="Transparent" BorderThickness="0"
-                 MaxHeight="200">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <Border Background="{DynamicResource BorderBrush}" 
-                            CornerRadius="8" Margin="0,0,0,8" Padding="10">
-                                        <StackPanel>
-                                            <TextBlock Text="{Binding SubscriptionName}" FontWeight="SemiBold"
+                            <TextBlock Text="Мой абонемент"
+                                       FontSize="20"
+                                       FontWeight="Bold"
                                        Foreground="{DynamicResource TextPrimaryBrush}"/>
-                                            <TextBlock FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}">
-                                <Run Text="Куплен: "/><Run Text="{Binding PurchaseDate, StringFormat='dd.MM.yyyy'}"/>
-                                            </TextBlock>
-                                            <TextBlock FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}">
-                                <Run Text="Действовал до: "/><Run Text="{Binding EndDate, StringFormat='dd.MM.yyyy'}"/>
-                                            </TextBlock>
-                                            <TextBlock Text="{Binding Status}" FontSize="11" 
-                                       Foreground="{Binding StatusColor}"/>
-                                        </StackPanel>
-                                    </Border>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+
+                            <TextBlock x:Name="txtSubscriptionName"
+                                       Margin="0,15,0,0"
+                                       FontSize="16"
+                                       FontWeight="SemiBold"
+                                       Foreground="{DynamicResource ButtonSuccessBrush}"/>
+
+                            <TextBlock x:Name="txtSubscriptionEndDate"
+                                       Margin="0,5,0,0"
+                                       Foreground="{DynamicResource TextSecondaryBrush}"/>
+
+                            <TextBlock x:Name="txtSubscriptionStatus"
+                                       Margin="0,5,0,0"
+                                       Foreground="{DynamicResource TextSecondaryBrush}"/>
+
+                        </StackPanel>
+
+                        <Button x:Name="btnExtend"
+                                Grid.Column="1"
+                                Width="130"
+                                Height="36"
+                                Margin="15,0,0,0"
+                                VerticalAlignment="Center"
+                                Content="Продлить"
+                                Click="ExtendSubscription_Click"
+                                Visibility="Collapsed"
+                                Background="{DynamicResource WarningBrush}"
+                                Foreground="{DynamicResource WhiteBrush}"/>
+
                     </Grid>
+
                 </Border>
 
+                <!-- ИСТОРИЯ -->
+                <Border Margin="0,0,0,25"
+                        Padding="25"
+                        CornerRadius="14"
+                        Background="{DynamicResource CardBackgroundBrush}"
+                        BorderBrush="{DynamicResource BorderBrush}"
+                        BorderThickness="1">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="12"
+                                          ShadowDepth="2"
+                                          Opacity="0.25"
+                                          Color="{Binding Color, Source={StaticResource ShadowColorBrush}}"/>
+                    </Border.Effect>
+                    <StackPanel>
 
-                <!-- Текущий тренер -->
-                <Border Background="{DynamicResource CardBackgroundBrush}" CornerRadius="15" 
-        BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1"
-        Padding="25" Margin="0,25,0,0">
+                        <TextBlock Text="История абонементов"
+                                   FontSize="18"
+                                   FontWeight="SemiBold"
+                                   Margin="0,0,0,15"
+                                   Foreground="{DynamicResource TextPrimaryBrush}"/>
 
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
+                        <ListBox x:Name="lstPurchaseHistory"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 MaxHeight="220">
 
-                        <TextBlock Text="Мой тренер" FontSize="20" FontWeight="Bold" 
-                   Margin="0,0,0,15"/>
+                            <ListBox.ItemTemplate>
 
-                        <!-- Фото + информация о тренере -->
-                        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,0">
+                                <DataTemplate>
 
-                            <!-- Маленькое фото тренера -->
-                            <Border x:Name="TrainerPhotoBorder" 
-                    Width="60" Height="60" 
-                    CornerRadius="10"
-                    Background="{DynamicResource BorderBrush}"
-                    Margin="0,0,15,0"
-                    VerticalAlignment="Center">
-                                <Image x:Name="TrainerPhoto" 
-                       Stretch="UniformToFill"
-                       VerticalAlignment="Center"/>
+                                    <Border Margin="0,0,0,8"
+                                            Padding="10"
+                                            CornerRadius="8"
+                                            Background="{DynamicResource SecondaryBackgroundBrush}"
+                                            BorderBrush="{DynamicResource BorderBrush}"
+                                            BorderThickness="1">
+
+                                        <StackPanel>
+
+                                            <TextBlock Text="{Binding SubscriptionName}"
+                                                       FontWeight="SemiBold"
+                                                       Foreground="{DynamicResource TextPrimaryBrush}"/>
+
+                                            <TextBlock FontSize="11"
+                                                       Foreground="{DynamicResource TextSecondaryBrush}">
+                                                <Run Text="Куплен: "/>
+                                                <Run Text="{Binding PurchaseDate, StringFormat='dd.MM.yyyy'}"/>
+                                            </TextBlock>
+
+                                            <TextBlock FontSize="11"
+                                                       Foreground="{DynamicResource TextSecondaryBrush}">
+                                                <Run Text="До: "/>
+                                                <Run Text="{Binding EndDate, StringFormat='dd.MM.yyyy'}"/>
+                                            </TextBlock>
+
+                                            <TextBlock Text="{Binding Status}"
+                                                       FontSize="11"
+                                                       Foreground="{Binding StatusColor}"/>
+
+                                        </StackPanel>
+
+                                    </Border>
+
+                                </DataTemplate>
+
+                            </ListBox.ItemTemplate>
+
+                        </ListBox>
+
+                    </StackPanel>
+
+                </Border>
+
+                <!-- ТРЕНЕР -->
+                <Border Margin="0,0,0,25"
+                        Padding="25"
+                        CornerRadius="14"
+                        Background="{DynamicResource CardBackgroundBrush}"
+                        BorderBrush="{DynamicResource BorderBrush}"
+                        BorderThickness="1">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="12"
+                                          ShadowDepth="2"
+                                          Opacity="0.25"
+                                          Color="{Binding Color, Source={StaticResource ShadowColorBrush}}"/>
+                    </Border.Effect>
+
+                    <StackPanel>
+
+                        <TextBlock Text="Мой тренер"
+                                   FontSize="20"
+                                   FontWeight="Bold"
+                                   Margin="0,0,0,15"
+                                   Foreground="{DynamicResource TextPrimaryBrush}"/>
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <Border x:Name="TrainerPhotoBorder"
+                                    Width="60"
+                                    Height="60"
+                                    Margin="0,0,15,0"
+                                    CornerRadius="10"
+                                    Background="{DynamicResource SecondaryBackgroundBrush}"
+                                    BorderBrush="{DynamicResource BorderBrush}"
+                                    BorderThickness="1">
+
+                                <Image x:Name="TrainerPhoto"
+                                       Stretch="UniformToFill"/>
+
                             </Border>
 
-                            <!-- Информация -->
                             <StackPanel VerticalAlignment="Center">
-                                <TextBlock x:Name="txtMyTrainer" FontSize="14" FontWeight="SemiBold"/>
-                                <TextBlock x:Name="txtTrainerSpecialization" FontSize="12" 
-                           Foreground="{DynamicResource TextSecondaryBrush}"/>
+
+                                <TextBlock x:Name="txtMyTrainer"
+                                           FontSize="14"
+                                           FontWeight="SemiBold"
+                                           Foreground="{DynamicResource TextPrimaryBrush}"/>
+
+                                <TextBlock x:Name="txtTrainerSpecialization"
+                                           FontSize="12"
+                                           Foreground="{DynamicResource TextSecondaryBrush}"/>
+
                             </StackPanel>
-                           <!-- <Button x:Name="btnDetails" Margin="20" Content="Подробнее" 
-                                Width="120" Height="35"
-                                Background="{DynamicResource ButtonPrimaryBrush}" 
-                                Foreground="White"
-                                Click="btnDetail_Click"/> -->
+
                         </StackPanel>
-                    </Grid>
+
+                    </StackPanel>
+
                 </Border>
 
-                <!-- Мои записи на занятия -->
-                <Border Background="{DynamicResource CardBackgroundBrush}" CornerRadius="15" 
-        BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1"
-        Padding="25" Margin="0,25,0,0">
+                <!-- МОИ ЗАПИСИ -->
+                <Border Margin="0,0,0,25"
+                        Padding="25"
+                        CornerRadius="14"
+                        Background="{DynamicResource CardBackgroundBrush}"
+                        BorderBrush="{DynamicResource BorderBrush}"
+                        BorderThickness="1">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="12"
+                                          ShadowDepth="2"
+                                          Opacity="0.25"
+                                          Color="{Binding Color, Source={StaticResource ShadowColorBrush}}"/>
+                    </Border.Effect>
+                    <StackPanel>
 
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
+                        <TextBlock Text="Мои записи"
+                                   FontSize="20"
+                                   FontWeight="Bold"
+                                   Margin="0,0,0,15"
+                                   Foreground="{DynamicResource TextPrimaryBrush}"/>
 
-                        <TextBlock Text="Мои записи" FontSize="20" FontWeight="Bold" 
-                   Margin="0,0,0,15"/>
+                        <TextBlock x:Name="txtNoClasses"
+                                   Text="У вас нет активных записей"
+                                   Visibility="Collapsed"
+                                   HorizontalAlignment="Center"
+                                   Foreground="{DynamicResource TextSecondaryBrush}"/>
 
-                        <!-- Сообщение когда нет записей -->
-                        <TextBlock x:Name="txtNoClasses" Grid.Row="1" 
-                   Text="📭 У вас нет активных записей"
-                   FontSize="13"
-                   Foreground="{DynamicResource TextSecondaryBrush}"
-                   HorizontalAlignment="Center"
-                   Margin="10"
-                   Visibility="Collapsed"/>
+                        <ListBox x:Name="lstMyClasses"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 MaxHeight="240">
 
-                        <!-- Список записей -->
-                        <ListBox x:Name="lstMyClasses" Grid.Row="1" 
-                 Background="Transparent" BorderThickness="0"
-                 MaxHeight="200"
-                 Visibility="Visible">
                             <ListBox.ItemTemplate>
+
                                 <DataTemplate>
-                                    <Border Background="{DynamicResource CardBackgroundBrush}" 
-                            CornerRadius="8"
-                            BorderBrush="{DynamicResource BorderBrush}" 
-                            BorderThickness="1" Padding="10">
+
+                                    <Border Margin="0,0,0,8"
+                                            Padding="10"
+                                            CornerRadius="8"
+                                            Background="{DynamicResource SecondaryBackgroundBrush}"
+                                            BorderBrush="{DynamicResource BorderBrush}"
+                                            BorderThickness="1">
+
                                         <Grid>
+
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="Auto"/>
                                             </Grid.ColumnDefinitions>
 
-                                            <StackPanel Grid.Column="0">
-                                                <TextBlock Text="{Binding Name}" FontWeight="SemiBold" 
-                                           Foreground="{DynamicResource TextPrimaryBrush}"/>
-                                                <TextBlock Text="{Binding Instructor}" FontSize="12" 
-                                           Foreground="{DynamicResource TextSecondaryBrush}"/>
-                                                <TextBlock Text="{Binding ClassDateText}" FontSize="11" 
-                                           Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                            <StackPanel>
+
+                                                <TextBlock Text="{Binding Name}"
+                                                           FontWeight="SemiBold"
+                                                           Foreground="{DynamicResource TextPrimaryBrush}"/>
+
+                                                <TextBlock Text="{Binding Instructor}"
+                                                           FontSize="12"
+                                                           Foreground="{DynamicResource TextSecondaryBrush}"/>
+
+                                                <TextBlock Text="{Binding ClassDateText}"
+                                                           FontSize="11"
+                                                           Foreground="{DynamicResource TextSecondaryBrush}"/>
+
                                             </StackPanel>
 
-                                            <Button Grid.Column="1" Content="❌ Отменить" 
-                                    Click="CancelClass_Click" Tag="{Binding Id}"
-                                    Background="#F44336" Foreground="White"
-                                    Padding="10,5" Margin="10,0,0,0"
-                                    Cursor="Hand" FontSize="12"
-                                    VerticalAlignment="Center"/>
+                                            <Button Grid.Column="1"
+                                                    Content="Отменить"
+                                                    Padding="10,5"
+                                                    Margin="10,0,0,0"
+                                                    FontSize="12"
+                                                    VerticalAlignment="Center"
+                                                    Click="CancelClass_Click"
+                                                    Tag="{Binding Id}"
+                                                    Background="{DynamicResource DangerBrush}"
+                                                    Foreground="{DynamicResource WhiteBrush}"/>
+
                                         </Grid>
+
                                     </Border>
+
                                 </DataTemplate>
+
                             </ListBox.ItemTemplate>
+
                         </ListBox>
-                    </Grid>
+
+                    </StackPanel>
+
                 </Border>
 
+                <!-- ПОСЕЩЕНИЯ -->
+                <Border Padding="25"
+                        CornerRadius="14"
+                        Background="{DynamicResource CardBackgroundBrush}"
+                        BorderBrush="{DynamicResource BorderBrush}"
+                        BorderThickness="1">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="12"
+                                          ShadowDepth="2"
+                                          Opacity="0.25"
+                                          Color="{Binding Color, Source={StaticResource ShadowColorBrush}}"/>
+                    </Border.Effect>
 
-                <!-- Блок посещений -->
-                <Border Background="{DynamicResource CardBackgroundBrush}" CornerRadius="15" 
-        BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1"
-        Padding="25" Margin="0,25,0,0">
+                    <StackPanel>
 
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
+                        <TextBlock Text="Мои посещения"
+                                   FontSize="20"
+                                   FontWeight="Bold"
+                                   Margin="0,0,0,15"
+                                   Foreground="{DynamicResource TextPrimaryBrush}"/>
 
-                        <TextBlock Text="Мои посещения" FontSize="20" FontWeight="Bold" 
-                   Margin="0,0,0,15"/>
+                        <StackPanel Orientation="Horizontal">
 
-                        <Grid Grid.Row="1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Всего посещений:"
+                                       FontSize="16"
+                                       Foreground="{DynamicResource TextSecondaryBrush}"/>
 
-                            <TextBlock Text="Всего посещений:" FontSize="16" 
-                       Foreground="{DynamicResource TextSecondaryBrush}"/>
-                            <TextBlock x:Name="txtVisitsCount" Grid.Column="1" FontSize="16" 
-                       FontWeight="Bold" Foreground="{DynamicResource TextSecondaryBrush}"
-                       Margin="15,0,0,0" HorizontalAlignment="Left"/>
-                        </Grid>
-                    </Grid>
+                            <TextBlock x:Name="txtVisitsCount"
+                                       Margin="10,0,0,0"
+                                       FontSize="16"
+                                       FontWeight="Bold"
+                                       Foreground="{DynamicResource TextPrimaryBrush}"/>
+
+                        </StackPanel>
+
+                    </StackPanel>
+
                 </Border>
 
             </StackPanel>
+
         </ScrollViewer>
+
     </Grid>
+
 </Page>
