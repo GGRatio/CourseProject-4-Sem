@@ -135,6 +135,45 @@
                     </Grid>
                 </Border>
 
+
+                <!-- История абонементов -->
+                <Border Background="{DynamicResource CardBackgroundBrush}" CornerRadius="15" 
+        BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1"
+        Padding="25" Margin="0,25,0,0">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="История абонементов" FontSize="20" FontWeight="Bold" 
+                   Margin="0,0,0,15"/>
+
+                        <ListBox x:Name="lstPurchaseHistory" Grid.Row="1" 
+                 Background="Transparent" BorderThickness="0"
+                 MaxHeight="200">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="{DynamicResource BorderBrush}" 
+                            CornerRadius="8" Margin="0,0,0,8" Padding="10">
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding SubscriptionName}" FontWeight="SemiBold"/>
+                                            <TextBlock Text="{Binding PurchaseDate, StringFormat='Куплен: dd.MM.yyyy'}" 
+                                       FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                            <TextBlock Text="{Binding EndDate, StringFormat='Действовал до: dd.MM.yyyy'}" 
+                                       FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                            <TextBlock Text="{Binding Status}" FontSize="11" 
+                                       Foreground="{Binding StatusColor}"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </Border>
+
+
                 <!-- Текущий тренер -->
                 <Border Background="{DynamicResource CardBackgroundBrush}" CornerRadius="15" 
         BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1"
@@ -193,12 +232,24 @@
                         <TextBlock Text="Мои записи" FontSize="20" FontWeight="Bold" 
                    Margin="0,0,0,15"/>
 
+                        <!-- Сообщение когда нет записей -->
+                        <TextBlock x:Name="txtNoClasses" Grid.Row="1" 
+                   Text="📭 У вас нет активных записей"
+                   FontSize="13"
+                   Foreground="{DynamicResource TextSecondaryBrush}"
+                   HorizontalAlignment="Center"
+                   Margin="10"
+                   Visibility="Collapsed"/>
+
+                        <!-- Список записей -->
                         <ListBox x:Name="lstMyClasses" Grid.Row="1" 
-                 Background="Transparent" BorderThickness="0">
+                 Background="Transparent" BorderThickness="0"
+                 MaxHeight="200"
+                 Visibility="Visible">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Border Background="{DynamicResource CardBackgroundBrush}" 
-                            CornerRadius="8" Margin="0,0,0,8"
+                            CornerRadius="8"
                             BorderBrush="{DynamicResource BorderBrush}" 
                             BorderThickness="1" Padding="10">
                                         <Grid>
@@ -207,7 +258,7 @@
                                                 <ColumnDefinition Width="Auto"/>
                                             </Grid.ColumnDefinitions>
 
-                                            <StackPanel Grid.Column="0" MinWidth="350">
+                                            <StackPanel Grid.Column="0">
                                                 <TextBlock Text="{Binding Name}" FontWeight="SemiBold" 
                                            Foreground="{DynamicResource TextPrimaryBrush}"/>
                                                 <TextBlock Text="{Binding Instructor}" FontSize="12" 
@@ -216,13 +267,12 @@
                                            Foreground="{DynamicResource TextSecondaryBrush}"/>
                                             </StackPanel>
 
-                                            
-                                            <!--TODO: добавлять кнопку в C#-->
                                             <Button Grid.Column="1" Content="❌ Отменить" 
-                                            Click="CancelClass_Click" Tag="{Binding Id}"
-                                            Background="#F44336" Foreground="White"
-                                            Padding="10,5" Margin="10,0,0,0"
-                                            Cursor="Hand" FontSize="12"/>
+                                    Click="CancelClass_Click" Tag="{Binding Id}"
+                                    Background="#F44336" Foreground="White"
+                                    Padding="10,5" Margin="10,0,0,0"
+                                    Cursor="Hand" FontSize="12"
+                                    VerticalAlignment="Center"/>
                                         </Grid>
                                     </Border>
                                 </DataTemplate>
@@ -243,7 +293,7 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Text="🏋️ Мои посещения" FontSize="18" FontWeight="SemiBold" 
+                        <TextBlock Text="Мои посещения" FontSize="20" FontWeight="Bold" 
                    Margin="0,0,0,15"/>
 
                         <Grid Grid.Row="1">
@@ -254,8 +304,8 @@
 
                             <TextBlock Text="Всего посещений:" FontSize="16" 
                        Foreground="{DynamicResource TextSecondaryBrush}"/>
-                            <TextBlock x:Name="txtVisitsCount" Grid.Column="1" FontSize="24" 
-                       FontWeight="Bold" Foreground="{DynamicResource ButtonSuccessBrush}"
+                            <TextBlock x:Name="txtVisitsCount" Grid.Column="1" FontSize="16" 
+                       FontWeight="Bold" Foreground="{DynamicResource TextSecondaryBrush}"
                        Margin="15,0,0,0" HorizontalAlignment="Left"/>
                         </Grid>
                     </Grid>

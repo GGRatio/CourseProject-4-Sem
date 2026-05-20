@@ -1,11 +1,14 @@
 ﻿using Energy.Data;
 using Energy.Helpers;
 using Energy.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
-
+using System.Windows.Media.Imaging;
 
 namespace Energy.Pages
 {
@@ -25,7 +28,7 @@ namespace Energy.Pages
             {
                 ClassesPanel.Children.Clear();
 
-                var today = DateTime.Now.Date;
+                var today = DateTime.Now;
 
                 var classes = _showCurrent
                     ? db.GroupClasses.Where(c => c.ClassDate >= today).OrderBy(c => c.ClassDate).ToList()
@@ -50,6 +53,69 @@ namespace Energy.Pages
                     ClassesPanel.Children.Add(emptyText);
                 }
             }
+        }
+
+        private bool IsUserRegistered(int classId)
+        {
+            using (var db = new AppDbContext())
+            {
+                return db.ClassRegistrations
+                    .Any(r => r.UserId == Session.CurrentUserId &&
+                              r.GroupClassId == classId &&
+                              !r.IsCanceled);
+            }
+        }
+
+        private ClassRegistration GetUserRegistration(int classId)
+        {
+            using (var db = new AppDbContext())
+            {
+                return db.ClassRegistrations
+                    .FirstOrDefault(r => r.UserId == Session.CurrentUserId && r.GroupClassId == classId);
+            }
+        }
+
+        private void RegisterForClass(int classId)
+        {
+            using (var db = new AppDbContext())
+            {
+                var classItem = db.GroupClasses.Find(classId);
+
+                if (classItem == null)
+                {
+                    MessageBox.Show("Занятие не найдено!");
+                    return;
+                }
+
+                // Нельзя записаться на прошедшее
+                if (classItem.ClassDate <= DateTime.Now)
+                {
+                    MessageBox.Show("Нельзя записаться на прошедшее занятие!");
+                    return;
+                }
+
+                if (classItem.CurrentParticipants >= classItem.MaxParticipants)
+                {
+                    MessageBox.Show("Нет свободных мест!");
+                    return;
+                }
+
+                var registration = new ClassRegistration
+                {
+                    UserId = Session.CurrentUserId,
+                    GroupClassId = classId,
+                    RegistrationDate = DateTime.Now,
+                    IsAttended = false,
+                    IsCanceled = false
+                };
+
+                db.ClassRegistrations.Add(registration);
+                classItem.CurrentParticipants++;
+                db.SaveChanges();
+            }
+
+            LoadClasses();
+            MessageBox.Show("Вы записаны на занятие!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private Border CreateClassCard(GroupClass classItem)
@@ -113,7 +179,7 @@ namespace Energy.Pages
 
             // Места
             int freeSpots = classItem.MaxParticipants - classItem.CurrentParticipants;
-            var spotsText = freeSpots > 0 ? $"🎟Свободно мест: {freeSpots}" : "Мест нет";
+            var spotsText = freeSpots > 0 ? $"🎟️ Свободно мест: {freeSpots}" : "❌ Мест нет";
             var spotsColor = freeSpots > 5 ? Colors.Green : (freeSpots > 0 ? Colors.Orange : Colors.Red);
 
             stack.Children.Add(new TextBlock
@@ -137,7 +203,7 @@ namespace Energy.Pages
                 });
             }
 
-            // Кнопка
+            // Кнопка или статус
             if (_showCurrent)
             {
                 bool isRegistered = IsUserRegistered(classItem.Id);
@@ -152,11 +218,10 @@ namespace Energy.Pages
                     FontSize = 13
                 };
 
-                // Если пользователь — тренер, кнопка неактивна
                 if (Session.CurrentUserRole == "Trainer")
                 {
                     registerButton.IsEnabled = false;
-                    registerButton.Content = "❌ Записаться";
+                    registerButton.Content = "❌ Тренерам нельзя";
                     registerButton.Background = (SolidColorBrush)FindResource("BorderBrush");
                     registerButton.Foreground = (SolidColorBrush)FindResource("TextSecondaryBrush");
                 }
@@ -184,10 +249,8 @@ namespace Energy.Pages
 
                 stack.Children.Add(registerButton);
             }
-
             else
             {
-                // Для истории показываем статус посещения
                 var registration = GetUserRegistration(classItem.Id);
                 var statusText = registration?.IsAttended == true ? "✅ Посещено" : "❌ Не посещено";
                 var statusBlock = new TextBlock
@@ -203,62 +266,6 @@ namespace Energy.Pages
 
             border.Child = stack;
             return border;
-        }
-
-        private bool IsUserRegistered(int classId)
-        {
-            using (var db = new AppDbContext())
-            {
-                return db.ClassRegistrations.Any(r => r.UserId == Session.CurrentUserId && r.GroupClassId == classId && !r.IsCanceled);
-            }
-        }
-
-        private ClassRegistration GetUserRegistration(int classId)
-        {
-            using (var db = new AppDbContext())
-            {
-                return db.ClassRegistrations.FirstOrDefault(r => r.UserId == Session.CurrentUserId && r.GroupClassId == classId);
-            }
-        }
-
-        private void RegisterForClass(int classId)
-        {
-            using (var db = new AppDbContext())
-            {
-                var classItem = db.GroupClasses.Find(classId);
-
-                if (classItem == null)
-                {
-                    MessageBox.Show("Занятие не найдено!");
-                    return;
-                }
-
-                if (classItem.CurrentParticipants >= classItem.MaxParticipants)
-                {
-                    MessageBox.Show("Нет свободных мест!");
-                    return;
-                }
-
-                // Добавляем регистрацию
-                var registration = new ClassRegistration
-                {
-                    UserId = Session.CurrentUserId,
-                    GroupClassId = classId,
-                    RegistrationDate = DateTime.Now,
-                    IsAttended = false,
-                    IsCanceled = false
-                };
-
-                db.ClassRegistrations.Add(registration);
-
-                // Увеличиваем количество участников
-                classItem.CurrentParticipants++;
-
-                db.SaveChanges();
-            }
-
-            LoadClasses();
-            MessageBox.Show("Вы записаны на занятие!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void btnCurrent_Click(object sender, RoutedEventArgs e)

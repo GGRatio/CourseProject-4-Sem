@@ -1,5 +1,6 @@
 ﻿using Energy.Data;
 using Energy.Helpers;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -217,69 +218,78 @@ namespace Energy.Pages
 
         private void LoadMyClasses()
         {
-            using (var db = new AppDbContext())
+            try
             {
-                var registrations = db.ClassRegistrations
-                    .Where(r => r.UserId == Session.CurrentUserId && !r.IsCanceled && r.GroupClass.ClassDate > DateTime.Now)
-                    .Select(r => new UserClassInfo
+                using (var db = new AppDbContext())
+                {
+                    var registrations = db.ClassRegistrations
+                        .Include(r => r.GroupClass)
+                        .Where(r => r.UserId == Session.CurrentUserId && !r.IsCanceled && r.GroupClass.ClassDate > DateTime.Now)
+                        .ToList();
+
+                    var items = registrations.Select(r => new UserClassInfo
                     {
                         Id = r.GroupClass.Id,
                         Name = r.GroupClass.Name,
                         Instructor = r.GroupClass.Instructor,
                         ClassDate = r.GroupClass.ClassDate,
                         RegistrationId = r.Id
-                    })
-                    .OrderBy(r => r.ClassDate)
-                    .ToList();
+                    }).OrderBy(r => r.ClassDate).ToList();
 
-                lstMyClasses.ItemsSource = registrations;
-
-                if (registrations.Count == 0)
-                {
-                    lstMyClasses.ItemsSource = null;
-                    lstMyClasses.Items.Add(new TextBlock
+                    if (items.Count > 0)
                     {
-                        Text = "Нет активных записей",
-                        FontSize = 12,
-                        Foreground = (SolidColorBrush)FindResource("TextSecondaryBrush"),
-                        Margin = new Thickness(10)
-                    });
+                        lstMyClasses.Visibility = Visibility.Visible;
+                        txtNoClasses.Visibility = Visibility.Collapsed;
+                        lstMyClasses.ItemsSource = items;
+                    }
+                    else
+                    {
+                        lstMyClasses.Visibility = Visibility.Collapsed;
+                        txtNoClasses.Visibility = Visibility.Visible;
+                        lstMyClasses.ItemsSource = null;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+                lstMyClasses.Visibility = Visibility.Collapsed;
+                txtNoClasses.Visibility = Visibility.Visible;
+                txtNoClasses.Text = "❌ Ошибка загрузки записей";
             }
         }
 
         //Отмена записи на гупповое занятие 
         private void CancelClass_Click(object sender, RoutedEventArgs e)
         {
-            var button = sender as Button;
-            int classId = (int)button.Tag;
-
-            if (MessageBox.Show("Отменить запись на занятие?", "Подтверждение",
-                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            // Проверяем, что нажата именно кнопка с Tag
+            if (sender is Button button && button.Tag is int classId)
             {
-                using (var db = new AppDbContext())
+                if (MessageBox.Show("Отменить запись на занятие?", "Подтверждение",
+                    MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                    // Находим регистрацию
-                    var registration = db.ClassRegistrations
-                        .FirstOrDefault(r => r.UserId == Session.CurrentUserId && r.GroupClassId == classId && !r.IsCanceled);
-
-                    if (registration != null)
+                    using (var db = new AppDbContext())
                     {
-                        registration.IsCanceled = true;
+                        var registration = db.ClassRegistrations
+                            .FirstOrDefault(r => r.UserId == Session.CurrentUserId && r.GroupClassId == classId && !r.IsCanceled);
 
-                        // Уменьшаем количество участников в занятии
-                        var classItem = db.GroupClasses.Find(classId);
-                        if (classItem != null && classItem.CurrentParticipants > 0)
+                        if (registration != null)
                         {
-                            classItem.CurrentParticipants--;
+                            registration.IsCanceled = true;
+
+                            var classItem = db.GroupClasses.Find(classId);
+                            if (classItem != null && classItem.CurrentParticipants > 0)
+                            {
+                                classItem.CurrentParticipants--;
+                            }
+
+                            db.SaveChanges();
                         }
-
-                        db.SaveChanges();
                     }
-                }
 
-                LoadMyClasses();
-                MessageBox.Show("Запись отменена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    LoadMyClasses();
+                    MessageBox.Show("Запись отменена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
         }
 
