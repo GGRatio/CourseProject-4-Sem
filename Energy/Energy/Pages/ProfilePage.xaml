@@ -101,40 +101,54 @@
 
                 <!-- Блок текущего абонемента -->
                 <Border Background="{DynamicResource CardBackgroundBrush}" 
-                        CornerRadius="15" 
-                        BorderBrush="{DynamicResource BorderBrush}" 
-                        BorderThickness="1"
-                        Padding="25" Margin="0,25,0,0">
+        CornerRadius="15" 
+        BorderBrush="{DynamicResource BorderBrush}" 
+        BorderThickness="1"
+        Padding="25" Margin="0,25,0,0">
 
                     <Border.Effect>
                         <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.08"/>
                     </Border.Effect>
 
                     <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="Мой абонемент" FontSize="20" FontWeight="Bold" 
-                                   Margin="0,0,0,15"
-                                   Foreground="{DynamicResource TextPrimaryBrush}"/>
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
 
-                        <TextBlock x:Name="txtSubscriptionName" FontSize="16" FontWeight="SemiBold"
-                                   Grid.Row="1" Foreground="{DynamicResource ButtonSuccessBrush}"/>
+                            <TextBlock Text="Мой абонемент" FontSize="20" FontWeight="Bold" 
+                       Margin="0,0,0,15"
+                       Foreground="{DynamicResource TextPrimaryBrush}"/>
 
-                        <TextBlock x:Name="txtSubscriptionEndDate" FontSize="14"
-                                   Grid.Row="2" Margin="0,5,0,0" 
-                                   Foreground="{DynamicResource TextSecondaryBrush}"/>
+                            <TextBlock x:Name="txtSubscriptionName" FontSize="16" FontWeight="SemiBold"
+                       Grid.Row="1" Foreground="{DynamicResource ButtonSuccessBrush}"/>
 
-                        <TextBlock x:Name="txtSubscriptionStatus" FontSize="14"
-                                   Grid.Row="3" Margin="0,5,0,0" 
-                                   Foreground="{DynamicResource TextSecondaryBrush}"/>
+                            <TextBlock x:Name="txtSubscriptionEndDate" FontSize="14"
+                       Grid.Row="2" Margin="0,5,0,0" 
+                       Foreground="{DynamicResource TextSecondaryBrush}"/>
+
+                            <TextBlock x:Name="txtSubscriptionStatus" FontSize="14"
+                       Grid.Row="3" Margin="0,5,0,0" 
+                       Foreground="{DynamicResource TextSecondaryBrush}"/>
+                        </Grid>
+
+                        <Button x:Name="btnExtend" Grid.Column="1" 
+                Content="🔄 Продлить" 
+                Click="ExtendSubscription_Click" 
+                Width="120" Height="35"
+                Background="#FF9800" Foreground="White" 
+                Margin="15,0,0,0" VerticalAlignment="Center"
+                Visibility="Collapsed"/>
                     </Grid>
                 </Border>
-
 
                 <!-- История абонементов -->
                 <Border Background="{DynamicResource CardBackgroundBrush}" CornerRadius="15" 
@@ -147,7 +161,7 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Text="История абонементов" FontSize="20" FontWeight="Bold" 
+                        <TextBlock Text="📜 История абонементов" FontSize="18" FontWeight="SemiBold" 
                    Margin="0,0,0,15"/>
 
                         <ListBox x:Name="lstPurchaseHistory" Grid.Row="1" 
@@ -158,11 +172,14 @@
                                     <Border Background="{DynamicResource BorderBrush}" 
                             CornerRadius="8" Margin="0,0,0,8" Padding="10">
                                         <StackPanel>
-                                            <TextBlock Text="{Binding SubscriptionName}" FontWeight="SemiBold"/>
-                                            <TextBlock Text="{Binding PurchaseDate, StringFormat='Куплен: dd.MM.yyyy'}" 
-                                       FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}"/>
-                                            <TextBlock Text="{Binding EndDate, StringFormat='Действовал до: dd.MM.yyyy'}" 
-                                       FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                            <TextBlock Text="{Binding SubscriptionName}" FontWeight="SemiBold"
+                                       Foreground="{DynamicResource TextPrimaryBrush}"/>
+                                            <TextBlock FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}">
+                                <Run Text="Куплен: "/><Run Text="{Binding PurchaseDate, StringFormat='dd.MM.yyyy'}"/>
+                                            </TextBlock>
+                                            <TextBlock FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}">
+                                <Run Text="Действовал до: "/><Run Text="{Binding EndDate, StringFormat='dd.MM.yyyy'}"/>
+                                            </TextBlock>
                                             <TextBlock Text="{Binding Status}" FontSize="11" 
                                        Foreground="{Binding StatusColor}"/>
                                         </StackPanel>

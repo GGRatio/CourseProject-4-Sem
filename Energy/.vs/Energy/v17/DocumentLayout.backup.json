@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "D:\\University\\CourseProject\\Energy\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\pages\\groupclassespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\pages\\groupclassespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\pages\\profilepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\pages\\profilepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\pages\\profilepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\pages\\profilepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\pages\\groupclassespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\pages\\groupclassespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\themes\\darktheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -174,7 +174,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
@@ -198,8 +198,7 @@
               "RelativeToolTip": "Energy\\Migrations\\20260520151125_TotalVisits.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T15:11:25.644Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T15:11:25.644Z"
             },
             {
               "$type": "Document",
@@ -210,12 +209,11 @@
               "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\AdminPages\\AdminGroupClassesPage.xaml",
               "RelativeToolTip": "Energy\\Pages\\AdminPages\\AdminGroupClassesPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-20T07:25:44.996Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T07:25:44.996Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "ProfilePage.xaml",
               "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\ProfilePage.xaml",
               "RelativeDocumentMoniker": "Energy\\Pages\\ProfilePage.xaml",
@@ -227,29 +225,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "ProfilePage.xaml.cs",
               "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\ProfilePage.xaml.cs",
               "RelativeDocumentMoniker": "Energy\\Pages\\ProfilePage.xaml.cs",
-              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\ProfilePage.xaml.cs",
-              "RelativeToolTip": "Energy\\Pages\\ProfilePage.xaml.cs",
-              "ViewState": "AgIAANoAAAAAAAAAAADwv+8AAAAVAAAAAAAAAA==",
+              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\ProfilePage.xaml.cs*",
+              "RelativeToolTip": "Energy\\Pages\\ProfilePage.xaml.cs*",
+              "ViewState": "AgIAACQBAAAAAAAAAADwv0EBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-20T13:47:29.454Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "GroupClassesPage.xaml.cs",
               "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\GroupClassesPage.xaml.cs",
               "RelativeDocumentMoniker": "Energy\\Pages\\GroupClassesPage.xaml.cs",
-              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\GroupClassesPage.xaml.cs*",
-              "RelativeToolTip": "Energy\\Pages\\GroupClassesPage.xaml.cs*",
+              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\GroupClassesPage.xaml.cs",
+              "RelativeToolTip": "Energy\\Pages\\GroupClassesPage.xaml.cs",
               "ViewState": "AgIAALsAAAAAAAAAAAAIwAoBAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T09:46:36.446Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T09:46:36.446Z"
             },
             {
               "$type": "Document",
@@ -260,8 +257,7 @@
               "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Themes\\DarkTheme.xaml",
               "RelativeToolTip": "Energy\\Themes\\DarkTheme.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-20T15:16:29.313Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T15:16:29.313Z"
             },
             {
               "$type": "Document",

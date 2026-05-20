@@ -33,6 +33,8 @@ namespace Energy.Pages
             LoadMyTrainer();
             LoadMyClasses();
             LoadVisitsCount();
+
+            LoadPurchaseHistory();
             SetEditMode(false);
         }
 
@@ -52,34 +54,7 @@ namespace Energy.Pages
             }
         }
 
-        private void LoadCurrentSubscription()
-        {
-            using (var db = new AppDbContext())
-            {
-                // Ищем активный абонемент (IsActive = true и EndDate > сегодня)
-                var activePurchase = db.Purchases
-                    .Where(p => p.UserId == Session.CurrentUserId && p.IsActive && p.EndDate > DateTime.Now)
-                    .OrderByDescending(p => p.PurchaseDate)
-                    .FirstOrDefault();
-
-                if (activePurchase != null)
-                {
-                    var subscription = db.Subscriptions.Find(activePurchase.Subscriptionid);
-
-                    txtSubscriptionName.Text = subscription.Name;
-                    txtSubscriptionEndDate.Text = $"Действует до: {activePurchase.EndDate:dd.MM.yyyy}";
-
-                    int daysLeft = (activePurchase.EndDate - DateTime.Now).Days;
-                    txtSubscriptionStatus.Text = $"Осталось дней: {daysLeft}";
-                }
-                else
-                {
-                    txtSubscriptionName.Text = "Нет активного абонемента";
-                    txtSubscriptionEndDate.Text = "";
-                    txtSubscriptionStatus.Text = "Купите абонемент в разделе 'Абонементы'";
-                }
-            }
-        }
+        
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
@@ -303,6 +278,96 @@ namespace Energy.Pages
                     .Count(r => r.UserId == Session.CurrentUserId && r.IsAttended);
 
                 txtVisitsCount.Text = visitsCount.ToString();
+            }
+        }
+
+
+        public class PurchaseHistoryItem
+        {
+            public string SubscriptionName { get; set; }
+            public DateTime PurchaseDate { get; set; }
+            public DateTime EndDate { get; set; }
+            public string Status { get; set; }
+            public string StatusColor { get; set; }
+        }
+
+        private void LoadPurchaseHistory()
+        {
+            try
+            {
+                using (var db = new AppDbContext())
+                {
+                    var purchases = db.Purchases
+                        .Include(p => p.Subscription)
+                        .Where(p => p.UserId == Session.CurrentUserId)
+                        .OrderByDescending(p => p.PurchaseDate)
+                        .ToList();
+
+                    var items = purchases.Select(p => new PurchaseHistoryItem
+                    {
+                        SubscriptionName = p.Subscription?.Name ?? "Неизвестно",
+                        PurchaseDate = p.PurchaseDate,
+                        EndDate = p.EndDate,
+                        Status = p.IsActive && p.EndDate > DateTime.Now ? "✅ Активен" : "⏰ Завершён",
+                        StatusColor = p.IsActive && p.EndDate > DateTime.Now ? "Green" : "Gray"
+                    }).ToList();
+
+                    lstPurchaseHistory.ItemsSource = items;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
+        }
+
+        private void LoadCurrentSubscription()
+        {
+            using (var db = new AppDbContext())
+            {
+                var activePurchase = db.Purchases
+                    .Include(p => p.Subscription)
+                    .FirstOrDefault(p => p.UserId == Session.CurrentUserId && p.IsActive && p.EndDate > DateTime.Now);
+
+                if (activePurchase != null)
+                {
+                    txtSubscriptionName.Text = activePurchase.Subscription.Name;
+                    txtSubscriptionEndDate.Text = $"Действует до: {activePurchase.EndDate:dd.MM.yyyy}";
+
+                    int daysLeft = (activePurchase.EndDate - DateTime.Now).Days;
+                    txtSubscriptionStatus.Text = $"Осталось дней: {daysLeft}";
+
+                    // Показываем кнопку продления
+                    btnExtend.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    txtSubscriptionName.Text = "Нет активного абонемента";
+                    txtSubscriptionEndDate.Text = "";
+                    txtSubscriptionStatus.Text = "Купите абонемент в разделе 'Абонементы'";
+                    btnExtend.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
+
+        private void ExtendSubscription_Click(object sender, RoutedEventArgs e)
+        {
+            using (var db = new AppDbContext())
+            {
+                var activePurchase = db.Purchases
+                    .Include(p => p.Subscription)
+                    .FirstOrDefault(p => p.UserId == Session.CurrentUserId && p.IsActive && p.EndDate > DateTime.Now);
+
+                if (activePurchase != null)
+                {
+                    // Продлеваем на 30 дней
+                    activePurchase.EndDate = activePurchase.EndDate.AddDays(30);
+                    db.SaveChanges();
+
+                    MessageBox.Show($"Абонемент продлён до {activePurchase.EndDate:dd.MM.yyyy}!",
+                                    "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    LoadCurrentSubscription();
+                }
             }
         }
 
