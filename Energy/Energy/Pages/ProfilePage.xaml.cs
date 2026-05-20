@@ -31,6 +31,7 @@ namespace Energy.Pages
             LoadCurrentSubscription();
             LoadMyTrainer();
             LoadMyClasses();
+            LoadVisitsCount();
             SetEditMode(false);
         }
 
@@ -279,6 +280,19 @@ namespace Energy.Pages
 
                 LoadMyClasses();
                 MessageBox.Show("Запись отменена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+
+        private void LoadVisitsCount()
+        {
+            using (var db = new AppDbContext())
+            {
+                // Считаем количество отмеченных посещений (IsAttended = true)
+                int visitsCount = db.ClassRegistrations
+                    .Count(r => r.UserId == Session.CurrentUserId && r.IsAttended);
+
+                txtVisitsCount.Text = visitsCount.ToString();
             }
         }
 

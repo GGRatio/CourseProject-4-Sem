@@ -20,11 +20,9 @@ namespace Energy.Models
 
 
         public string Role { get; set; } = "User";
-        //Текущий Абонимент
 
-        //Текущий Тренер 
 
         //Записи
-
+        public int TotalVisits { get; set; } = 0;
     }
 }

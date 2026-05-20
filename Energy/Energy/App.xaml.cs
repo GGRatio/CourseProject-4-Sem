@@ -1,8 +1,7 @@
-﻿
-using System.Windows;
+﻿using System.Windows;
 using Energy.Data;
 using Energy.Helpers;
-
+using Energy.Models;
 
 namespace Energy
 {
@@ -16,21 +15,36 @@ namespace Energy
 
             if (savedUser != null)
             {
-                Session.CurrentUserId = savedUser.UserId;
-                Session.CurrentUserLogin = savedUser.Login;
-                Session.CurrentUserRole = savedUser.Role;
-
-                // Загружаем имя и фамилию из БД
-                using (var db = new AppDbContext())
+                try
                 {
-                    var user = db.Users.Find(savedUser.UserId);
-                    if (user != null)
+                    using (var db = new AppDbContext())
                     {
-                        Session.CurrentUserFirstName = user.FirstName;
-                        Session.CurrentUserLastName = user.LastName;
+                        var user = db.Users.Find(savedUser.UserId);
+                        if (user != null)
+                        {
+                            Session.CurrentUserId = user.Id;
+                            Session.CurrentUserLogin = user.Login;
+                            Session.CurrentUserRole = user.Role;
+                            Session.CurrentUserFirstName = user.FirstName;
+                            Session.CurrentUserLastName = user.LastName;
+                        }
+                        else
+                        {
+                            // Пользователь не найден в БД — очищаем сессию
+                            SessionManager.ClearSession();
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка загрузки: {ex.Message}");
+                    SessionManager.ClearSession();
+                }
+            }
 
+            // Проверяем, есть ли активная сессия
+            if (Session.CurrentUserId > 0)
+            {
                 var mainWindow = new MainWindow();
                 mainWindow.Show();
             }
