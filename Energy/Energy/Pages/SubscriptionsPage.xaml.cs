@@ -186,6 +186,7 @@ namespace Energy.Pages
                 BorderThickness = new Thickness(0),
                 Cursor = System.Windows.Input.Cursors.Hand,
                 Tag = subscriptionId
+
             };
             buyButton.SetResourceReference(Button.BackgroundProperty, "ButtonPrimaryBrush");
             buyButton.SetResourceReference(Button.ForegroundProperty, "TextPrimaryBrush");

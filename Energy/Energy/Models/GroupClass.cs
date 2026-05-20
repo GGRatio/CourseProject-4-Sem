@@ -19,7 +19,7 @@ namespace Energy.Models
         public string Instructor { get; set; }
         public int? InstructorId { get; set; }
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         [Required]
         public DateTime ClassDate { get; set; }  
