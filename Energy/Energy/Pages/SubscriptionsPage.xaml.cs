@@ -188,9 +188,20 @@ namespace Energy.Pages
                 Tag = subscriptionId
 
             };
-            buyButton.SetResourceReference(Button.BackgroundProperty, "ButtonPrimaryBrush");
-            buyButton.SetResourceReference(Button.ForegroundProperty, "TextPrimaryBrush");
-            buyButton.Click += (s, e) => BuySubscription(subscriptionId, price, name);
+            if (Session.CurrentUserRole == "Trainer")
+            {
+                buyButton.IsEnabled = false;
+                buyButton.Content = "❌ Тренерам нельзя";
+                buyButton.Background = (SolidColorBrush)FindResource("BorderBrush");
+                buyButton.Foreground = (SolidColorBrush)FindResource("TextSecondaryBrush");
+            }
+            else
+            {
+                buyButton.Background = (SolidColorBrush)FindResource("ButtonPrimaryBrush");
+                buyButton.Foreground = (SolidColorBrush)FindResource("TextPrimaryBrush");
+                buyButton.Click += (s, e) => BuySubscription(subscriptionId, price, name);
+            }
+
 
             Grid.SetColumn(buyButton, 1);
             bottomGrid.Children.Add(buyButton);

@@ -186,8 +186,13 @@ namespace Energy.Pages
                 Cursor = System.Windows.Input.Cursors.Hand,
                 FontSize = 13,
             };
-
-            if (isSelected)
+            if (Session.CurrentUserRole == "Trainer")
+            {
+                selectButton.Background = (SolidColorBrush)FindResource("ButtonSuccessBrush");
+                selectButton.Foreground = (SolidColorBrush)FindResource("TextPrimaryBrush");
+                selectButton.IsEnabled = false;
+            }
+            else if (isSelected)
             {
                 selectButton.Background = (SolidColorBrush)FindResource("ButtonSuccessBrush");
                 selectButton.Foreground = (SolidColorBrush)FindResource("TextPrimaryBrush");

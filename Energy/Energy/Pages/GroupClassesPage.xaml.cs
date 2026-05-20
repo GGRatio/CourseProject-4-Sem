@@ -140,13 +140,11 @@ namespace Energy.Pages
             // Кнопка
             if (_showCurrent)
             {
-                // Проверяем, записан ли пользователь
                 bool isRegistered = IsUserRegistered(classItem.Id);
                 bool isFull = classItem.CurrentParticipants >= classItem.MaxParticipants;
 
                 var registerButton = new Button
                 {
-                    Content = isRegistered ? "✅ Вы записаны" : (isFull ? "❌ Нет мест" : "📝 Записаться"),
                     Tag = classItem.Id,
                     Margin = new Thickness(0, 5, 0, 0),
                     Padding = new Thickness(10, 8, 10, 8),
@@ -154,20 +152,31 @@ namespace Energy.Pages
                     FontSize = 13
                 };
 
-                if (isRegistered)
+                // Если пользователь — тренер, кнопка неактивна
+                if (Session.CurrentUserRole == "Trainer")
                 {
+                    registerButton.IsEnabled = false;
+                    registerButton.Content = "❌ Записаться";
+                    registerButton.Background = (SolidColorBrush)FindResource("BorderBrush");
+                    registerButton.Foreground = (SolidColorBrush)FindResource("TextSecondaryBrush");
+                }
+                else if (isRegistered)
+                {
+                    registerButton.Content = "✅ Вы записаны";
                     registerButton.Background = (SolidColorBrush)FindResource("ButtonSuccessBrush");
                     registerButton.Foreground = (SolidColorBrush)FindResource("TextPrimaryBrush");
                     registerButton.IsEnabled = false;
                 }
                 else if (isFull)
                 {
+                    registerButton.Content = "❌ Нет мест";
                     registerButton.Background = (SolidColorBrush)FindResource("BorderBrush");
                     registerButton.Foreground = (SolidColorBrush)FindResource("TextSecondaryBrush");
                     registerButton.IsEnabled = false;
                 }
                 else
                 {
+                    registerButton.Content = "📝 Записаться";
                     registerButton.Background = (SolidColorBrush)FindResource("ButtonPrimaryBrush");
                     registerButton.Foreground = (SolidColorBrush)FindResource("TextPrimaryBrush");
                     registerButton.Click += (s, e) => RegisterForClass(classItem.Id);
@@ -175,6 +184,7 @@ namespace Energy.Pages
 
                 stack.Children.Add(registerButton);
             }
+
             else
             {
                 // Для истории показываем статус посещения
