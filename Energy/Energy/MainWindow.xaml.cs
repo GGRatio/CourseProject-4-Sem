@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Energy.Models;
+using Energy.Pages.AdminPages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,20 @@ namespace Energy
         {
             InitializeComponent();
             ContentFrame.Navigate(new Pages.SubscriptionsPage());
+        }
+
+        public MainWindow(string userRole)
+        {
+            InitializeComponent();
+            if (userRole == "Admin")
+            {
+                ContentFrame.Navigate(new AdminUsersPage());
+            }
+            else
+            {
+                ContentFrame.Navigate(new Pages.SubscriptionsPage());
+            }
+
         }
 
 

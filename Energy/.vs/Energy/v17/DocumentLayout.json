@@ -3,16 +3,40 @@
   "WorkspaceRootPath": "D:\\University\\CourseProject\\Energy\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\pages\\adminpages\\admingroupclassespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\pages\\adminpages\\admingroupclassespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\controls\\headercontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\controls\\headercontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\controls\\headercontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\controls\\headercontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\pages\\adminpages\\admingroupclassespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\pages\\adminpages\\admingroupclassespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\themes\\commonstyles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\themes\\commonstyles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\themes\\darktheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\themes\\darktheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\themes\\lighttheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\themes\\lighttheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\controls\\headercontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\controls\\headercontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\pages\\adminpages\\adminuserspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -43,28 +67,12 @@
       "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\pages\\profilepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\themes\\commonstyles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\themes\\commonstyles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\themes\\lighttheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\themes\\lighttheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\pages\\profilepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\pages\\profilepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\themes\\darktheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\themes\\darktheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\pages\\subscriptionspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -95,16 +103,8 @@
       "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\registration.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|solutionrelative:energy\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8148BF5A-1952-4736-9AF7-28D734C52A78}|Energy\\Energy.csproj|d:\\university\\courseproject\\energy\\energy\\registration.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -206,121 +206,35 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AdminUsersPage.xaml",
-              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\AdminPages\\AdminUsersPage.xaml",
-              "RelativeDocumentMoniker": "Energy\\Pages\\AdminPages\\AdminUsersPage.xaml",
-              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\AdminPages\\AdminUsersPage.xaml",
-              "RelativeToolTip": "Energy\\Pages\\AdminPages\\AdminUsersPage.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-19T12:29:23.94Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "AdminTrainersPage.xaml",
-              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\AdminPages\\AdminTrainersPage.xaml",
-              "RelativeDocumentMoniker": "Energy\\Pages\\AdminPages\\AdminTrainersPage.xaml",
-              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\AdminPages\\AdminTrainersPage.xaml",
-              "RelativeToolTip": "Energy\\Pages\\AdminPages\\AdminTrainersPage.xaml",
+              "Title": "Login.xaml",
+              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Login.xaml",
+              "RelativeDocumentMoniker": "Energy\\Login.xaml",
+              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Login.xaml",
+              "RelativeToolTip": "Energy\\Login.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-20T07:00:08.989Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AdminGroupClassesPage.xaml",
-              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\AdminPages\\AdminGroupClassesPage.xaml",
-              "RelativeDocumentMoniker": "Energy\\Pages\\AdminPages\\AdminGroupClassesPage.xaml",
-              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\AdminPages\\AdminGroupClassesPage.xaml",
-              "RelativeToolTip": "Energy\\Pages\\AdminPages\\AdminGroupClassesPage.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-20T07:25:44.996Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T08:02:02.044Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "HeaderControl.xaml",
-              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Controls\\HeaderControl.xaml",
-              "RelativeDocumentMoniker": "Energy\\Controls\\HeaderControl.xaml",
-              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Controls\\HeaderControl.xaml",
-              "RelativeToolTip": "Energy\\Controls\\HeaderControl.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-19T12:55:10.629Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HeaderControl.xaml.cs",
-              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Controls\\HeaderControl.xaml.cs",
-              "RelativeDocumentMoniker": "Energy\\Controls\\HeaderControl.xaml.cs",
-              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Controls\\HeaderControl.xaml.cs",
-              "RelativeToolTip": "Energy\\Controls\\HeaderControl.xaml.cs",
-              "ViewState": "AgIAAFIAAAAAAAAAAAA/wG8AAABaAAAAAAAAAA==",
+              "Title": "Login.xaml.cs",
+              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Login.xaml.cs",
+              "RelativeDocumentMoniker": "Energy\\Login.xaml.cs",
+              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Login.xaml.cs",
+              "RelativeToolTip": "Energy\\Login.xaml.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T12:55:48.419Z",
+              "WhenOpened": "2026-05-19T12:58:53.805Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "AdminSubscriptionPage.xaml",
-              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\AdminPages\\AdminSubscriptionPage.xaml",
-              "RelativeDocumentMoniker": "Energy\\Pages\\AdminPages\\AdminSubscriptionPage.xaml",
-              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\AdminPages\\AdminSubscriptionPage.xaml",
-              "RelativeToolTip": "Energy\\Pages\\AdminPages\\AdminSubscriptionPage.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-20T20:16:09.81Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AdminGroupClassesPage.xaml.cs",
-              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\AdminPages\\AdminGroupClassesPage.xaml.cs",
-              "RelativeDocumentMoniker": "Energy\\Pages\\AdminPages\\AdminGroupClassesPage.xaml.cs",
-              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\AdminPages\\AdminGroupClassesPage.xaml.cs",
-              "RelativeToolTip": "Energy\\Pages\\AdminPages\\AdminGroupClassesPage.xaml.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAcwCQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T07:27:15.506Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "GroupClassesPage.xaml",
-              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\GroupClassesPage.xaml",
-              "RelativeDocumentMoniker": "Energy\\Pages\\GroupClassesPage.xaml",
-              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\GroupClassesPage.xaml",
-              "RelativeToolTip": "Energy\\Pages\\GroupClassesPage.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-20T20:05:21.284Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ProfilePage.xaml",
-              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\ProfilePage.xaml",
-              "RelativeDocumentMoniker": "Energy\\Pages\\ProfilePage.xaml",
-              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\ProfilePage.xaml",
-              "RelativeToolTip": "Energy\\Pages\\ProfilePage.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-20T09:46:35.855Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
               "Title": "CommonStyles.xaml",
               "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Themes\\CommonStyles.xaml",
               "RelativeDocumentMoniker": "Energy\\Themes\\CommonStyles.xaml",
@@ -332,70 +246,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "GroupClassesPage.xaml.cs",
-              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\GroupClassesPage.xaml.cs",
-              "RelativeDocumentMoniker": "Energy\\Pages\\GroupClassesPage.xaml.cs",
-              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\GroupClassesPage.xaml.cs",
-              "RelativeToolTip": "Energy\\Pages\\GroupClassesPage.xaml.cs",
-              "ViewState": "AgIAAMMAAAAAAAAAAAAIwNwAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T09:46:36.446Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ProfilePage.xaml.cs",
-              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\ProfilePage.xaml.cs",
-              "RelativeDocumentMoniker": "Energy\\Pages\\ProfilePage.xaml.cs",
-              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\ProfilePage.xaml.cs",
-              "RelativeToolTip": "Energy\\Pages\\ProfilePage.xaml.cs",
-              "ViewState": "AgIAAGYBAAAAAAAAAAAIwEsBAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T13:47:29.454Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "DarkTheme.xaml",
-              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Themes\\DarkTheme.xaml",
-              "RelativeDocumentMoniker": "Energy\\Themes\\DarkTheme.xaml",
-              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Themes\\DarkTheme.xaml",
-              "RelativeToolTip": "Energy\\Themes\\DarkTheme.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-20T15:16:29.313Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "Energy\\MainWindow.xaml",
-              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\MainWindow.xaml",
-              "RelativeToolTip": "Energy\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-20T18:58:42.608Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "Energy\\MainWindow.xaml.cs",
-              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\MainWindow.xaml.cs",
-              "RelativeToolTip": "Energy\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T18:58:37.11Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 7,
               "Title": "LightTheme.xaml",
               "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Themes\\LightTheme.xaml",
               "RelativeDocumentMoniker": "Energy\\Themes\\LightTheme.xaml",
@@ -407,19 +258,178 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DarkTheme.xaml",
+              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Themes\\DarkTheme.xaml",
+              "RelativeDocumentMoniker": "Energy\\Themes\\DarkTheme.xaml",
+              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Themes\\DarkTheme.xaml",
+              "RelativeToolTip": "Energy\\Themes\\DarkTheme.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-20T15:16:29.313Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Energy\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Energy\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAjwB0AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T18:58:37.11Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AdminGroupClassesPage.xaml",
+              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\AdminPages\\AdminGroupClassesPage.xaml",
+              "RelativeDocumentMoniker": "Energy\\Pages\\AdminPages\\AdminGroupClassesPage.xaml",
+              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\AdminPages\\AdminGroupClassesPage.xaml",
+              "RelativeToolTip": "Energy\\Pages\\AdminPages\\AdminGroupClassesPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-20T07:25:44.996Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HeaderControl.xaml.cs",
+              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Controls\\HeaderControl.xaml.cs",
+              "RelativeDocumentMoniker": "Energy\\Controls\\HeaderControl.xaml.cs",
+              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Controls\\HeaderControl.xaml.cs",
+              "RelativeToolTip": "Energy\\Controls\\HeaderControl.xaml.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAAYAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T12:55:48.419Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AdminSubscriptionPage.xaml",
+              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\AdminPages\\AdminSubscriptionPage.xaml",
+              "RelativeDocumentMoniker": "Energy\\Pages\\AdminPages\\AdminSubscriptionPage.xaml",
+              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\AdminPages\\AdminSubscriptionPage.xaml",
+              "RelativeToolTip": "Energy\\Pages\\AdminPages\\AdminSubscriptionPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-20T20:16:09.81Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "HeaderControl.xaml",
+              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Controls\\HeaderControl.xaml",
+              "RelativeDocumentMoniker": "Energy\\Controls\\HeaderControl.xaml",
+              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Controls\\HeaderControl.xaml",
+              "RelativeToolTip": "Energy\\Controls\\HeaderControl.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-19T12:55:10.629Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AdminTrainersPage.xaml",
+              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\AdminPages\\AdminTrainersPage.xaml",
+              "RelativeDocumentMoniker": "Energy\\Pages\\AdminPages\\AdminTrainersPage.xaml",
+              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\AdminPages\\AdminTrainersPage.xaml",
+              "RelativeToolTip": "Energy\\Pages\\AdminPages\\AdminTrainersPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-20T07:00:08.989Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AdminUsersPage.xaml",
+              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\AdminPages\\AdminUsersPage.xaml",
+              "RelativeDocumentMoniker": "Energy\\Pages\\AdminPages\\AdminUsersPage.xaml",
+              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\AdminPages\\AdminUsersPage.xaml",
+              "RelativeToolTip": "Energy\\Pages\\AdminPages\\AdminUsersPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-19T12:29:23.94Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AdminGroupClassesPage.xaml.cs",
+              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\AdminPages\\AdminGroupClassesPage.xaml.cs",
+              "RelativeDocumentMoniker": "Energy\\Pages\\AdminPages\\AdminGroupClassesPage.xaml.cs",
+              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\AdminPages\\AdminGroupClassesPage.xaml.cs",
+              "RelativeToolTip": "Energy\\Pages\\AdminPages\\AdminGroupClassesPage.xaml.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAcwCQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T07:27:15.506Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "GroupClassesPage.xaml",
+              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\GroupClassesPage.xaml",
+              "RelativeDocumentMoniker": "Energy\\Pages\\GroupClassesPage.xaml",
+              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\GroupClassesPage.xaml",
+              "RelativeToolTip": "Energy\\Pages\\GroupClassesPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-20T20:05:21.284Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ProfilePage.xaml",
+              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\ProfilePage.xaml",
+              "RelativeDocumentMoniker": "Energy\\Pages\\ProfilePage.xaml",
+              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\ProfilePage.xaml",
+              "RelativeToolTip": "Energy\\Pages\\ProfilePage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-20T09:46:35.855Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "GroupClassesPage.xaml.cs",
+              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\GroupClassesPage.xaml.cs",
+              "RelativeDocumentMoniker": "Energy\\Pages\\GroupClassesPage.xaml.cs",
+              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\GroupClassesPage.xaml.cs",
+              "RelativeToolTip": "Energy\\Pages\\GroupClassesPage.xaml.cs",
+              "ViewState": "AgIAAMMAAAAAAAAAAAAIwNwAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T09:46:36.446Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 16,
+              "Title": "ProfilePage.xaml.cs",
+              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\ProfilePage.xaml.cs",
+              "RelativeDocumentMoniker": "Energy\\Pages\\ProfilePage.xaml.cs",
+              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\ProfilePage.xaml.cs",
+              "RelativeToolTip": "Energy\\Pages\\ProfilePage.xaml.cs",
+              "ViewState": "AgIAAGYBAAAAAAAAAAAIwEsBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T13:47:29.454Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "Energy\\MainWindow.xaml",
+              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\MainWindow.xaml",
+              "RelativeToolTip": "Energy\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-20T18:58:42.608Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
               "Title": "SubscriptionsPage.xaml",
               "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\SubscriptionsPage.xaml",
               "RelativeDocumentMoniker": "Energy\\Pages\\SubscriptionsPage.xaml",
               "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\SubscriptionsPage.xaml",
               "RelativeToolTip": "Energy\\Pages\\SubscriptionsPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-20T19:24:38.467Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T19:24:38.467Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "SubscriptionsPage.xaml.cs",
               "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\SubscriptionsPage.xaml.cs",
               "RelativeDocumentMoniker": "Energy\\Pages\\SubscriptionsPage.xaml.cs",
@@ -427,48 +437,44 @@
               "RelativeToolTip": "Energy\\Pages\\SubscriptionsPage.xaml.cs",
               "ViewState": "AgIAAK4AAAAAAAAAAAAowMgAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T08:48:31.397Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T08:48:31.397Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "TrainerCabinetPage.xaml",
               "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\TrainerCabinetPage.xaml",
               "RelativeDocumentMoniker": "Energy\\Pages\\TrainerCabinetPage.xaml",
               "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\TrainerCabinetPage.xaml",
               "RelativeToolTip": "Energy\\Pages\\TrainerCabinetPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-20T05:47:24.322Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T05:47:24.322Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "TrainerProfilePage.xaml",
               "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\TrainerProfilePage.xaml",
               "RelativeDocumentMoniker": "Energy\\Pages\\TrainerProfilePage.xaml",
               "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\TrainerProfilePage.xaml",
               "RelativeToolTip": "Energy\\Pages\\TrainerProfilePage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-20T07:52:05.65Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T07:52:05.65Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "TrainersPage.xaml",
               "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\TrainersPage.xaml",
               "RelativeDocumentMoniker": "Energy\\Pages\\TrainersPage.xaml",
               "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\TrainersPage.xaml",
               "RelativeToolTip": "Energy\\Pages\\TrainersPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-20T05:46:56.627Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T05:46:56.627Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "TrainersPage.xaml.cs",
               "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Pages\\TrainersPage.xaml.cs",
               "RelativeDocumentMoniker": "Energy\\Pages\\TrainersPage.xaml.cs",
@@ -476,36 +482,22 @@
               "RelativeToolTip": "Energy\\Pages\\TrainersPage.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAANEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T05:46:55.434Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T05:46:55.434Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 24,
               "Title": "Registration.xaml",
               "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Registration.xaml",
               "RelativeDocumentMoniker": "Energy\\Registration.xaml",
               "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Registration.xaml",
               "RelativeToolTip": "Energy\\Registration.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-20T18:57:56.902Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T18:57:56.902Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "Login.xaml",
-              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Login.xaml",
-              "RelativeDocumentMoniker": "Energy\\Login.xaml",
-              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Login.xaml",
-              "RelativeToolTip": "Energy\\Login.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-20T08:02:02.044Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\App.xaml.cs",
               "RelativeDocumentMoniker": "Energy\\App.xaml.cs",
@@ -513,21 +505,7 @@
               "RelativeToolTip": "Energy\\App.xaml.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAAAB0AAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T07:39:58.883Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "Login.xaml.cs",
-              "DocumentMoniker": "D:\\University\\CourseProject\\Energy\\Energy\\Login.xaml.cs",
-              "RelativeDocumentMoniker": "Energy\\Login.xaml.cs",
-              "ToolTip": "D:\\University\\CourseProject\\Energy\\Energy\\Login.xaml.cs",
-              "RelativeToolTip": "Energy\\Login.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADgAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T12:58:53.805Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T07:39:58.883Z"
             },
             {
               "$type": "Document",
@@ -539,8 +517,7 @@
               "RelativeToolTip": "Energy\\Registration.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T18:58:11.052Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T18:58:11.052Z"
             },
             {
               "$type": "Document",

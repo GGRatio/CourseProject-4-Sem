@@ -89,12 +89,14 @@
                     </TextBlock>
                 </Grid>
 
+              
                 <!-- REMEMBER -->
                 <CheckBox x:Name="RememberMeCheckBox"
                           Content="Запомнить меня"
                           Margin="0,0,0,28"
                           FontSize="14"
-                          IsChecked="True"/>
+                                    IsEnabled="True"
+                        IsChecked="True"/>
 
                 <!-- BUTTON -->
                 <Button Content="Войти"

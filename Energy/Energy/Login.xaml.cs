@@ -66,10 +66,11 @@ namespace Energy
 
                     if (RememberMeCheckBox.IsChecked == true)
                     {
-                        SessionManager.SaveUser(user.Id, user.Login, user.Role);  // ← передаём роль
+                        SessionManager.SaveUser(user.Id, user.Login, user.Role);  
                     }
 
-                    var mainWindow = new MainWindow();
+
+                    var mainWindow = new MainWindow(user.Role);
                     mainWindow.Show();
                     this.Close();
                 }

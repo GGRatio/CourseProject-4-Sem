@@ -199,5 +199,7 @@
 
     </Style>
 
+    <SolidColorBrush x:Key="AccentBrush" Color="#4CAF50"/>
+
 </ResourceDictionary>
 
