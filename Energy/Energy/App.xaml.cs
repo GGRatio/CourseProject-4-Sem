@@ -11,6 +11,11 @@ namespace Energy
         {
             base.OnStartup(e);
 
+            using (var db = new AppDbContext())
+            {
+                DbInitializer.Initialize(db);
+            }
+
             var savedUser = SessionManager.LoadUser();
 
             if (savedUser != null)
@@ -42,7 +47,6 @@ namespace Energy
                 }
             }
 
-            // Проверяем, есть ли активная сессия
             if (Session.CurrentUserId > 0)
             {
                 var mainWindow = new MainWindow();

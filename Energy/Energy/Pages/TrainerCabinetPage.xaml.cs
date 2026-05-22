@@ -33,7 +33,7 @@ namespace Energy.Pages
                 {
                     _trainerId = trainer.Id;
                     _trainerFullName = $"{trainer.FirstName} {trainer.LastName}";
-                    txtTitle.Text = $"👨‍🏫 Кабинет тренера: {_trainerFullName}";
+                    txtTitle.Text = $"Кабинет тренера: {_trainerFullName}";
 
                     LoadFutureClasses(db);
                     LoadPastClasses(db);
@@ -41,7 +41,7 @@ namespace Energy.Pages
                 }
                 else
                 {
-                    txtTitle.Text = "👨‍🏫 Кабинет тренера";
+                    txtTitle.Text = "Кабинет тренера";
                 }
             }
         }

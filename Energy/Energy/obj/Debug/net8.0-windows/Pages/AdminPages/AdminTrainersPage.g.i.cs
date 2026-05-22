@@ -116,7 +116,7 @@ namespace Energy.Pages.AdminPages {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Energy;component/pages/adminpages/admintrainerspage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Energy;V1.0.0.0;component/pages/adminpages/admintrainerspage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Pages\AdminPages\AdminTrainersPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

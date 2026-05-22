@@ -47,17 +47,51 @@ namespace Energy.Pages.AdminPages
                 return;
             }
 
+            if (txtLogin.Text.Length < 4)
+            {
+                MessageBox.Show("Логин не менее 4 символов");
+                return;
+            }
+
             using (var db = new AppDbContext())
             {
+                var existingUser = db.Users.FirstOrDefault(u => u.Login == txtLogin.Text && u.Id != _selectedId);
+                if (existingUser != null)
+                {
+                    MessageBox.Show("Пользователь с таким логином уже существует!", "Ошибка",
+                                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
                 var user = db.Users.Find(_selectedId);
                 if (user != null)
                 {
+                    string newRole = (cbRole.SelectedItem as ComboBoxItem)?.Content.ToString() ?? "User";
+
+                    if (user.Id == Session.CurrentUserId && user.Role == "Admin" && user.Role != newRole)
+                    {
+                        MessageBox.Show("Нельзя изменить роль своей учётной записи!", "Доступ запрещён",
+                                        MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
+                    user.Login = txtLogin.Text;
                     user.Email = txtEmail.Text;
                     user.FirstName = txtFirstName.Text;
                     user.LastName = txtLastName.Text;
                     user.Phone = txtPhone.Text;
+                    user.Role = newRole;
 
-                    // СИНХРОНИЗАЦИЯ: если пользователь — тренер, обновляем Trainers
+                    if (!string.IsNullOrEmpty(txtPassword.Password))
+                    {
+                        if (txtPassword.Password.Length < 5)
+                        {
+                            MessageBox.Show("Пароль не менее 5 символов");
+                            return;
+                        }
+                        user.PasswordHash = PasswordHelper.HashPassword(txtPassword.Password);
+                    }
+
                     if (user.Role == "Trainer")
                     {
                         var trainer = db.Trainers.FirstOrDefault(t => t.FirstName == user.FirstName || t.LastName == user.LastName);
@@ -78,7 +112,6 @@ namespace Energy.Pages.AdminPages
         }
 
 
-
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             if (_selectedId == 0)
@@ -97,7 +130,6 @@ namespace Energy.Pages.AdminPages
                     return;
                 }
 
-                // Нельзя удалить самого себя
                 if (user.Login == Session.CurrentUserLogin)
                 {
                     MessageBox.Show("Нельзя удалить свою учётную запись!");
@@ -107,7 +139,6 @@ namespace Energy.Pages.AdminPages
                 if (MessageBox.Show($"Удалить пользователя {user.Login}?", "Подтверждение",
                     MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                    // Если пользователь был тренером — удаляем из таблицы Trainers
                     if (user.Role == "Trainer")
                     {
                         var trainer = db.Trainers.FirstOrDefault(t => t.FirstName == user.FirstName && t.LastName == user.LastName);
@@ -134,6 +165,18 @@ namespace Energy.Pages.AdminPages
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
+
+            if (txtLogin.Text.Length < 4)
+            {
+                MessageBox.Show("Логин не менее 4 символов");
+                return;
+            }
+            else if (txtPassword.Password.Length < 5)
+            {
+                MessageBox.Show("Пароль не менее 5 символов");
+                return;
+            }
+
             using (var db = new AppDbContext())
             {
                 if (string.IsNullOrEmpty(txtLogin.Text) || string.IsNullOrEmpty(txtPassword.Password))
@@ -148,14 +191,12 @@ namespace Energy.Pages.AdminPages
                 }
                 if (db.Users.Any(u => u.Login == txtLogin.Text))
                 {
-                    MessageBox.Show("Такой логин занят");
+                    MessageBox.Show("Пользователь с таким логином уже существует!");
                     return;
                 }
 
-                // Получаем выбранную роль
                 string role = (cbRole.SelectedItem as ComboBoxItem)?.Content.ToString() ?? "User";
 
-                // 1. Создаём пользователя
                 var newUser = new User
                 {
                     Login = txtLogin.Text,
@@ -169,7 +210,6 @@ namespace Energy.Pages.AdminPages
                 db.Users.Add(newUser);
                 db.SaveChanges();
 
-                // 2. Если роль Trainer — создаём запись в Trainers
                 if (role == "Trainer")
                 {
                     var trainer = new Trainer

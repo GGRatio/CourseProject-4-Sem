@@ -29,7 +29,6 @@ namespace Energy
         }
 
 
-        // Скрываем подсказку для пароля когда есть текст
         private void txtBoxPassword_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (txtBoxPassword.Password.Length > 0)
@@ -37,7 +36,6 @@ namespace Energy
             else
                 txtPasswordHint.Visibility = Visibility.Visible;
 
-            // Сброс подсветки
             txtBoxPassword.Background = Brushes.White;
             txtBoxPassword.ToolTip = null;
         }
@@ -49,7 +47,6 @@ namespace Energy
             else
                 txtPasswordHint2.Visibility = Visibility.Visible;
 
-            // Сброс подсветки
             txtBoxPassword2.Background = Brushes.White;
             txtBoxPassword2.ToolTip = null;
         }
@@ -67,13 +64,13 @@ namespace Energy
 
             if (login.Length < 4)
             {
-                ShowError(txtBoxLogin, "Логин не менее 5 символов!");
+                ShowError(txtBoxLogin, "Логин не менее 4 символов!");
                 txtBoxLogin.Focus();
                 return;
             }
             else if (pass.Length < 5)
             {
-                ShowError(txtBoxPassword, "Пароль не менее 8 символов!");
+                ShowError(txtBoxPassword, "Пароль не менее 5 символов!");
                 txtBoxPassword.Focus();
                 return;
             }
@@ -83,7 +80,7 @@ namespace Energy
                 txtBoxPassword2.Focus();
                 return;
             }
-            else if (!email.Contains("@") || !email.Contains("."))
+            else if (!IsValidEmail(email))
             {
                 ShowError(txtBoxEmail, "Неверный формат email!");
                 txtBoxEmail.Focus();
@@ -172,6 +169,20 @@ namespace Energy
             var loginWindow = new Login();
             loginWindow.Show();
             this.Close();
+        }
+
+
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

@@ -68,7 +68,8 @@
                            FontSize="13"
                            Foreground="{DynamicResource TextSecondaryBrush}"/>
                 <TextBox x:Name="txtBoxLogin"
-                         Margin="0,0,0,18"/>
+                         Margin="0,0,0,18"
+                         TextChanged="txtBoxLogin_TextChanged"/>
 
                 <!-- PASSWORD -->
                 <Grid Margin="0,0,0,14">

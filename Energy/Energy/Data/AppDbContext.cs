@@ -19,14 +19,24 @@ namespace Energy.Data
         public DbSet<ClassRegistration> ClassRegistrations { get; set; }
         public DbSet<Review> Reviews { get; set; }
 
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) //EF сам вызовет для подклюени к бд
+        /*
+                protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) //EF сам вызовет для подклюени к бд
+                {
+                    optionsBuilder.UseSqlServer(
+                        "Server=LOST\\MSSQLSERVER06;Database=Energy_DB;Trusted_Connection=True;Encrypt=False"
+                    );
+                }
+        */
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(
-                "Server=LOST\\MSSQLSERVER06;Database=Energy_DB;Trusted_Connection=True;Encrypt=False"
-            );
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=Energy_DB;Trusted_Connection=True;");
         }
 
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Login)
+                .IsUnique();
+        }
     }
 }
